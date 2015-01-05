@@ -6,9 +6,9 @@ using System.Drawing;
 
 using Epicycle.Commons;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Windows
 {
-    public static class WindowsImageUtils
+    public static class ImageUtils
     {
         public static Bitmap ToBitmap<TType>(this IReadOnlyImageByte<TType> @this)
         {

@@ -4,43 +4,45 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0AD4324B-56F0-445B-968F-9EE578B8F34C}</ProjectGuid>
+    <ProjectGuid>{556A9D71-0802-42CE-B110-5C2FB6B51388}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Epicycle.Graphics</RootNamespace>
-    <AssemblyName>Epicycle.Graphics_cs</AssemblyName>
+    <RootNamespace>Epicycle.Graphics.Windows</RootNamespace>
+    <AssemblyName>Epicycle.Graphics.Windows_cs</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\bin\win\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;EMGU</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\win\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\bin\win\Release\</OutputPath>
-    <DefineConstants>TRACE;EMGU</DefineConstants>
+    <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\win\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Epicycle.Commons_cs">
+    <Reference Include="Epicycle.Commons_cs, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\externals\lib\Epicycle.Commons-cs\Epicycle.Commons_cs.dll</HintPath>
     </Reference>
-    <Reference Include="Epicycle.Math_cs">
+    <Reference Include="Epicycle.Math_cs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\externals\lib\Epicycle.Math-cs\Epicycle.Math_cs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,27 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Color4bUtils.cs" />
-    <Compile Include="IImage.cs" />
-    <Compile Include="IImageByte.cs" />
-    <Compile Include="IImageFloat.cs" />
-    <Compile Include="IImageType.cs" />
-    <Compile Include="Image.cs" />
-    <Compile Include="ImageByte.cs" />
-    <Compile Include="ImageFloat.cs" />
-    <Compile Include="ImageUtils.cs" />
-    <Compile Include="IReadOnlyImageByte.cs" />
-    <Compile Include="ReadOnlyImageFloatView.cs" />
-    <Compile Include="ReadOnlyImageView.cs" />
-    <Compile Include="IReadOnlyImage.cs" />
-    <Compile Include="IReadOnlyImageFloat.cs" />
-    <Compile Include="MonoImageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RgbImageType.cs" />
-    <Compile Include="Color4b.cs" />
+    <Compile Include="ImageUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Epicycle.Graphics_cs\Epicycle.Graphics_cs.csproj">
+      <Project>{0ad4324b-56f0-445b-968f-9ee578b8f34c}</Project>
+      <Name>Epicycle.Graphics_cs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
