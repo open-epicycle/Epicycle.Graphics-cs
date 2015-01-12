@@ -19,7 +19,7 @@
 using Epicycle.Commons;
 using Epicycle.Math.Geometry;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
 
     public static class ImageUtils

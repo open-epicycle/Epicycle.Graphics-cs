@@ -18,10 +18,10 @@
 
 using Epicycle.Commons.Unsafe;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
-    public interface IReadOnlyImageFloat<TType> : IReadOnlyImage<TType, float>
+    public interface IReadOnlyImageByte<TType> : IReadOnlyImage<TType, byte>
     {
-        PinnedFloatBuffer Open();
+        PinnedByteBuffer Open();
     }
 }

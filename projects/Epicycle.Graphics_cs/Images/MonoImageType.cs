@@ -16,7 +16,7 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
     public struct MonoImageType : IImageType
     {

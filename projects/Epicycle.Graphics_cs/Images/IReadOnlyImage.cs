@@ -16,13 +16,15 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-namespace Epicycle.Graphics
+using Epicycle.Math.Geometry;
+
+namespace Epicycle.Graphics.Images
 {
-    public struct RgbImageType : IImageType
+    public interface IReadOnlyImage<TType, TDepth>
     {
-        public int ChannelsCount
-        {
-            get { return 3; }
-        }
+        Vector2i Dimensions { get; }
+        Vector2i Step { get; }
+
+        TDepth this[Vector2i pixel, int channel] { get; }
     }
 }

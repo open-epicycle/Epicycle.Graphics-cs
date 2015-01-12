@@ -19,7 +19,7 @@
 using Epicycle.Commons;
 using Epicycle.Math.Geometry;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
     public abstract class Image<TType, TDepth> : IImage<TType, TDepth>
         where TType : IImageType, new()

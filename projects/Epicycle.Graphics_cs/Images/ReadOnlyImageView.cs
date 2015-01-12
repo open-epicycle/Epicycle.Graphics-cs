@@ -18,7 +18,7 @@
 
 using Epicycle.Math.Geometry;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
     public abstract class ReadOnlyImageView<TType, TDepth, UType> : IReadOnlyImage<TType, TDepth>
         where TType : IImageType, new()

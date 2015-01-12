@@ -67,22 +67,22 @@
   <ItemGroup>
     <Compile Include="Color4b.cs" />
     <Compile Include="Color4bUtils.cs" />
-    <Compile Include="IImage.cs" />
-    <Compile Include="IImageByte.cs" />
-    <Compile Include="IImageFloat.cs" />
-    <Compile Include="IImageType.cs" />
-    <Compile Include="IReadOnlyImage.cs" />
-    <Compile Include="IReadOnlyImageByte.cs" />
-    <Compile Include="IReadOnlyImageFloat.cs" />
-    <Compile Include="Image.cs" />
-    <Compile Include="ImageByte.cs" />
-    <Compile Include="ImageFloat.cs" />
-    <Compile Include="ImageUtils.cs" />
-    <Compile Include="MonoImageType.cs" />
+    <Compile Include="Images\IImage.cs" />
+    <Compile Include="Images\IImageByte.cs" />
+    <Compile Include="Images\IImageFloat.cs" />
+    <Compile Include="Images\IImageType.cs" />
+    <Compile Include="Images\IReadOnlyImage.cs" />
+    <Compile Include="Images\IReadOnlyImageByte.cs" />
+    <Compile Include="Images\IReadOnlyImageFloat.cs" />
+    <Compile Include="Images\Image.cs" />
+    <Compile Include="Images\ImageByte.cs" />
+    <Compile Include="Images\ImageFloat.cs" />
+    <Compile Include="Images\ImageUtils.cs" />
+    <Compile Include="Images\MonoImageType.cs" />
+    <Compile Include="Images\ReadOnlyImageFloatView.cs" />
+    <Compile Include="Images\ReadOnlyImageView.cs" />
+    <Compile Include="Images\RgbImageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReadOnlyImageFloatView.cs" />
-    <Compile Include="ReadOnlyImageView.cs" />
-    <Compile Include="RgbImageType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -19,33 +19,20 @@
 using Epicycle.Commons.Unsafe;
 using Epicycle.Math.Geometry;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
-    public sealed class ReadOnlyImageFloatView<TType, UType> : ReadOnlyImageView<TType, float, UType>, IReadOnlyImageFloat<TType>
-        where TType : IImageType, new()
-        where UType : IImageType, new()
+    public sealed class ImageFloat<TType> : Image<TType, float>, IImageFloat<TType>
+         where TType : IImageType, new()
     {
-        public ReadOnlyImageFloatView(IReadOnlyImageFloat<UType> image, Vector2i topLeft, Vector2i step, Vector2i dimensions, int channel = 0)
-            : base(image, topLeft, step, dimensions, channel)
-        {
-            _image = image;
-        }
+        public ImageFloat(Vector2i dimensions) : base(dimensions) { }
 
-        public ReadOnlyImageFloatView(IReadOnlyImageFloat<UType> image, Box2i roi, int channel = 0)
-            : base(image, roi, channel)
-        {
-            _image = image;
-        }
+        public ImageFloat(int width, int height) : base(width, height) { }
 
-        private readonly IReadOnlyImageFloat<UType> _image;
+        public ImageFloat(float[,,] data) : base(data) { }
 
         public PinnedFloatBuffer Open()
         {
-            var data = _image.Open();
-
-            data.MoveOffset(_image.Step * _viewTopLeft);
-
-            return data;
+            return new PinnedFloatBuffer(_data);
         }
     }
 }

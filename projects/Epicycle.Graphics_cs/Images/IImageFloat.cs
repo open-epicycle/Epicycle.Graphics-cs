@@ -16,9 +16,9 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
-    public interface IImageByte<TType> : IReadOnlyImageByte<TType>, IImage<TType, byte>
+    public interface IImageFloat<TType> : IReadOnlyImageFloat<TType>, IImage<TType, float>
     {
         
     }
