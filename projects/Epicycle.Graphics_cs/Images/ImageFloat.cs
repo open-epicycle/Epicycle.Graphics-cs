@@ -21,6 +21,8 @@ using Epicycle.Math.Geometry;
 
 namespace Epicycle.Graphics.Images
 {
+    // TODO: Test
+
     public sealed class ImageFloat<TType> : Image<TType, float>, IImageFloat<TType>
          where TType : IImageType, new()
     {

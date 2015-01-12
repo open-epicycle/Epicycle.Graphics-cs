@@ -21,6 +21,8 @@ using Epicycle.Math.Geometry;
 
 namespace Epicycle.Graphics.Images
 {
+    // TODO: Test
+
     public sealed class ImageByte<TType> : Image<TType, byte>, IImageByte<TType>
          where TType : IImageType, new()
     {

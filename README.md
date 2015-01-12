@@ -31,6 +31,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
 
 * **Version 0.1.1** [IN DEVELOPMENT]
   * Creating a new namespace for the image infrastructure: Epicycle.Graphics.Images
+  * Bug fix in Epicycle.Graphics.Color4b.Equals
+  * Added some unit tests
 
 * **Version 0.1.0** [2015-01-12]
   * Initial release

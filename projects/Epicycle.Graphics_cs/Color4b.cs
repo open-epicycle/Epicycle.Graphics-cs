@@ -209,26 +209,31 @@ namespace Epicycle.Graphics
             return new Color4b(R, G, B, a);
         }
 
-        public override int GetHashCode()
-        {
-            return _argb.GetHashCode();
-        }
-
         public override bool Equals(object other)
         {
-            var otherColor = other as Color4b?;
-
             if(other == null)
             {
                 return false;
             }
 
-            return Equals(otherColor.Value);
+            if(!(other is Color4b))
+            {
+                return false;
+            }
+
+            var otherColor = (Color4b)other;
+
+            return Equals(otherColor);
         }
         
         public bool Equals(Color4b other)
         {
             return this._argb == other._argb;
+        }
+
+        public override int GetHashCode()
+        {
+            return _argb.GetHashCode();
         }
     }
 }

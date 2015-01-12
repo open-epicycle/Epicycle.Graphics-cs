@@ -18,6 +18,8 @@
 
 namespace Epicycle.Graphics.Images
 {
+    // TODO: Test
+
     public struct MonoImageType : IImageType
     {
         public int ChannelsCount
