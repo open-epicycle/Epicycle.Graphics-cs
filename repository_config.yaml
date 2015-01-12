@@ -1,9 +1,9 @@
 title: Epicycle.Graphics (.NET)
 url: https://github.com/open-epicycle/Epicycle.Graphics-cs
-summary: TODO
+summary: "Epicycle .NET graphics library. Includes: Platform-independent image library and color infrastructure."
 
 organization: Epicycle
-tags: epicycle graphics TODO
+tags: epicycle graphics image bitmap views color
 copyright: Copyright 2015 Epicycle
 license_url: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -19,7 +19,7 @@ nuget_dependencies:
  - Epicycle.Math-cs.0.1.2.0
 
 description: |
-   Epicycle .NET graphics library. Includes: TODO
+   Epicycle .NET graphics library. Includes: Platform-independent image library and color infrastructure.
    
    * Details & release notes: https://github.com/open-epicycle/Epicycle.Graphics-cs/blob/ver-$version$/README.md
    * Sources: https://github.com/open-epicycle/Epicycle.Graphics-cs/tree/ver-$version$
