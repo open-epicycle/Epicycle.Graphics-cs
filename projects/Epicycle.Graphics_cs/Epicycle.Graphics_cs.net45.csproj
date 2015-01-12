@@ -63,6 +63,9 @@
     <Reference Include="Epicycle.Math_cs">
       <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net45\Epicycle.Math_cs.dll</HintPath>
     </Reference>
+    <Reference Include="YamlDotNet">
+      <HintPath>..\..\externals\NuGet\YamlDotNet.3.5.0\lib\net35\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Color4b.cs" />
