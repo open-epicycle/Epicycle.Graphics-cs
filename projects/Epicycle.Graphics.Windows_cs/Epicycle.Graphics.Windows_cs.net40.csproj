@@ -4,71 +4,78 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0AD4324B-56F0-445B-968F-9EE578B8F34C}</ProjectGuid>
+    <ProjectGuid>{556A9D71-0802-42CE-B110-5C2FB6B51388}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Epicycle.Graphics</RootNamespace>
-    <AssemblyName>Epicycle.Graphics_cs</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Epicycle.Graphics.Windows</RootNamespace>
+    <AssemblyName>Epicycle.Graphics.Windows_cs</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\bin\win\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;EMGU</DefineConstants>
+    <OutputPath>..\..\bin\net40\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NET40</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\bin\net40\Debug\Epicycle.Graphics.Windows_cs.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\bin\win\Release\</OutputPath>
-    <DefineConstants>TRACE;EMGU</DefineConstants>
+    <OutputPath>..\..\bin\net40\Release\</OutputPath>
+    <DefineConstants>TRACE;NET40</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\bin\net40\Debug\Epicycle.Graphics.Windows_cs.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Epicycle.Commons_cs">
-      <HintPath>..\..\externals\lib\Epicycle.Commons-cs\Epicycle.Commons_cs.dll</HintPath>
-    </Reference>
-    <Reference Include="Epicycle.Math_cs">
-      <HintPath>..\..\externals\lib\Epicycle.Math-cs\Epicycle.Math_cs.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Epicycle.Commons.TestUtils_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Commons-cs.0.1.5.0\lib\net40\Epicycle.Commons.TestUtils_cs.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicycle.Commons_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Commons-cs.0.1.5.0\lib\net40\Epicycle.Commons_cs.dll</HintPath>
+    </Reference>
+    <Reference Include="clipper_library">
+      <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net40\clipper_library.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicycle.Math.TestUtils_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net40\Epicycle.Math.TestUtils_cs.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicycle.Math.Windows_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net40\Epicycle.Math.Windows_cs.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicycle.Math_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net40\Epicycle.Math_cs.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Color4bUtils.cs" />
-    <Compile Include="IImage.cs" />
-    <Compile Include="IImageByte.cs" />
-    <Compile Include="IImageFloat.cs" />
-    <Compile Include="IImageType.cs" />
-    <Compile Include="Image.cs" />
-    <Compile Include="ImageByte.cs" />
-    <Compile Include="ImageFloat.cs" />
     <Compile Include="ImageUtils.cs" />
-    <Compile Include="IReadOnlyImageByte.cs" />
-    <Compile Include="ReadOnlyImageFloatView.cs" />
-    <Compile Include="ReadOnlyImageView.cs" />
-    <Compile Include="IReadOnlyImage.cs" />
-    <Compile Include="IReadOnlyImageFloat.cs" />
-    <Compile Include="MonoImageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RgbImageType.cs" />
-    <Compile Include="Color4b.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Epicycle.Graphics_cs\Epicycle.Graphics_cs.net40.csproj">
+      <Project>{0ad4324b-56f0-445b-968f-9ee578b8f34c}</Project>
+      <Name>Epicycle.Graphics_cs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

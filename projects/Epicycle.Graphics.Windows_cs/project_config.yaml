@@ -1,0 +1,8 @@
+project_guid: 556A9D71-0802-42CE-B110-5C2FB6B51388
+assemblyinfo_guid: 6be3d1a0-7865-4cf7-9107-9a9ab0134bd7
+
+references:
+ - Epicycle.Graphics_cs
+
+external_libs:
+ - System.Drawing
