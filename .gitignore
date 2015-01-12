@@ -157,6 +157,7 @@ $RECYCLE.BIN/
 
 
 #########
+NuGetPackage
 externals/lib/
 externals/NuGet/
 projects/TestResult.xml
