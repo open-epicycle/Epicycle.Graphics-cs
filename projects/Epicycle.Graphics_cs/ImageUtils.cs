@@ -16,16 +16,11 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using System.Collections.Generic;
-using System.Linq;
-
 using Epicycle.Commons;
-using Epicycle.Commons.Unsafe;
 using Epicycle.Math.Geometry;
 
 namespace Epicycle.Graphics
 {
-    using System;
 
     public static class ImageUtils
     {

@@ -16,10 +16,6 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Epicycle.Graphics
 {
     public struct RgbImageType : IImageType
