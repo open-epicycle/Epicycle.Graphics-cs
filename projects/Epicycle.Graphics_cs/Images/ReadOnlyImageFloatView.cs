@@ -21,6 +21,8 @@ using Epicycle.Math.Geometry;
 
 namespace Epicycle.Graphics.Images
 {
+    // TODO: Test
+
     public sealed class ReadOnlyImageFloatView<TType, UType> : ReadOnlyImageView<TType, float, UType>, IReadOnlyImageFloat<TType>
         where TType : IImageType, new()
         where UType : IImageType, new()
