@@ -155,5 +155,14 @@ namespace Epicycle.Graphics
 
             Assert.That(color1.Equals((object)color2), Is.True);
         }
+
+        [Test]
+        public void GetHashCode_same_colors_have_same_hashcode()
+        {
+            var color1 = new Color4b(10, 20, 30, 40);
+            var color2 = new Color4b(10, 20, 30, 40);
+
+            Assert.That(color1.GetHashCode(), Is.EqualTo(color2.GetHashCode()));
+        }
     }
 }
