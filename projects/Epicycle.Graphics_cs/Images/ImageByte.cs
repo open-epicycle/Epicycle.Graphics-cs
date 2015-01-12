@@ -17,11 +17,22 @@
 // ]]]]
 
 using Epicycle.Commons.Unsafe;
+using Epicycle.Math.Geometry;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
-    public interface IReadOnlyImageByte<TType> : IReadOnlyImage<TType, byte>
+    public sealed class ImageByte<TType> : Image<TType, byte>, IImageByte<TType>
+         where TType : IImageType, new()
     {
-        PinnedByteBuffer Open();
+        public ImageByte(Vector2i dimensions) : base(dimensions) { }
+
+        public ImageByte(int width, int height) : base(width, height) { }
+
+        public ImageByte(byte[,,] data) : base(data) { }
+
+        public PinnedByteBuffer Open()
+        {
+            return new PinnedByteBuffer(_data);
+        }
     }
 }

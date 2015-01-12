@@ -16,10 +16,10 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
-    public interface IImageType
+    public interface IImageByte<TType> : IReadOnlyImageByte<TType>, IImage<TType, byte>
     {
-        int ChannelsCount { get; }
+        
     }
 }

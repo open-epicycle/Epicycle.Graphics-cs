@@ -16,10 +16,12 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-namespace Epicycle.Graphics
+using Epicycle.Math.Geometry;
+
+namespace Epicycle.Graphics.Images
 {
-    public interface IImageFloat<TType> : IReadOnlyImageFloat<TType>, IImage<TType, float>
+    public interface IImage<TType, TDepth> : IReadOnlyImage<TType, TDepth>
     {
-        
+        new TDepth this[Vector2i pixel, int channel] { get; set; }
     }
 }

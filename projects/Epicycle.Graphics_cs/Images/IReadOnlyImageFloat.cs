@@ -16,15 +16,12 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using Epicycle.Math.Geometry;
+using Epicycle.Commons.Unsafe;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
-    public interface IReadOnlyImage<TType, TDepth>
+    public interface IReadOnlyImageFloat<TType> : IReadOnlyImage<TType, float>
     {
-        Vector2i Dimensions { get; }
-        Vector2i Step { get; }
-
-        TDepth this[Vector2i pixel, int channel] { get; }
+        PinnedFloatBuffer Open();
     }
 }

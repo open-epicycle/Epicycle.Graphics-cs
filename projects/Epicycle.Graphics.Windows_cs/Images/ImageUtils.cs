@@ -16,10 +16,11 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
+using Epicycle.Graphics.Images;
 using System;
 using System.Drawing;
 
-namespace Epicycle.Graphics.Windows
+namespace Epicycle.Graphics.Windows.Images
 {
     public static class ImageUtils
     {
