@@ -45,6 +45,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Drawing" />
+    <Reference Include="Epicycle.Commons.TestUtils_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Commons-cs.0.1.5.0\lib\net40\Epicycle.Commons.TestUtils_cs.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicycle.Commons_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Commons-cs.0.1.5.0\lib\net40\Epicycle.Commons_cs.dll</HintPath>
+    </Reference>
     <Reference Include="clipper_library">
       <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net40\clipper_library.dll</HintPath>
     </Reference>
@@ -65,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Math\Geometry\Vector2UtilsTest.cs" />
     <Compile Include="Math\Geometry\Vector2iUtilsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

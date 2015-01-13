@@ -35,12 +35,12 @@ namespace Epicycle.Graphics.Platform.SystemDrawing.Math.Geometry
             return new Vector2(p.X, p.Y);
         }
 
-        public static Point ToDrawingPoint(this Vector2 v)
+        public static Point ToPoint(this Vector2 v)
         {
             return new Point((int)Math.Round(v.X), (int)Math.Round(v.Y));
         }
 
-        public static PointF ToDrawingPointF(this Vector2 v)
+        public static PointF ToPointF(this Vector2 v)
         {
             return new PointF((float)v.X, (float)v.Y);
         }

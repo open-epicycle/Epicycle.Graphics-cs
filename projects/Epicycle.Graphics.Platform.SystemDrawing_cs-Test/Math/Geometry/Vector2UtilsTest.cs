@@ -16,6 +16,7 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
+using Epicycle.Commons.TestUtils;
 using Epicycle.Math.Geometry;
 using NUnit.Framework;
 using System.Drawing;
@@ -23,46 +24,46 @@ using System.Drawing;
 namespace Epicycle.Graphics.Platform.SystemDrawing.Math.Geometry
 {
     [TestFixture]
-    public class Vector2iUtilsTest
+    public class Vector2UtilsTest
     {
         [Test]
-        public void ToVector2i_Point_returns_correct_vector()
+        public void ToVector2_Point_returns_correct_vector()
         {
             var point = new Point(10, 20);
-            var vector = point.ToVector2i();
+            var vector = point.ToVector2();
 
-            Assert.That(vector.X, Is.EqualTo(10));
-            Assert.That(vector.Y, Is.EqualTo(20));
+            Assert.That(vector.X, Is.EqualTo(10.0));
+            Assert.That(vector.Y, Is.EqualTo(20.0));
         }
 
         [Test]
-        public void ToVector2i_PointF_returns_correct_vector()
+        public void ToVector2_PointF_returns_correct_vector()
         {
             var point = new PointF(10.1f, 20.8f);
-            var vector = point.ToVector2i();
+            var vector = point.ToVector2();
 
-            Assert.That(vector.X, Is.EqualTo(10));
-            Assert.That(vector.Y, Is.EqualTo(21));
+            NumericTestUtils.AssertAreEqual(10.1, vector.X);
+            NumericTestUtils.AssertAreEqual(20.8, vector.Y);
         }
 
         [Test]
-        public void ToPoint_Vector2i_returns_correct_point()
+        public void ToPoint_Vector2_returns_correct_point()
         {
-            var vector = new Vector2i(10, 20);
+            var vector = new Vector2(10.1, 20.8);
             var point = vector.ToPoint();
 
             Assert.That(point.X, Is.EqualTo(10));
-            Assert.That(point.Y, Is.EqualTo(20));
+            Assert.That(point.Y, Is.EqualTo(21));
         }
 
         [Test]
-        public void ToPointF_Vector2i_returns_correct_point()
+        public void ToPointF_Vector2_returns_correct_point()
         {
-            var vector = new Vector2i(10, 20);
+            var vector = new Vector2(10.1, 20.8);
             var point = vector.ToPointF();
 
-            Assert.That(point.X, Is.EqualTo(10.0f));
-            Assert.That(point.Y, Is.EqualTo(20.0f));
+            Assert.That(point.X, Is.EqualTo(10.1f));
+            Assert.That(point.Y, Is.EqualTo(20.8f));
         }
     }
 }
