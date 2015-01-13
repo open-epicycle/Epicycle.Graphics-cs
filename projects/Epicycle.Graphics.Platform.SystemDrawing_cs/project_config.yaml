@@ -6,3 +6,4 @@ references:
 
 external_libs:
  - System.Drawing
+ - Epicycle.Math

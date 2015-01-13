@@ -45,6 +45,18 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Drawing" />
+    <Reference Include="clipper_library">
+      <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net35\clipper_library.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicycle.Math.TestUtils_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net35\Epicycle.Math.TestUtils_cs.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicycle.Math.Windows_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net35\Epicycle.Math.Windows_cs.dll</HintPath>
+    </Reference>
+    <Reference Include="Epicycle.Math_cs">
+      <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net35\Epicycle.Math_cs.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\..\externals\NuGet\Moq.4.2.1409.1722\lib\net35\Moq.dll</HintPath>
     </Reference>
@@ -53,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Math\Geometry\Vector2iUtilsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
