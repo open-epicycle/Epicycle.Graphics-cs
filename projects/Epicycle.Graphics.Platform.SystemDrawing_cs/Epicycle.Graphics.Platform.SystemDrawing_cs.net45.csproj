@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Images\ImageUtils.cs" />
+    <Compile Include="Math\Geometry\Vector2Utils.cs" />
+    <Compile Include="Math\Geometry\Vector2iUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
