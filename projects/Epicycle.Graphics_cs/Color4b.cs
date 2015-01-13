@@ -22,6 +22,8 @@ namespace Epicycle.Graphics
 {
     public struct Color4b : IEquatable<Color4b>
     {
+        // TODO: Consider creating BinaryUtils
+
         public static readonly Color4b AliceBlue = new Color4b(0xFFF0F8FF);
         public static readonly Color4b AntiqueWhite = new Color4b(0xFFFAEBD7);
         public static readonly Color4b Aqua = new Color4b(0xFF00FFFF);
