@@ -7,8 +7,8 @@
     <ProjectGuid>{556A9D71-0802-42CE-B110-5C2FB6B51388}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Epicycle.Graphics.Windows</RootNamespace>
-    <AssemblyName>Epicycle.Graphics.Windows_cs</AssemblyName>
+    <RootNamespace>Epicycle.Graphics.Platform.SystemDrawing</RootNamespace>
+    <AssemblyName>Epicycle.Graphics.Platform.SystemDrawing_cs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -22,7 +22,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\bin\net40\Debug\Epicycle.Graphics.Windows_cs.xml</DocumentationFile>
+    <DocumentationFile>..\..\bin\net40\Debug\Epicycle.Graphics.Platform.SystemDrawing_cs.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
@@ -34,7 +34,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\bin\net40\Debug\Epicycle.Graphics.Windows_cs.xml</DocumentationFile>
+    <DocumentationFile>..\..\bin\net40\Debug\Epicycle.Graphics.Platform.SystemDrawing_cs.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
@@ -69,6 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Images\ImageUtils.cs" />
+    <Compile Include="Math\Geometry\Vector2Utils.cs" />
+    <Compile Include="Math\Geometry\Vector2iUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

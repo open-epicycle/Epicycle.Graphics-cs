@@ -20,8 +20,10 @@ using Epicycle.Graphics.Images;
 using System;
 using System.Drawing;
 
-namespace Epicycle.Graphics.Windows.Images
+namespace Epicycle.Graphics.Platform.SystemDrawing.Images
 {
+    // TODO: Test
+
     public static class ImageUtils
     {
         public static Bitmap ToBitmap<TType>(this IReadOnlyImageByte<TType> @this)

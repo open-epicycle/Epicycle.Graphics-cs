@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{556A9D71-0802-42CE-B110-5C2FB6B51388}</ProjectGuid>
+    <ProjectGuid>{9941889c-324a-42e7-abb6-513b08fba730}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Epicycle.Graphics.Windows</RootNamespace>
-    <AssemblyName>Epicycle.Graphics.Windows_cs</AssemblyName>
+    <RootNamespace>Epicycle.Graphics.Platform.SystemDrawing</RootNamespace>
+    <AssemblyName>Epicycle.Graphics.Platform.SystemDrawing_cs-Test</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -22,7 +22,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\bin\net35\Debug\Epicycle.Graphics.Windows_cs.xml</DocumentationFile>
+    <DocumentationFile>..\..\bin\net35\Debug\Epicycle.Graphics.Platform.SystemDrawing_cs-Test.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
@@ -34,7 +34,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\bin\net35\Debug\Epicycle.Graphics.Windows_cs.xml</DocumentationFile>
+    <DocumentationFile>..\..\bin\net35\Debug\Epicycle.Graphics.Platform.SystemDrawing_cs-Test.xml</DocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
@@ -63,21 +63,25 @@
     <Reference Include="Epicycle.Math_cs">
       <HintPath>..\..\externals\NuGet\Epicycle.Math-cs.0.1.2.0\lib\net35\Epicycle.Math_cs.dll</HintPath>
     </Reference>
-    <Reference Include="YamlDotNet">
-      <HintPath>..\..\externals\NuGet\YamlDotNet.3.5.0\lib\net35\YamlDotNet.dll</HintPath>
+    <Reference Include="Moq">
+      <HintPath>..\..\externals\NuGet\Moq.4.2.1409.1722\lib\net35\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\externals\NuGet\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Images\ImageUtils.cs" />
+    <Compile Include="Math\Geometry\Vector2UtilsTest.cs" />
+    <Compile Include="Math\Geometry\Vector2iUtilsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Epicycle.Graphics_cs\Epicycle.Graphics_cs.net35.csproj">
-      <Project>{0ad4324b-56f0-445b-968f-9ee578b8f34c}</Project>
-      <Name>Epicycle.Graphics_cs</Name>
+    <ProjectReference Include="..\Epicycle.Graphics.Platform.SystemDrawing_cs\Epicycle.Graphics.Platform.SystemDrawing_cs.net35.csproj">
+      <Project>{556a9d71-0802-42ce-b110-5c2fb6b51388}</Project>
+      <Name>Epicycle.Graphics.Platform.SystemDrawing_cs</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

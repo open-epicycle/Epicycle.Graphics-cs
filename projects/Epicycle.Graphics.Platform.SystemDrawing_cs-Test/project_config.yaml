@@ -1,0 +1,8 @@
+project_guid: 9941889c-324a-42e7-abb6-513b08fba730
+assemblyinfo_guid: 9941889c-324a-42e7-abb6-513b08fba730
+
+external_libs:
+ - NUnit
+ - Moq
+ - Epicycle.Commons-cs
+ - Epicycle.Math-cs
