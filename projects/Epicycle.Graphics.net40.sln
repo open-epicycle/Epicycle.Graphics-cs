@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epicycle.Graphics_cs-Test.n
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epicycle.Graphics.Platform.SystemDrawing_cs.net40", "Epicycle.Graphics.Platform.SystemDrawing_cs\Epicycle.Graphics.Platform.SystemDrawing_cs.net40.csproj", "{556A9D71-0802-42CE-B110-5C2FB6B51388}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epicycle.Graphics.Platform.SystemDrawing_cs-Test.net40", "Epicycle.Graphics.Platform.SystemDrawing_cs-Test\Epicycle.Graphics.Platform.SystemDrawing_cs-Test.net40.csproj", "{9941889C-324A-42E7-ABB6-513B08FBA730}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{556A9D71-0802-42CE-B110-5C2FB6B51388}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{556A9D71-0802-42CE-B110-5C2FB6B51388}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{556A9D71-0802-42CE-B110-5C2FB6B51388}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9941889C-324A-42E7-ABB6-513B08FBA730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9941889C-324A-42E7-ABB6-513B08FBA730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9941889C-324A-42E7-ABB6-513B08FBA730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9941889C-324A-42E7-ABB6-513B08FBA730}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

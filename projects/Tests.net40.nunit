@@ -1,6 +1,8 @@
 <NUnitProject>
   <Settings activeconfig="All" processModel="Default" domainUsage="Default" />
   <Config name="All" binpathtype="Auto">
+    <assembly path="..\bin\net40\Debug\Epicycle.Graphics.Platform.SystemDrawing_cs-Test.dll" />
+    <assembly path="..\bin\net40\Release\Epicycle.Graphics.Platform.SystemDrawing_cs-Test.dll" />
     <assembly path="..\bin\net40\Debug\Epicycle.Graphics_cs-Test.dll" />
     <assembly path="..\bin\net40\Release\Epicycle.Graphics_cs-Test.dll" />
   </Config>
