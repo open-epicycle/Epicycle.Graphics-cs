@@ -20,7 +20,7 @@ using Epicycle.Graphics.Images;
 using System;
 using System.Drawing;
 
-namespace Epicycle.Graphics.Windows.Images
+namespace Epicycle.Graphics.Platform.SystemDrawing.Images
 {
     public static class ImageUtils
     {

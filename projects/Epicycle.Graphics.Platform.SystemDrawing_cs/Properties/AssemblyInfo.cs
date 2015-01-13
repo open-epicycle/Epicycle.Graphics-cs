@@ -25,7 +25,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Epicycle.Graphics.Windows_cs")]
+[assembly: AssemblyTitle("Epicycle.Graphics.Platform.SystemDrawing_cs")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Epicycle")]
