@@ -30,6 +30,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.3** [IN DEVELOPMENT]
+  * Upgrading Epicycle.Math-cs: 0.1.2.0 => 0.1.3.0
 
 * **Version 0.1.2** [2012-01-13]
   * Renaming namespace Epicycle.Graphics.Windows to Epicycle.Graphics.Platform.SystemDrawing
