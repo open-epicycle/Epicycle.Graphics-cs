@@ -30,6 +30,9 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.2** [IN DEVELOPMENT]
+  * Renaming namespace Epicycle.Graphics.Windows to Epicycle.Graphics.Platform.SystemDrawing
+  * Importing System.Drawing related math utils from Epicycle.Math
+  * Added some unit tests
 
 * **Version 0.1.1** [2015-01-13]
   * Creating a new namespace for the image infrastructure: Epicycle.Graphics.Images
