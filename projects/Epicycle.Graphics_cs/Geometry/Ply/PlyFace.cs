@@ -24,42 +24,33 @@ namespace Epicycle.Graphics.Geometry.Ply
 {
     public class PlyFace : PlyElement
     {
-        private readonly int[] _vertexIndices;
-        private readonly Vector3 _normal;
-        private readonly Color4b? _color;
-        private readonly Color4b? _backColor;
-
-        public PlyFace(IEnumerable<int> vertexIndices, Vector3 normal = null, Color4b? color = null, Color4b? backColor = null)
+        public PlyFace()
         {
-            _vertexIndices = vertexIndices.ToArray();
-            _normal = normal;
-            _color = color;
-            _backColor = backColor;
+            VertexIndices = new int[0];
+            Normal = null;
+            Color = null;
+            BackColor = null;
         }
 
-        public IEnumerable<int> VertexIndices
+        public override void Parse(IPlyParametersParser parser)
         {
-            get { return _vertexIndices; }
+            VertexIndices = parser.GetIntArray("vertex_indices", true);
+            Normal = parser.GetVector3("n", false);
+            Color = parser.GetColor4b("", false);
+            BackColor = parser.GetColor4b("back_", false);
         }
 
-        public Vector3 Normal
-        {
-            get { return _normal; }
-        }
+        public int[] VertexIndices { get; set; }
 
-        public Color4b? Color
-        {
-            get { return _color; }
-        }
+        public Vector3 Normal { get; set; }
 
-        public Color4b? BackColor
-        {
-            get { return _backColor; }
-        }
+        public Color4b? Color { get; set; }
+
+        public Color4b? BackColor { get; set; }
 
         protected override void PopulateProperties(IList<string> properties)
         {
-            properties.Add("list uchar vertex_indices");
+            properties.Add("list uchar int vertex_indices");
 
             if (Normal != null)
             {

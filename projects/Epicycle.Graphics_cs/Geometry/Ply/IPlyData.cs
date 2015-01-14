@@ -20,9 +20,13 @@ using System.Collections.Generic;
 
 namespace Epicycle.Graphics.Geometry.Ply
 {
-    public interface IPlyData
+    public interface IPlyData<TVertex, TFace, TEdge>
+        where TVertex : PlyVertex, new()
+        where TFace : PlyFace, new()
+        where TEdge : PlyEdge, new()
     {
-        IReadOnlyList<PlyVertex> Vertices { get; }
-        IReadOnlyList<PlyFace> Faces { get; }
+        IReadOnlyList<TVertex> Vertices { get; }
+        IReadOnlyList<TFace> Faces { get; }
+        IReadOnlyList<TEdge> Edges { get; }
     }
 }

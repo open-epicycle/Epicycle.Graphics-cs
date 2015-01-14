@@ -23,45 +23,33 @@ namespace Epicycle.Graphics.Geometry.Ply
 {
     public class PlyVertex : PlyElement
     {
-        private readonly Vector3 _position;
-        private readonly Vector3 _normal;
-        private readonly Color4b? _color;
-        private readonly float _radius;
-        private readonly int? _materialIndex;
-
-        public PlyVertex(Vector3 position, Vector3 normal = null, Color4b? color = null, float radius = float.NaN, int? materialIndex = null)
+        public PlyVertex()
         {
-            _position = position;
-            _normal = normal;
-            _color = color;
-            _radius = radius;
-            _materialIndex = materialIndex;
+            Position = Vector3.Zero;
+            Normal = null;
+            Color = null;
+            Radius = float.NaN;
+            MaterialIndex = null;
         }
 
-        public Vector3 Position
+        public override void Parse(IPlyParametersParser parser)
         {
-            get { return _position; }
+            Position = parser.GetVector3("", true);
+            Normal = parser.GetVector3("n", false);
+            Color = parser.GetColor4b("", false);
+            Radius = parser.GetDouble("radius", false);
+            MaterialIndex = parser.GetInt("material_index", false);
         }
 
-        public Vector3 Normal
-        {
-            get { return _normal; }
-        }
+        public Vector3 Position { get; set; }
+        
+        public Vector3 Normal { get; set; }
 
-        public Color4b? Color
-        {
-            get { return _color; }
-        }
+        public Color4b? Color { get; set; }
 
-        public float Radius
-        {
-            get { return _radius; }
-        }
+        public double Radius { get; set; }
 
-        public int? MaterialIndex
-        {
-            get { return _materialIndex; }
-        }
+        public int? MaterialIndex { get; set; }
 
         protected override void PopulateProperties(IList<string> properties)
         {
@@ -118,7 +106,7 @@ namespace Epicycle.Graphics.Geometry.Ply
 
             if (!double.IsNaN(Radius))
             {
-                Serialize(serializedValues, Radius);
+                SerializeToFloat(serializedValues, Radius);
             }
 
             if (MaterialIndex.HasValue)

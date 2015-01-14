@@ -22,6 +22,8 @@ namespace Epicycle.Graphics.Geometry.Ply
 {
     public abstract class PlyElement
     {
+        public abstract void Parse(IPlyParametersParser parser);
+
         public IEnumerable<string> GetProperties()
         {
             var properties = new List<string>();

@@ -16,58 +16,44 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using Epicycle.Math.Geometry;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Epicycle.Graphics.Geometry.Ply
 {
     public class PlyEdge : PlyElement
     {
-        private readonly int _vertexIndex1;
-        private readonly int _vertexIndex2;
-        private readonly Color4b? _color;
-        private readonly float _radius;
-        private readonly byte? _creaseTag;
-
-        public PlyEdge(int vertexIndex1, int vertexIndex2, Color4b? color = null, float radius = float.NaN, byte? creaseTag = null)
+        public PlyEdge()
         {
-            _vertexIndex1 = vertexIndex1;
-            _vertexIndex2 = vertexIndex2;
-            _color = color;
-            _radius = radius;
-            _creaseTag = creaseTag;
+            VertexIndex1 = 0;
+            VertexIndex2 = 0;
+            Color = null;
+            Radius = float.NaN;
+            CreaseTag = null;
         }
 
-        public int VertexIndex1
+        public override void Parse(IPlyParametersParser parser)
         {
-            get { return _vertexIndex1; }
+            VertexIndex1 = parser.GetInt("vertex1", true).Value;
+            VertexIndex2 = parser.GetInt("vertex2", true).Value;
+            Color = parser.GetColor4b("", false);
+            Radius = parser.GetDouble("radius", false);
+            CreaseTag = parser.GetByte("crease_tag", false);
         }
 
-        public int VertexIndex2
-        {
-            get { return _vertexIndex2; }
-        }
+        public int VertexIndex1 { get; set;}
 
-        public Color4b? Color
-        {
-            get { return _color; }
-        }
+        public int VertexIndex2 { get; set;}
 
-        public float Radius
-        {
-            get { return _radius; }
-        }
+        public Color4b? Color { get; set;}
 
-        public byte? CreaseTag
-        {
-            get { return _creaseTag; }
-        }
+        public double Radius { get; set;}
+
+        public byte? CreaseTag { get; set;}
 
         protected override void PopulateProperties(IList<string> properties)
         {
-            properties.Add("int face1");
-            properties.Add("int face2");
+            properties.Add("int vertex1");
+            properties.Add("int vertex2");
 
             if (Color.HasValue)
             {
@@ -103,7 +89,7 @@ namespace Epicycle.Graphics.Geometry.Ply
 
             if (!double.IsNaN(Radius))
             {
-                Serialize(serializedValues, Radius);
+                SerializeToFloat(serializedValues, Radius);
             }
 
             if (CreaseTag.HasValue)

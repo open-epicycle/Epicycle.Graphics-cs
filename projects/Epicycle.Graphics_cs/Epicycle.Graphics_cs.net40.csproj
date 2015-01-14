@@ -68,10 +68,14 @@
     <Compile Include="Color4b.cs" />
     <Compile Include="Color4bUtils.cs" />
     <Compile Include="Geometry\Ply\IPlyData.cs" />
+    <Compile Include="Geometry\Ply\IPlyParametersParser.cs" />
     <Compile Include="Geometry\Ply\PlyData.cs" />
     <Compile Include="Geometry\Ply\PlyEdge.cs" />
     <Compile Include="Geometry\Ply\PlyElement.cs" />
     <Compile Include="Geometry\Ply\PlyFace.cs" />
+    <Compile Include="Geometry\Ply\PlyParametersParser.cs" />
+    <Compile Include="Geometry\Ply\PlyParser.cs" />
+    <Compile Include="Geometry\Ply\PlyParsingExcpetion.cs" />
     <Compile Include="Geometry\Ply\PlyUtils.cs" />
     <Compile Include="Geometry\Ply\PlyVertex.cs" />
     <Compile Include="Images\IImage.cs" />

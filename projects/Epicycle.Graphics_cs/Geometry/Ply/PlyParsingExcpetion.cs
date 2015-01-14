@@ -16,26 +16,12 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using Epicycle.Commons.FileSystem;
+using System;
 
 namespace Epicycle.Graphics.Geometry.Ply
 {
-    public static class PlyUtils
+    public sealed class PlyParsingExcpetion : Exception
     {
-        public static PlyData<TVertex, TFace, TEdge> ReadPly<TVertex, TFace, TEdge>(this IFileSystem fileSystem, FileSystemPath path)
-            where TVertex : PlyVertex, new()
-            where TFace : PlyFace, new()
-            where TEdge : PlyEdge, new()
-        {
-            return new PlyData<TVertex, TFace, TEdge>(fileSystem.ReadTextFile(path));
-        }
-
-        public static void WritePly<TVertex, TFace, TEdge>(this IFileSystem fileSystem, FileSystemPath path, PlyData<TVertex, TFace, TEdge> data)
-            where TVertex : PlyVertex, new()
-            where TFace : PlyFace, new()
-            where TEdge : PlyEdge, new()
-        {
-            fileSystem.WriteTextFile(path, data.Serialize());
-        }
+        public PlyParsingExcpetion(string message, Exception innerException = null) : base(message, innerException) { }
     }
 }

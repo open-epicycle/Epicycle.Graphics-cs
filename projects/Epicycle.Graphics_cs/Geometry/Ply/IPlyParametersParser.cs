@@ -16,26 +16,22 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using Epicycle.Commons.FileSystem;
+using Epicycle.Math.Geometry;
 
 namespace Epicycle.Graphics.Geometry.Ply
 {
-    public static class PlyUtils
+    public interface IPlyParametersParser
     {
-        public static PlyData<TVertex, TFace, TEdge> ReadPly<TVertex, TFace, TEdge>(this IFileSystem fileSystem, FileSystemPath path)
-            where TVertex : PlyVertex, new()
-            where TFace : PlyFace, new()
-            where TEdge : PlyEdge, new()
-        {
-            return new PlyData<TVertex, TFace, TEdge>(fileSystem.ReadTextFile(path));
-        }
+        bool HasParameter(string name);
+        object GetParameter(string name);
 
-        public static void WritePly<TVertex, TFace, TEdge>(this IFileSystem fileSystem, FileSystemPath path, PlyData<TVertex, TFace, TEdge> data)
-            where TVertex : PlyVertex, new()
-            where TFace : PlyFace, new()
-            where TEdge : PlyEdge, new()
-        {
-            fileSystem.WriteTextFile(path, data.Serialize());
-        }
+        byte? GetByte(string name, bool required);
+        int? GetInt(string name, bool required);
+        float GetFloat(string name, bool required);
+        double GetDouble(string name, bool required);
+        int[] GetIntArray(string name, bool required);
+        Vector3 GetVector3(string namePrefix, bool required);
+        Rotation3? GetRotation3(string namePrefix, bool required);
+        Color4b? GetColor4b(string namePrefix, bool required);
     }
 }

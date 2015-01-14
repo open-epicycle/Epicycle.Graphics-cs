@@ -23,35 +23,38 @@ using System.Text;
 
 namespace Epicycle.Graphics.Geometry.Ply
 {
-    public sealed class PlyData : IPlyData
+    public sealed class PlyData<TVertex, TFace, TEdge> : IPlyData<TVertex, TFace, TEdge>
+        where TVertex : PlyVertex, new()
+        where TFace : PlyFace, new()
+        where TEdge : PlyEdge, new()
     {
-        private readonly IReadOnlyList<PlyVertex> _vertices;
-        private readonly IReadOnlyList<PlyFace> _faces;
-        private readonly IReadOnlyList<PlyEdge> _edges;
+        private readonly IReadOnlyList<TVertex> _vertices;
+        private readonly IReadOnlyList<TFace> _faces;
+        private readonly IReadOnlyList<TEdge> _edges;
 
         public PlyData(string plyData)
         {
-
+            PlyParser.Parse(plyData, out _vertices, out _faces, out _edges);
         }
 
-        public PlyData(IEnumerable<PlyVertex> vertices, IEnumerable<PlyFace> faces, IEnumerable<PlyEdge> edges)
+        public PlyData(IEnumerable<TVertex> vertices, IEnumerable<TFace> faces, IEnumerable<TEdge> edges)
         {
-            _vertices = (vertices != null) ? vertices.AsReadOnlyList() : EmptyList<PlyVertex>.Instance;
-            _faces = (faces != null) ? faces.AsReadOnlyList() : EmptyList<PlyFace>.Instance;
-            _edges = (edges != null) ? edges.AsReadOnlyList() : EmptyList<PlyEdge>.Instance;
+            _vertices = (vertices != null) ? vertices.AsReadOnlyList() : EmptyList<TVertex>.Instance;
+            _faces = (faces != null) ? faces.AsReadOnlyList() : EmptyList<TFace>.Instance;
+            _edges = (edges != null) ? edges.AsReadOnlyList() : EmptyList<TEdge>.Instance;
         }
 
-        public IReadOnlyList<PlyVertex> Vertices
+        public IReadOnlyList<TVertex> Vertices
         {
             get { return _vertices; }
         }
 
-        public IReadOnlyList<PlyFace> Faces
+        public IReadOnlyList<TFace> Faces
         {
             get { return _faces; }
         }
 
-        public IReadOnlyList<PlyEdge> Edges
+        public IReadOnlyList<TEdge> Edges
         {
             get { return _edges; }
         }
