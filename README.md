@@ -10,8 +10,9 @@ Epicycle .NET graphics library. Includes: Platform-independent image library and
 
 ## Main features
 * Robust Image library
-* Platform-independent color infrastructure.
+* Platform-independent color infrastructure
 * Conversion to and from **Windows.Drawing** primitives
+* Read and write PLY files with custom properties
 * Supported frameworks: **.NET 4.5**, **.NET 4.0**, **.NET 3.5**
 
 ## Namespaces
@@ -19,6 +20,8 @@ Epicycle .NET graphics library. Includes: Platform-independent image library and
   * Platform-independent color classes
 * **Epicycle.Graphics.Images**:
   * Platform-independent image infrastructure
+* **Epicycle.Graphics.Geometry.Ply**:
+  * PLY file serializer and de-serializer. Supports custom properties
 * **Epicycle.Graphics.Platform.SystemDrawing**: (separate assembly)
   * Utilities for converting **Windows.Drawing** primitives to and from **Epicycle.Graphics** and **Epicycle.Math.Geometry** primitives
 
@@ -31,6 +34,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 
 * **Version 0.1.3** [IN DEVELOPMENT]
   * Upgrading Epicycle.Math-cs: 0.1.2.0 => 0.1.3.0
+  * Adding PLY file infrastructure (Epicycle.Graphics.Geometry.Ply)
 
 * **Version 0.1.2** [2012-01-13]
   * Renaming namespace Epicycle.Graphics.Windows to Epicycle.Graphics.Platform.SystemDrawing

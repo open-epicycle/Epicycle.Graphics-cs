@@ -3,7 +3,7 @@ url: https://github.com/open-epicycle/Epicycle.Graphics-cs
 summary: "Epicycle .NET graphics library. Includes: Platform-independent image library and color infrastructure."
 
 organization: Epicycle
-tags: epicycle graphics image bitmap views color
+tags: epicycle graphics image bitmap views color ply
 copyright: Copyright 2015 Epicycle
 license_url: http://www.apache.org/licenses/LICENSE-2.0
 
