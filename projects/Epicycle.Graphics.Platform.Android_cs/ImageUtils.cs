@@ -2,7 +2,9 @@
 
 using Android.Graphics;
 
-namespace Epicycle.Graphics.Android
+using Epicycle.Graphics.Images;
+
+namespace Epicycle.Graphics.Platform.Android
 {
     public static class ImageUtils
     {

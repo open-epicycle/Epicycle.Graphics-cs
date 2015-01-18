@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Epicycle.Graphics.Android.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Epicycle.Graphics.Platform.Android.Resource", IsApplication=false)]
 
-namespace Epicycle.Graphics.Android
+namespace Epicycle.Graphics.Platform.Android
 {
 	
 	
