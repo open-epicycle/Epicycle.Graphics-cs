@@ -16,31 +16,25 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-namespace Epicycle.Graphics
+using Epicycle.Commons.Unsafe;
+using Epicycle.Math.Geometry;
+
+namespace Epicycle.Graphics.Images
 {
-    public static class Color4bUtils
+    // TODO: Test
+
+    public sealed class ImageByte<TType> : Image<TType, byte>, IImageByte<TType>
+         where TType : IImageType, new()
     {
-        public sealed class YamlSerialization
+        public ImageByte(Vector2i dimensions) : base(dimensions) { }
+
+        public ImageByte(int width, int height) : base(width, height) { }
+
+        public ImageByte(byte[,,] data) : base(data) { }
+
+        public PinnedByteBuffer Open()
         {
-            public int R { get; set; }
-            public int G { get; set; }
-            public int B { get; set; }
-            public int A { get; set; }
-
-            public YamlSerialization() { }
-
-            public YamlSerialization(Color4b color)
-            {
-                R = color.R;
-                G = color.G;
-                B = color.B;
-                A = color.A;
-            }
-
-            public Color4b Deserialize()
-            {
-                return new Color4b((byte)R, (byte)G, (byte)B, (byte)A);
-            }
+            return new PinnedByteBuffer(_data);
         }
     }
 }

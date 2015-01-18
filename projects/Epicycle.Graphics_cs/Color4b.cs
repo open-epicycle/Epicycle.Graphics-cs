@@ -1,9 +1,29 @@
-﻿using System;
+﻿// [[[[INFO>
+// Copyright 2015 Epicycle (http://epicycle.org, https://github.com/open-epicycle)
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
+// ]]]]
+
+using System;
 
 namespace Epicycle.Graphics
 {
     public struct Color4b : IEquatable<Color4b>
     {
+        // TODO: Consider creating BinaryUtils
+
         public static readonly Color4b AliceBlue = new Color4b(0xFFF0F8FF);
         public static readonly Color4b AntiqueWhite = new Color4b(0xFFFAEBD7);
         public static readonly Color4b Aqua = new Color4b(0xFF00FFFF);
@@ -191,26 +211,31 @@ namespace Epicycle.Graphics
             return new Color4b(R, G, B, a);
         }
 
-        public override int GetHashCode()
-        {
-            return _argb.GetHashCode();
-        }
-
         public override bool Equals(object other)
         {
-            var otherColor = other as Color4b?;
-
             if(other == null)
             {
                 return false;
             }
 
-            return Equals(otherColor.Value);
+            if(!(other is Color4b))
+            {
+                return false;
+            }
+
+            var otherColor = (Color4b)other;
+
+            return Equals(otherColor);
         }
         
         public bool Equals(Color4b other)
         {
             return this._argb == other._argb;
+        }
+
+        public override int GetHashCode()
+        {
+            return _argb.GetHashCode();
         }
     }
 }

@@ -1,0 +1,7 @@
+project_guid: 0AD4324B-56F0-445B-968F-9EE578B8F34C
+assemblyinfo_guid: a79ad3c0-b777-4638-85e9-8e926f30ba0a
+
+external_libs:
+ - Epicycle.Commons-cs
+ - Epicycle.Math-cs
+ - YamlDotNet

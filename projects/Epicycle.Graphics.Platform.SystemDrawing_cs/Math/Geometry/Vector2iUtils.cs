@@ -16,31 +16,33 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-namespace Epicycle.Graphics
+using Epicycle.Math.Geometry;
+using System.Drawing;
+
+namespace Epicycle.Graphics.Platform.SystemDrawing.Math.Geometry
 {
-    public static class Color4bUtils
+    using System;
+
+    public static class Vector2iUtils
     {
-        public sealed class YamlSerialization
+        public static Vector2i ToVector2i(this Point p)
         {
-            public int R { get; set; }
-            public int G { get; set; }
-            public int B { get; set; }
-            public int A { get; set; }
+            return new Vector2i(p.X, p.Y);
+        }
 
-            public YamlSerialization() { }
+        public static Vector2i ToVector2i(this PointF p)
+        {
+            return new Vector2i((int)Math.Round(p.X), (int)Math.Round(p.Y));
+        }
 
-            public YamlSerialization(Color4b color)
-            {
-                R = color.R;
-                G = color.G;
-                B = color.B;
-                A = color.A;
-            }
+        public static Point ToPoint(this Vector2i v)
+        {
+            return new Point(v.X, v.Y);
+        }
 
-            public Color4b Deserialize()
-            {
-                return new Color4b((byte)R, (byte)G, (byte)B, (byte)A);
-            }
+        public static PointF ToPointF(this Vector2i v)
+        {
+            return new PointF(v.X, v.Y);
         }
     }
 }

@@ -25,7 +25,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Epicycle.Graphics_cs")]
+[assembly: AssemblyTitle("Epicycle.Graphics.Platform.SystemDrawing_cs-Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Epicycle")]
@@ -40,7 +40,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a79ad3c0-b777-4638-85e9-8e926f30ba0a")]
+[assembly: Guid("9941889c-324a-42e7-abb6-513b08fba730")]
 
 // Version information for an assembly consists of the following four values:
 //

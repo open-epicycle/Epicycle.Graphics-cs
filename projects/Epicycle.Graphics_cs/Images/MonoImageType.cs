@@ -16,31 +16,15 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Images
 {
-    public static class Color4bUtils
+    // TODO: Test
+
+    public struct MonoImageType : IImageType
     {
-        public sealed class YamlSerialization
+        public int ChannelsCount
         {
-            public int R { get; set; }
-            public int G { get; set; }
-            public int B { get; set; }
-            public int A { get; set; }
-
-            public YamlSerialization() { }
-
-            public YamlSerialization(Color4b color)
-            {
-                R = color.R;
-                G = color.G;
-                B = color.B;
-                A = color.A;
-            }
-
-            public Color4b Deserialize()
-            {
-                return new Color4b((byte)R, (byte)G, (byte)B, (byte)A);
-            }
+            get { return 1; }
         }
     }
 }
