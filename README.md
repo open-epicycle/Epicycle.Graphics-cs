@@ -1,4 +1,4 @@
-# Epicycle.Graphics-cs 0.1.4.0
+# Epicycle.Graphics-cs 0.1.5.0 [IN DEVELOPMENT]
 Epicycle .NET graphics library. Includes: Platform-independent image library and color infrastructure.
 
 ***Note***: *This library is in it's 0.X version, that means that it's still in active development and backward compatibility is not guaranteed!*
@@ -31,6 +31,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
 
 ## Release Notes
 ### Version 0.1 
+
+* **Version 0.1.5** [IN DEVELOPMENT]
 
 * **Version 0.1.4** [2015-01-26]
   * Upgrading Epicycle.Math-cs: 0.1.3.0 => 0.1.4.0
