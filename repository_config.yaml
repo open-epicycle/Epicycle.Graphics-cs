@@ -16,7 +16,7 @@ dotnet_frameworks:
 
 nuget_dependencies:
  - Epicycle.Commons-cs.0.1.6.0
- - Epicycle.Math-cs.0.1.4.0
+ - Epicycle.Math-cs.0.1.5.0
 
 description: |
    Epicycle .NET graphics library. Includes: Platform-independent image library and color infrastructure.

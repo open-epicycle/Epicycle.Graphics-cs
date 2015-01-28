@@ -33,6 +33,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.5** [IN DEVELOPMENT]
+  * Upgrading Epicycle.Math-cs: 0.1.4.0 => 0.1.5.0
 
 * **Version 0.1.4** [2015-01-26]
   * Upgrading Epicycle.Math-cs: 0.1.3.0 => 0.1.4.0
