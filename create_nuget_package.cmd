@@ -28,4 +28,11 @@ xcopy bin\net45\Release\Epicycle.Graphics_cs.dll NuGetPackage\Epicycle.Graphics-
 xcopy bin\net45\Release\Epicycle.Graphics_cs.pdb NuGetPackage\Epicycle.Graphics-cs.0.1.5.0\lib\net45\
 xcopy bin\net45\Release\Epicycle.Graphics_cs.xml NuGetPackage\Epicycle.Graphics-cs.0.1.5.0\lib\net45\
 
+cd NuGetPackage
+nuget pack Epicycle.Graphics-cs.0.1.5.0\Epicycle.Graphics-cs.0.1.5.0.nuspec -Properties version=0.1.5.0
+7z a -tzip Epicycle.Graphics-cs.0.1.5.0.zip Epicycle.Graphics-cs.0.1.5.0 Epicycle.Graphics-cs.0.1.5.0.nupkg
+
+echo nuget push Epicycle.Graphics-cs.0.1.5.0.nupkg > push.cmd
+echo pause >> push.cmd
+
 pause
