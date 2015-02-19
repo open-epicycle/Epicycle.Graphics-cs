@@ -14,7 +14,7 @@ namespace Epicycle.Graphics.Platform.Android
 
             var step = answer.Step;
 
-            var pixels = new int[@this.ByteCount];
+            var pixels = new int[@this.ByteCount / sizeof(int)];
             @this.GetPixels(pixels, offset: 0, stride: @this.Width, x: 0, y: 0, width: @this.Width, height: @this.Height);
 
             using (var pin = answer.Open())
