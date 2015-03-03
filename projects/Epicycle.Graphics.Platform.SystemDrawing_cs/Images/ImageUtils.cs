@@ -118,7 +118,7 @@ namespace Epicycle.Graphics.Platform.SystemDrawing.Images
 
                     for (var i = 0; i < dimensions.X; i++)
                     {
-                        var colour = @this.GetPixel(i, j);
+                        var colour = @this.GetPixel(i, j); // TODO: Implement using Bitmap.LockBits
 
                         pixelPtr[0] = colour.R;
                         pixelPtr[1] = colour.G;

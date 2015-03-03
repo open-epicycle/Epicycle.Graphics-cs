@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epicycle.Graphics.Platform.Android_cs", "Epicycle.Graphics.Platform.Android_cs\Epicycle.Graphics.Platform.Android_cs.csproj", "{A0BC6FD6-D189-4F37-9B91-75F82004284E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0BC6FD6-D189-4F37-9B91-75F82004284E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0BC6FD6-D189-4F37-9B91-75F82004284E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0BC6FD6-D189-4F37-9B91-75F82004284E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0BC6FD6-D189-4F37-9B91-75F82004284E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Epicycle.Graphics.Platform.Android_cs\Epicycle.Graphics.Platform.Android_cs.csproj
+	EndGlobalSection
+EndGlobal
