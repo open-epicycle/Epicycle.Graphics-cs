@@ -30,7 +30,7 @@ namespace Epicycle.Graphics.Geometry.Ply
 
         public PlyParametersParser(IEnumerable<Tuple<string, string>> parametersConfiguration)
         {
-            _parametersConfiguration = parametersConfiguration.AsReadOnlyList();
+            _parametersConfiguration = parametersConfiguration.ToReadOnlyList();
             _parameters = new Dictionary<string, object>();
         }
 

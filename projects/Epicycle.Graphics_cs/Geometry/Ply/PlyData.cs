@@ -39,9 +39,9 @@ namespace Epicycle.Graphics.Geometry.Ply
 
         public PlyData(IEnumerable<TVertex> vertices, IEnumerable<TFace> faces, IEnumerable<TEdge> edges)
         {
-            _vertices = (vertices != null) ? vertices.AsReadOnlyList() : EmptyList<TVertex>.Instance;
-            _faces = (faces != null) ? faces.AsReadOnlyList() : EmptyList<TFace>.Instance;
-            _edges = (edges != null) ? edges.AsReadOnlyList() : EmptyList<TEdge>.Instance;
+            _vertices = (vertices != null) ? vertices.ToReadOnlyList() : EmptyList<TVertex>.Instance;
+            _faces = (faces != null) ? faces.ToReadOnlyList() : EmptyList<TFace>.Instance;
+            _edges = (edges != null) ? edges.ToReadOnlyList() : EmptyList<TEdge>.Instance;
         }
 
         public IReadOnlyList<TVertex> Vertices
