@@ -21,8 +21,8 @@
     <tags>epicycle graphics image bitmap views color ply</tags>
 
     <dependencies>
-      <dependency id="Epicycle.Commons-cs" version="0.1.6.0" />
-      <dependency id="Epicycle.Math-cs" version="0.1.5.0" />
+      <dependency id="Epicycle.Commons-cs" version="0.1.8.0" />
+      <dependency id="Epicycle.Math-cs" version="0.1.6.0" />
     </dependencies>
   </metadata>
 </package>
