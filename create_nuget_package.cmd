@@ -35,4 +35,11 @@ nuget pack Epicycle.Graphics-cs.0.1.6.0\Epicycle.Graphics-cs.0.1.6.0.nuspec -Pro
 echo nuget push Epicycle.Graphics-cs.0.1.6.0.nupkg > push.cmd
 echo pause >> push.cmd
 
+cd NuGetPackage
+nuget pack Epicycle.Graphics-cs.0.1.4.0\Epicycle.Graphics-cs.0.1.4.0.nuspec -Properties version=0.1.4.0
+7z a -tzip Epicycle.Graphics-cs.0.1.4.0.zip Epicycle.Graphics-cs.0.1.4.0 Epicycle.Graphics-cs.0.1.4.0.nupkg
+
+echo nuget push Epicycle.Graphics-cs.0.1.4.0.nupkg > push.cmd
+echo pause >> push.cmd
+
 pause
