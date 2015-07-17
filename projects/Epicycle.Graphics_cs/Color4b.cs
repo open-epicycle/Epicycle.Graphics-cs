@@ -20,223 +20,442 @@ using System;
 
 namespace Epicycle.Graphics
 {
+    // [### ColorN.cs.TEMPLATE> type = int8, channels = rgba
+
+
     public struct Color4b : IEquatable<Color4b>
     {
-        // TODO: Consider creating BinaryUtils
+        #region consts
+    
+        public const byte MinChannelValue = 0;
+        public const byte MaxChannelValue = ((byte) 0xff);
+    
+        #endregion
 
-        public static readonly Color4b AliceBlue = new Color4b(0xFFF0F8FF);
-        public static readonly Color4b AntiqueWhite = new Color4b(0xFFFAEBD7);
-        public static readonly Color4b Aqua = new Color4b(0xFF00FFFF);
-        public static readonly Color4b Aquamarine = new Color4b(0xFF7FFFD4);
-        public static readonly Color4b Azure = new Color4b(0xFFF0FFFF);
-        public static readonly Color4b Beige = new Color4b(0xFFF5F5DC);
-        public static readonly Color4b Bisque = new Color4b(0xFFFFE4C4);
-        public static readonly Color4b Black = new Color4b(0xFF000000);
-        public static readonly Color4b BlanchedAlmond = new Color4b(0xFFFFEBCD);
-        public static readonly Color4b Blue = new Color4b(0xFF0000FF);
-        public static readonly Color4b BlueViolet = new Color4b(0xFF8A2BE2);
-        public static readonly Color4b Brown = new Color4b(0xFFA52A2A);
-        public static readonly Color4b BurlyWood = new Color4b(0xFFDEB887);
-        public static readonly Color4b CadetBlue = new Color4b(0xFF5F9EA0);
-        public static readonly Color4b Chartreuse = new Color4b(0xFF7FFF00);
-        public static readonly Color4b Chocolate = new Color4b(0xFFD2691E);
-        public static readonly Color4b Coral = new Color4b(0xFFFF7F50);
-        public static readonly Color4b CornflowerBlue = new Color4b(0xFF6495ED);
-        public static readonly Color4b Cornsilk = new Color4b(0xFFFFF8DC);
-        public static readonly Color4b Crimson = new Color4b(0xFFDC143C);
-        public static readonly Color4b Cyan = new Color4b(0xFF00FFFF);
-        public static readonly Color4b DarkBlue = new Color4b(0xFF00008B);
-        public static readonly Color4b DarkCyan = new Color4b(0xFF008B8B);
-        public static readonly Color4b DarkGoldenrod = new Color4b(0xFFB8860B);
-        public static readonly Color4b DarkGray = new Color4b(0xFFA9A9A9);
-        public static readonly Color4b DarkGreen = new Color4b(0xFF006400);
-        public static readonly Color4b DarkKhaki = new Color4b(0xFFBDB76B);
-        public static readonly Color4b DarkMagenta = new Color4b(0xFF8B008B);
-        public static readonly Color4b DarkOliveGreen = new Color4b(0xFF556B2F);
-        public static readonly Color4b DarkOrange = new Color4b(0xFFFF8C00);
-        public static readonly Color4b DarkOrchid = new Color4b(0xFF9932CC);
-        public static readonly Color4b DarkRed = new Color4b(0xFF8B0000);
-        public static readonly Color4b DarkSalmon = new Color4b(0xFFE9967A);
-        public static readonly Color4b DarkSeaGreen = new Color4b(0xFF8FBC8F);
-        public static readonly Color4b DarkSlateBlue = new Color4b(0xFF483D8B);
-        public static readonly Color4b DarkSlateGray = new Color4b(0xFF2F4F4F);
-        public static readonly Color4b DarkTurquoise = new Color4b(0xFF00CED1);
-        public static readonly Color4b DarkViolet = new Color4b(0xFF9400D3);
-        public static readonly Color4b DeepPink = new Color4b(0xFFFF1493);
-        public static readonly Color4b DeepSkyBlue = new Color4b(0xFF00BFFF);
-        public static readonly Color4b DimGray = new Color4b(0xFF696969);
-        public static readonly Color4b DodgerBlue = new Color4b(0xFF1E90FF);
-        public static readonly Color4b Firebrick = new Color4b(0xFFB22222);
-        public static readonly Color4b FloralWhite = new Color4b(0xFFFFFAF0);
-        public static readonly Color4b ForestGreen = new Color4b(0xFF228B22);
-        public static readonly Color4b Fuchsia = new Color4b(0xFFFF00FF);
-        public static readonly Color4b Gainsboro = new Color4b(0xFFDCDCDC);
-        public static readonly Color4b GhostWhite = new Color4b(0xFFF8F8FF);
-        public static readonly Color4b Gold = new Color4b(0xFFFFD700);
-        public static readonly Color4b Goldenrod = new Color4b(0xFFDAA520);
-        public static readonly Color4b Gray = new Color4b(0xFF808080);
-        public static readonly Color4b Green = new Color4b(0xFF008000);
-        public static readonly Color4b GreenYellow = new Color4b(0xFFADFF2F);
-        public static readonly Color4b Honeydew = new Color4b(0xFFF0FFF0);
-        public static readonly Color4b HotPink = new Color4b(0xFFFF69B4);
-        public static readonly Color4b IndianRed = new Color4b(0xFFCD5C5C);
-        public static readonly Color4b Indigo = new Color4b(0xFF4B0082);
-        public static readonly Color4b Ivory = new Color4b(0xFFFFFFF0);
-        public static readonly Color4b Khaki = new Color4b(0xFFF0E68C);
-        public static readonly Color4b Lavender = new Color4b(0xFFE6E6FA);
-        public static readonly Color4b LavenderBlush = new Color4b(0xFFFFF0F5);
-        public static readonly Color4b LawnGreen = new Color4b(0xFF7CFC00);
-        public static readonly Color4b LemonChiffon = new Color4b(0xFFFFFACD);
-        public static readonly Color4b LightBlue = new Color4b(0xFFADD8E6);
-        public static readonly Color4b LightCoral = new Color4b(0xFFF08080);
-        public static readonly Color4b LightCyan = new Color4b(0xFFE0FFFF);
-        public static readonly Color4b LightGoldenrodYellow = new Color4b(0xFFFAFAD2);
-        public static readonly Color4b LightGray = new Color4b(0xFFD3D3D3);
-        public static readonly Color4b LightGreen = new Color4b(0xFF90EE90);
-        public static readonly Color4b LightPink = new Color4b(0xFFFFB6C1);
-        public static readonly Color4b LightSalmon = new Color4b(0xFFFFA07A);
-        public static readonly Color4b LightSeaGreen = new Color4b(0xFF20B2AA);
-        public static readonly Color4b LightSkyBlue = new Color4b(0xFF87CEFA);
-        public static readonly Color4b LightSlateGray = new Color4b(0xFF778899);
-        public static readonly Color4b LightSteelBlue = new Color4b(0xFFB0C4DE);
-        public static readonly Color4b LightYellow = new Color4b(0xFFFFFFE0);
-        public static readonly Color4b Lime = new Color4b(0xFF00FF00);
-        public static readonly Color4b LimeGreen = new Color4b(0xFF32CD32);
-        public static readonly Color4b Linen = new Color4b(0xFFFAF0E6);
-        public static readonly Color4b Magenta = new Color4b(0xFFFF00FF);
-        public static readonly Color4b Maroon = new Color4b(0xFF800000);
-        public static readonly Color4b MediumAquamarine = new Color4b(0xFF66CDAA);
-        public static readonly Color4b MediumBlue = new Color4b(0xFF0000CD);
-        public static readonly Color4b MediumOrchid = new Color4b(0xFFBA55D3);
-        public static readonly Color4b MediumPurple = new Color4b(0xFF9370DB);
-        public static readonly Color4b MediumSeaGreen = new Color4b(0xFF3CB371);
-        public static readonly Color4b MediumSlateBlue = new Color4b(0xFF7B68EE);
-        public static readonly Color4b MediumSpringGreen = new Color4b(0xFF00FA9A);
-        public static readonly Color4b MediumTurquoise = new Color4b(0xFF48D1CC);
-        public static readonly Color4b MediumVioletRed = new Color4b(0xFFC71585);
-        public static readonly Color4b MidnightBlue = new Color4b(0xFF191970);
-        public static readonly Color4b MintCream = new Color4b(0xFFF5FFFA);
-        public static readonly Color4b MistyRose = new Color4b(0xFFFFE4E1);
-        public static readonly Color4b Moccasin = new Color4b(0xFFFFE4B5);
-        public static readonly Color4b NavajoWhite = new Color4b(0xFFFFDEAD);
-        public static readonly Color4b Navy = new Color4b(0xFF000080);
-        public static readonly Color4b OldLace = new Color4b(0xFFFDF5E6);
-        public static readonly Color4b Olive = new Color4b(0xFF808000);
-        public static readonly Color4b OliveDrab = new Color4b(0xFF6B8E23);
-        public static readonly Color4b Orange = new Color4b(0xFFFFA500);
-        public static readonly Color4b OrangeRed = new Color4b(0xFFFF4500);
-        public static readonly Color4b Orchid = new Color4b(0xFFDA70D6);
-        public static readonly Color4b PaleGoldenrod = new Color4b(0xFFEEE8AA);
-        public static readonly Color4b PaleGreen = new Color4b(0xFF98FB98);
-        public static readonly Color4b PaleTurquoise = new Color4b(0xFFAFEEEE);
-        public static readonly Color4b PaleVioletRed = new Color4b(0xFFDB7093);
-        public static readonly Color4b PapayaWhip = new Color4b(0xFFFFEFD5);
-        public static readonly Color4b PeachPuff = new Color4b(0xFFFFDAB9);
-        public static readonly Color4b Peru = new Color4b(0xFFCD853F);
-        public static readonly Color4b Pink = new Color4b(0xFFFFC0CB);
-        public static readonly Color4b Plum = new Color4b(0xFFDDA0DD);
-        public static readonly Color4b PowderBlue = new Color4b(0xFFB0E0E6);
-        public static readonly Color4b Purple = new Color4b(0xFF800080);
-        public static readonly Color4b Red = new Color4b(0xFFFF0000);
-        public static readonly Color4b RosyBrown = new Color4b(0xFFBC8F8F);
-        public static readonly Color4b RoyalBlue = new Color4b(0xFF4169E1);
-        public static readonly Color4b SaddleBrown = new Color4b(0xFF8B4513);
-        public static readonly Color4b Salmon = new Color4b(0xFFFA8072);
-        public static readonly Color4b SandyBrown = new Color4b(0xFFF4A460);
-        public static readonly Color4b SeaGreen = new Color4b(0xFF2E8B57);
-        public static readonly Color4b SeaShell = new Color4b(0xFFFFF5EE);
-        public static readonly Color4b Sienna = new Color4b(0xFFA0522D);
-        public static readonly Color4b Silver = new Color4b(0xFFC0C0C0);
-        public static readonly Color4b SkyBlue = new Color4b(0xFF87CEEB);
-        public static readonly Color4b SlateBlue = new Color4b(0xFF6A5ACD);
-        public static readonly Color4b SlateGray = new Color4b(0xFF708090);
-        public static readonly Color4b Snow = new Color4b(0xFFFFFAFA);
-        public static readonly Color4b SpringGreen = new Color4b(0xFF00FF7F);
-        public static readonly Color4b SteelBlue = new Color4b(0xFF4682B4);
-        public static readonly Color4b Tan = new Color4b(0xFFD2B48C);
-        public static readonly Color4b Teal = new Color4b(0xFF008080);
-        public static readonly Color4b Thistle = new Color4b(0xFFD8BFD8);
-        public static readonly Color4b Tomato = new Color4b(0xFFFF6347);
+        #region Named colors
+    
+        public static readonly Color4b AliceBlue = (Color4b) Color3b.AliceBlue;
+    
+        public static readonly Color4b AntiqueWhite = (Color4b) Color3b.AntiqueWhite;
+    
+        public static readonly Color4b Aqua = (Color4b) Color3b.Aqua;
+    
+        public static readonly Color4b Aquamarine = (Color4b) Color3b.Aquamarine;
+    
+        public static readonly Color4b Azure = (Color4b) Color3b.Azure;
+    
+        public static readonly Color4b Beige = (Color4b) Color3b.Beige;
+    
+        public static readonly Color4b Bisque = (Color4b) Color3b.Bisque;
+    
+        public static readonly Color4b Black = (Color4b) Color3b.Black;
+    
+        public static readonly Color4b BlanchedAlmond = (Color4b) Color3b.BlanchedAlmond;
+    
+        public static readonly Color4b Blue = (Color4b) Color3b.Blue;
+    
+        public static readonly Color4b BlueViolet = (Color4b) Color3b.BlueViolet;
+    
+        public static readonly Color4b Brown = (Color4b) Color3b.Brown;
+    
+        public static readonly Color4b BurlyWood = (Color4b) Color3b.BurlyWood;
+    
+        public static readonly Color4b CadetBlue = (Color4b) Color3b.CadetBlue;
+    
+        public static readonly Color4b Chartreuse = (Color4b) Color3b.Chartreuse;
+    
+        public static readonly Color4b Chocolate = (Color4b) Color3b.Chocolate;
+    
+        public static readonly Color4b Coral = (Color4b) Color3b.Coral;
+    
+        public static readonly Color4b CornflowerBlue = (Color4b) Color3b.CornflowerBlue;
+    
+        public static readonly Color4b Cornsilk = (Color4b) Color3b.Cornsilk;
+    
+        public static readonly Color4b Crimson = (Color4b) Color3b.Crimson;
+    
+        public static readonly Color4b Cyan = (Color4b) Color3b.Cyan;
+    
+        public static readonly Color4b DarkBlue = (Color4b) Color3b.DarkBlue;
+    
+        public static readonly Color4b DarkCyan = (Color4b) Color3b.DarkCyan;
+    
+        public static readonly Color4b DarkGoldenrod = (Color4b) Color3b.DarkGoldenrod;
+    
+        public static readonly Color4b DarkGray = (Color4b) Color3b.DarkGray;
+    
+        public static readonly Color4b DarkGreen = (Color4b) Color3b.DarkGreen;
+    
+        public static readonly Color4b DarkKhaki = (Color4b) Color3b.DarkKhaki;
+    
+        public static readonly Color4b DarkMagenta = (Color4b) Color3b.DarkMagenta;
+    
+        public static readonly Color4b DarkOliveGreen = (Color4b) Color3b.DarkOliveGreen;
+    
+        public static readonly Color4b DarkOrange = (Color4b) Color3b.DarkOrange;
+    
+        public static readonly Color4b DarkOrchid = (Color4b) Color3b.DarkOrchid;
+    
+        public static readonly Color4b DarkRed = (Color4b) Color3b.DarkRed;
+    
+        public static readonly Color4b DarkSalmon = (Color4b) Color3b.DarkSalmon;
+    
+        public static readonly Color4b DarkSeaGreen = (Color4b) Color3b.DarkSeaGreen;
+    
+        public static readonly Color4b DarkSlateBlue = (Color4b) Color3b.DarkSlateBlue;
+    
+        public static readonly Color4b DarkSlateGray = (Color4b) Color3b.DarkSlateGray;
+    
+        public static readonly Color4b DarkTurquoise = (Color4b) Color3b.DarkTurquoise;
+    
+        public static readonly Color4b DarkViolet = (Color4b) Color3b.DarkViolet;
+    
+        public static readonly Color4b DeepPink = (Color4b) Color3b.DeepPink;
+    
+        public static readonly Color4b DeepSkyBlue = (Color4b) Color3b.DeepSkyBlue;
+    
+        public static readonly Color4b DimGray = (Color4b) Color3b.DimGray;
+    
+        public static readonly Color4b DodgerBlue = (Color4b) Color3b.DodgerBlue;
+    
+        public static readonly Color4b Firebrick = (Color4b) Color3b.Firebrick;
+    
+        public static readonly Color4b FloralWhite = (Color4b) Color3b.FloralWhite;
+    
+        public static readonly Color4b ForestGreen = (Color4b) Color3b.ForestGreen;
+    
+        public static readonly Color4b Fuchsia = (Color4b) Color3b.Fuchsia;
+    
+        public static readonly Color4b Gainsboro = (Color4b) Color3b.Gainsboro;
+    
+        public static readonly Color4b GhostWhite = (Color4b) Color3b.GhostWhite;
+    
+        public static readonly Color4b Gold = (Color4b) Color3b.Gold;
+    
+        public static readonly Color4b Goldenrod = (Color4b) Color3b.Goldenrod;
+    
+        public static readonly Color4b Gray = (Color4b) Color3b.Gray;
+    
+        public static readonly Color4b Green = (Color4b) Color3b.Green;
+    
+        public static readonly Color4b GreenYellow = (Color4b) Color3b.GreenYellow;
+    
+        public static readonly Color4b Honeydew = (Color4b) Color3b.Honeydew;
+    
+        public static readonly Color4b HotPink = (Color4b) Color3b.HotPink;
+    
+        public static readonly Color4b IndianRed = (Color4b) Color3b.IndianRed;
+    
+        public static readonly Color4b Indigo = (Color4b) Color3b.Indigo;
+    
+        public static readonly Color4b Ivory = (Color4b) Color3b.Ivory;
+    
+        public static readonly Color4b Khaki = (Color4b) Color3b.Khaki;
+    
+        public static readonly Color4b Lavender = (Color4b) Color3b.Lavender;
+    
+        public static readonly Color4b LavenderBlush = (Color4b) Color3b.LavenderBlush;
+    
+        public static readonly Color4b LawnGreen = (Color4b) Color3b.LawnGreen;
+    
+        public static readonly Color4b LemonChiffon = (Color4b) Color3b.LemonChiffon;
+    
+        public static readonly Color4b LightBlue = (Color4b) Color3b.LightBlue;
+    
+        public static readonly Color4b LightCoral = (Color4b) Color3b.LightCoral;
+    
+        public static readonly Color4b LightCyan = (Color4b) Color3b.LightCyan;
+    
+        public static readonly Color4b LightGoldenrodYellow = (Color4b) Color3b.LightGoldenrodYellow;
+    
+        public static readonly Color4b LightGray = (Color4b) Color3b.LightGray;
+    
+        public static readonly Color4b LightGreen = (Color4b) Color3b.LightGreen;
+    
+        public static readonly Color4b LightPink = (Color4b) Color3b.LightPink;
+    
+        public static readonly Color4b LightSalmon = (Color4b) Color3b.LightSalmon;
+    
+        public static readonly Color4b LightSeaGreen = (Color4b) Color3b.LightSeaGreen;
+    
+        public static readonly Color4b LightSkyBlue = (Color4b) Color3b.LightSkyBlue;
+    
+        public static readonly Color4b LightSlateGray = (Color4b) Color3b.LightSlateGray;
+    
+        public static readonly Color4b LightSteelBlue = (Color4b) Color3b.LightSteelBlue;
+    
+        public static readonly Color4b LightYellow = (Color4b) Color3b.LightYellow;
+    
+        public static readonly Color4b Lime = (Color4b) Color3b.Lime;
+    
+        public static readonly Color4b LimeGreen = (Color4b) Color3b.LimeGreen;
+    
+        public static readonly Color4b Linen = (Color4b) Color3b.Linen;
+    
+        public static readonly Color4b Magenta = (Color4b) Color3b.Magenta;
+    
+        public static readonly Color4b Maroon = (Color4b) Color3b.Maroon;
+    
+        public static readonly Color4b MediumAquamarine = (Color4b) Color3b.MediumAquamarine;
+    
+        public static readonly Color4b MediumBlue = (Color4b) Color3b.MediumBlue;
+    
+        public static readonly Color4b MediumOrchid = (Color4b) Color3b.MediumOrchid;
+    
+        public static readonly Color4b MediumPurple = (Color4b) Color3b.MediumPurple;
+    
+        public static readonly Color4b MediumSeaGreen = (Color4b) Color3b.MediumSeaGreen;
+    
+        public static readonly Color4b MediumSlateBlue = (Color4b) Color3b.MediumSlateBlue;
+    
+        public static readonly Color4b MediumSpringGreen = (Color4b) Color3b.MediumSpringGreen;
+    
+        public static readonly Color4b MediumTurquoise = (Color4b) Color3b.MediumTurquoise;
+    
+        public static readonly Color4b MediumVioletRed = (Color4b) Color3b.MediumVioletRed;
+    
+        public static readonly Color4b MidnightBlue = (Color4b) Color3b.MidnightBlue;
+    
+        public static readonly Color4b MintCream = (Color4b) Color3b.MintCream;
+    
+        public static readonly Color4b MistyRose = (Color4b) Color3b.MistyRose;
+    
+        public static readonly Color4b Moccasin = (Color4b) Color3b.Moccasin;
+    
+        public static readonly Color4b NavajoWhite = (Color4b) Color3b.NavajoWhite;
+    
+        public static readonly Color4b Navy = (Color4b) Color3b.Navy;
+    
+        public static readonly Color4b OldLace = (Color4b) Color3b.OldLace;
+    
+        public static readonly Color4b Olive = (Color4b) Color3b.Olive;
+    
+        public static readonly Color4b OliveDrab = (Color4b) Color3b.OliveDrab;
+    
+        public static readonly Color4b Orange = (Color4b) Color3b.Orange;
+    
+        public static readonly Color4b OrangeRed = (Color4b) Color3b.OrangeRed;
+    
+        public static readonly Color4b Orchid = (Color4b) Color3b.Orchid;
+    
+        public static readonly Color4b PaleGoldenrod = (Color4b) Color3b.PaleGoldenrod;
+    
+        public static readonly Color4b PaleGreen = (Color4b) Color3b.PaleGreen;
+    
+        public static readonly Color4b PaleTurquoise = (Color4b) Color3b.PaleTurquoise;
+    
+        public static readonly Color4b PaleVioletRed = (Color4b) Color3b.PaleVioletRed;
+    
+        public static readonly Color4b PapayaWhip = (Color4b) Color3b.PapayaWhip;
+    
+        public static readonly Color4b PeachPuff = (Color4b) Color3b.PeachPuff;
+    
+        public static readonly Color4b Peru = (Color4b) Color3b.Peru;
+    
+        public static readonly Color4b Pink = (Color4b) Color3b.Pink;
+    
+        public static readonly Color4b Plum = (Color4b) Color3b.Plum;
+    
+        public static readonly Color4b PowderBlue = (Color4b) Color3b.PowderBlue;
+    
+        public static readonly Color4b Purple = (Color4b) Color3b.Purple;
+    
+        public static readonly Color4b Red = (Color4b) Color3b.Red;
+    
+        public static readonly Color4b RosyBrown = (Color4b) Color3b.RosyBrown;
+    
+        public static readonly Color4b RoyalBlue = (Color4b) Color3b.RoyalBlue;
+    
+        public static readonly Color4b SaddleBrown = (Color4b) Color3b.SaddleBrown;
+    
+        public static readonly Color4b Salmon = (Color4b) Color3b.Salmon;
+    
+        public static readonly Color4b SandyBrown = (Color4b) Color3b.SandyBrown;
+    
+        public static readonly Color4b SeaGreen = (Color4b) Color3b.SeaGreen;
+    
+        public static readonly Color4b SeaShell = (Color4b) Color3b.SeaShell;
+    
+        public static readonly Color4b Sienna = (Color4b) Color3b.Sienna;
+    
+        public static readonly Color4b Silver = (Color4b) Color3b.Silver;
+    
+        public static readonly Color4b SkyBlue = (Color4b) Color3b.SkyBlue;
+    
+        public static readonly Color4b SlateBlue = (Color4b) Color3b.SlateBlue;
+    
+        public static readonly Color4b SlateGray = (Color4b) Color3b.SlateGray;
+    
+        public static readonly Color4b Snow = (Color4b) Color3b.Snow;
+    
+        public static readonly Color4b SpringGreen = (Color4b) Color3b.SpringGreen;
+    
+        public static readonly Color4b SteelBlue = (Color4b) Color3b.SteelBlue;
+    
+        public static readonly Color4b Tan = (Color4b) Color3b.Tan;
+    
+        public static readonly Color4b Teal = (Color4b) Color3b.Teal;
+    
+        public static readonly Color4b Thistle = (Color4b) Color3b.Thistle;
+    
+        public static readonly Color4b Tomato = (Color4b) Color3b.Tomato;
+    
+        public static readonly Color4b Turquoise = (Color4b) Color3b.Turquoise;
+    
+        public static readonly Color4b Violet = (Color4b) Color3b.Violet;
+    
+        public static readonly Color4b Wheat = (Color4b) Color3b.Wheat;
+    
+        public static readonly Color4b White = (Color4b) Color3b.White;
+    
+        public static readonly Color4b WhiteSmoke = (Color4b) Color3b.WhiteSmoke;
+    
+        public static readonly Color4b Yellow = (Color4b) Color3b.Yellow;
+    
+        public static readonly Color4b YellowGreen = (Color4b) Color3b.YellowGreen;
+    
+     
         public static readonly Color4b Transparent = new Color4b(0x00000000);
-        public static readonly Color4b Turquoise = new Color4b(0xFF40E0D0);
-        public static readonly Color4b Violet = new Color4b(0xFFEE82EE);
-        public static readonly Color4b Wheat = new Color4b(0xFFF5DEB3);
-        public static readonly Color4b White = new Color4b(0xFFFFFFFF);
-        public static readonly Color4b WhiteSmoke = new Color4b(0xFFF5F5F5);
-        public static readonly Color4b Yellow = new Color4b(0xFFFFFF00);
-        public static readonly Color4b YellowGreen = new Color4b(0xFF9ACD32);
-
-        private uint _argb;
-
+    
+    
+        #endregion
+    
+        #region Members
+     
+        private readonly uint _argb;
+    
+        #endregion
+    
+        #region Construction and conversion
+    
+     
         public Color4b(uint argb)
         {
-            _argb = argb;
+            _argb = argb & ((uint) 0xffffffff);
         }
-
-        public Color4b(byte r, byte g, byte b)
-            : this(r, g, b, 0xFF) { }
-
+    
         public Color4b(byte r, byte g, byte b, byte a)
         {
-            _argb = (uint) a << 24 | (uint) r << 16 | (uint) g << 8 | (uint) b;
+            _argb = ((uint) a << 24) | ((uint) r << 16) | ((uint) g << 8) | ((uint) b << 0);
         }
-
-        public byte A
+    
+    
+     
+        public Color4b(Color3b rgb, byte a = MaxChannelValue)
+            : this(rgb.R, rgb.G, rgb.B, a) { }
+    
+    
+    
+        public static explicit operator Color4b(Color3b c)
         {
-            get { return (byte) (_argb >> 24); }
+            return new Color4b(c);
         }
-
+    
+    
+        #endregion
+    
+        #region Properties
+    
+    
         public byte R
         {
-            get { return (byte) ((_argb >> 16) & 0xFF); }
+            get { return (byte) ((_argb >> 16) & MaxChannelValue); }
         }
-
+    
         public byte G
         {
-            get { return (byte) ((_argb >> 8) & 0xFF); }
+            get { return (byte) ((_argb >> 8) & MaxChannelValue); }
         }
-
+    
         public byte B
         {
-            get { return (byte) (_argb & 0xFF); }
+            get { return (byte) ((_argb >> 0) & MaxChannelValue); }
         }
-
+    
+        public byte A
+        {
+            get { return (byte) ((_argb >> 24) & MaxChannelValue); }
+        }
+    
+    
+        public Color3b RGB
+        {
+            get { return new Color3b(R, G, B); }
+        }
+    
         public bool IsTransparent
         {
-            get { return A == 0; }
+            get { return A <= MinChannelValue; }
         }
-
+     
+        public bool IsOpaque
+        {
+            get { return A >= MaxChannelValue; }
+        }
+    
+        public bool IsTranslucent
+        {
+            get { return !IsTransparent && !IsOpaque; }
+        }
+    
+        #endregion
+    
+        #region Mutation
+    
         public Color4b ChangeAlpha(byte a)
         {
             return new Color4b(R, G, B, a);
         }
+    
+        #endregion
+    
+        #region Equality & HashCode
 
-        public override bool Equals(object other)
+        public bool Equals(Color4b c)
         {
-            if(other == null)
-            {
-                return false;
-            }
-
-            if(!(other is Color4b))
-            {
-                return false;
-            }
-
-            var otherColor = (Color4b)other;
-
-            return Equals(otherColor);
+            return _argb == c._argb;
         }
-        
-        public bool Equals(Color4b other)
+
+        public override bool Equals(object obj)
         {
-            return this._argb == other._argb;
+        
+            var c = obj as Color4b?;
+
+            if(!c.HasValue)
+            {
+                return false;
+            }
+
+            return Equals(c.Value);
+        
         }
 
         public override int GetHashCode()
         {
             return _argb.GetHashCode();
         }
+
+        public static bool operator ==(Color4b v, Color4b w)
+        {
+            return v.Equals(w);
+        }
+
+        public static bool operator !=(Color4b v, Color4b w)
+        {
+            return !v.Equals(w);
+        }
+
+        #endregion
+    
+        #region ToString
+    
+        public override string ToString()
+        {
+            return string.Format("Color4b(R={0}, G={1}, B={2}, A={3})", R, G, B, A);
+        }
+    
+        #endregion
     }
+    // ###]
 }
 

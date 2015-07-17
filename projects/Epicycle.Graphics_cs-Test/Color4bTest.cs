@@ -49,17 +49,6 @@ namespace Epicycle.Graphics
         }
 
         [Test]
-        public void Ctor_rgb_parameterized_construction_sets_correct_colors()
-        {
-            var color = new Color4b(10, 20, 30);
-
-            Assert.That(color.A, Is.EqualTo(0xFF));
-            Assert.That(color.R, Is.EqualTo(10));
-            Assert.That(color.G, Is.EqualTo(20));
-            Assert.That(color.B, Is.EqualTo(30));
-        }
-
-        [Test]
         public void Ctor_rgba_parameterized_construction_sets_correct_colors()
         {
             var color = new Color4b(10, 20, 30, 40);

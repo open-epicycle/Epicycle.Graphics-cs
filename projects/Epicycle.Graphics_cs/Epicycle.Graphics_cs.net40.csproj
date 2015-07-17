@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Color3b.cs" />
     <Compile Include="Color4b.cs" />
     <Compile Include="Color4bUtils.cs" />
     <Compile Include="Geometry\Ply\IPlyData.cs" />

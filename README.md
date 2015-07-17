@@ -24,7 +24,9 @@ Epicycle .NET graphics library. Includes: Platform-independent image library and
   * PLY file serializer and de-serializer. Supports custom properties
 * **Epicycle.Graphics.Platform.SystemDrawing**: (separate assembly)
   * Utilities for converting **Windows.Drawing** primitives to and from **Epicycle.Graphics** and **Epicycle.Math.Geometry** primitives
-
+* **Epicycle.Graphics.Platform.Android**: (separate assembly)
+  * Xamarin library (not ready for production)
+  
 ## License
 Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 Copyright 2015 Epicycle (http://epicycle.org)
@@ -33,6 +35,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.6** [IN DEVELOPMENT]
+    
 
 * **Version 0.1.5** [2015-01-28]
   * Upgrading Epicycle.Math-cs: 0.1.4.0 => 0.1.5.0
