@@ -18,7 +18,7 @@
 
 namespace Epicycle.Graphics
 {
-    public static class Color4bUtils
+    public static class ColorRGBAUtils
     {
         public sealed class YamlSerialization
         {
@@ -29,7 +29,7 @@ namespace Epicycle.Graphics
 
             public YamlSerialization() { }
 
-            public YamlSerialization(Color4b color)
+            public YamlSerialization(ColorRGBA color)
             {
                 R = color.R;
                 G = color.G;
@@ -37,9 +37,9 @@ namespace Epicycle.Graphics
                 A = color.A;
             }
 
-            public Color4b Deserialize()
+            public ColorRGBA Deserialize()
             {
-                return new Color4b((byte)R, (byte)G, (byte)B, (byte)A);
+                return new ColorRGBA((byte)R, (byte)G, (byte)B, (byte)A);
             }
         }
     }

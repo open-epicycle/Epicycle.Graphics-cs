@@ -201,7 +201,7 @@ namespace Epicycle.Graphics.Geometry.Ply
             return new Rotation3(GetDouble(nameAngle, true), GetVector3(namePrefix, true));
         }
 
-        public Color4b? GetColor4b(string namePrefix, bool required)
+        public ColorRGBA? GetColorRGBA(string namePrefix, bool required)
         {
             var nameR = namePrefix + "red";
             var nameG = namePrefix + "green";
@@ -225,7 +225,7 @@ namespace Epicycle.Graphics.Geometry.Ply
             var b = HasParameter(nameR) ? GetByte(nameB, true).Value : byte.MaxValue;
             var a = HasParameter(nameR) ? GetByte(nameA, true).Value : byte.MaxValue;
 
-            return new Color4b(r, g, b, a);
+            return new ColorRGBA(r, g, b, a);
         }
 
         public object GetParameter(string name)

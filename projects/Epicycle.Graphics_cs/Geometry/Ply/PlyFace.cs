@@ -36,17 +36,17 @@ namespace Epicycle.Graphics.Geometry.Ply
         {
             VertexIndices = parser.GetIntArray("vertex_indices", true);
             Normal = parser.GetVector3("n", false);
-            Color = parser.GetColor4b("", false);
-            BackColor = parser.GetColor4b("back_", false);
+            Color = parser.GetColorRGBA("", false);
+            BackColor = parser.GetColorRGBA("back_", false);
         }
 
         public int[] VertexIndices { get; set; }
 
         public Vector3 Normal { get; set; }
 
-        public Color4b? Color { get; set; }
+        public ColorRGBA? Color { get; set; }
 
-        public Color4b? BackColor { get; set; }
+        public ColorRGBA? BackColor { get; set; }
 
         protected override void PopulateProperties(IList<string> properties)
         {

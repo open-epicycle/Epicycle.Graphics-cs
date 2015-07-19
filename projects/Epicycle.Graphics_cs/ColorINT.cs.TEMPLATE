@@ -169,10 +169,6 @@ def init(_):
                 
                 num_channels = len(channels)
                 config.num_channels = num_channels
-                type_suffix = {'int8': 'b'}[type]
-                
-                config.name = "Color%d%s" % (num_channels, type_suffix)
-                
                 config.is_int = type.startswith("int")
                 
                 config.has_alpha = num_channels == 4
@@ -189,6 +185,8 @@ def init(_):
                     config.pint_config = {'rgb': [0, 1, 2], 'rgba': [3, 0, 1, 2]}[channels]
                     config.pint_type = 'uint' if config.pint_total_bits <= 32 else 'ulong'
                     config.elements_type = 'byte' if config.pint_channel_bits <= 8 else 'ushort'
+
+                    config.name = "Color%s%s" % (channels.upper(), str(config.pint_channel_bits if config.pint_channel_bits != 8 else ""))
                     
                     config.pint_mask = to_typed_hex_mask(config.pint_type, config.pint_total_bits)
                     config.max_channel_value = to_typed_hex_mask(config.elements_type, config.pint_channel_bits)

@@ -36,7 +36,7 @@ namespace Epicycle.Graphics.Geometry.Ply
         {
             Position = parser.GetVector3("", true);
             Normal = parser.GetVector3("n", false);
-            Color = parser.GetColor4b("", false);
+            Color = parser.GetColorRGBA("", false);
             Radius = parser.GetDouble("radius", false);
             MaterialIndex = parser.GetInt("material_index", false);
         }
@@ -45,7 +45,7 @@ namespace Epicycle.Graphics.Geometry.Ply
         
         public Vector3 Normal { get; set; }
 
-        public Color4b? Color { get; set; }
+        public ColorRGBA? Color { get; set; }
 
         public double Radius { get; set; }
 

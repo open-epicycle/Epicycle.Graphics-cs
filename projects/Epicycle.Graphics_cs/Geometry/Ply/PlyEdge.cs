@@ -35,7 +35,7 @@ namespace Epicycle.Graphics.Geometry.Ply
         {
             VertexIndex1 = parser.GetInt("vertex1", true).Value;
             VertexIndex2 = parser.GetInt("vertex2", true).Value;
-            Color = parser.GetColor4b("", false);
+            Color = parser.GetColorRGBA("", false);
             Radius = parser.GetDouble("radius", false);
             CreaseTag = parser.GetByte("crease_tag", false);
         }
@@ -44,7 +44,7 @@ namespace Epicycle.Graphics.Geometry.Ply
 
         public int VertexIndex2 { get; set;}
 
-        public Color4b? Color { get; set;}
+        public ColorRGBA? Color { get; set; }
 
         public double Radius { get; set;}
 
