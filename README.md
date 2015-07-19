@@ -25,7 +25,7 @@ Epicycle .NET graphics library. Includes: Platform-independent image library and
 * **Epicycle.Graphics.Platform.SystemDrawing**: (separate assembly)
   * Utilities for converting **Windows.Drawing** primitives to and from **Epicycle.Graphics** and **Epicycle.Math.Geometry** primitives
 * **Epicycle.Graphics.Platform.Android**: (separate assembly)
-  * Xamarin library (not ready for production)
+  * Xamarin library (currently not built and not ready for production)
   
 ## License
 Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
@@ -35,8 +35,13 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.6** [IN DEVELOPMENT]
-    
-
+  * Upgrading Epicycle.Commons-cs: 0.1.6.0 => 0.1.8.0
+  * Upgrading Epicycle.Math-cs: 0.1.5.0 => 0.1.6.0
+  * Colors:
+    * Integer RGB/RGBA
+      * Renaming Color3b and Color4b into ColorRGB and ColorRGBA
+      * Generating 12 bit-per-channel and 16 bit-per-channel versions (ColorRGB12, ColorRGBA12, ColorRGB16, ColorRGBA16)
+  
 * **Version 0.1.5** [2015-01-28]
   * Upgrading Epicycle.Math-cs: 0.1.4.0 => 0.1.5.0
 
