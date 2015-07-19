@@ -19,7 +19,7 @@
 using Epicycle.Commons;
 using NUnit.Framework;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Color
 {
     [TestFixture]
     public class ColorRGBAUtilsTest

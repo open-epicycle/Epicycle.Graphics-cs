@@ -71,8 +71,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorRGBATest.cs" />
-    <Compile Include="ColorRGBAUtilsTest.cs" />
+    <Compile Include="Color\ColorRGBATest.cs" />
+    <Compile Include="Color\ColorRGBAUtilsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

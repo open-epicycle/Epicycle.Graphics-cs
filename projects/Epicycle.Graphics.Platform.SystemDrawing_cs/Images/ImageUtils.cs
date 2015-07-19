@@ -18,10 +18,10 @@
 
 using Epicycle.Graphics.Images;
 using System;
-using System.Drawing;
 
 namespace Epicycle.Graphics.Platform.SystemDrawing.Images
 {
+    using System.Drawing;
     // TODO: Test
 
     public static class ImageUtils

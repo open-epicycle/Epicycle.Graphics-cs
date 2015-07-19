@@ -16,6 +16,7 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
+using Epicycle.Graphics.Color;
 using Epicycle.Math.Geometry;
 
 namespace Epicycle.Graphics.Geometry.Ply
