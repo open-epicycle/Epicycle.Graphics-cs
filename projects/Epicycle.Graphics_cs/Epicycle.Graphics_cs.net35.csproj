@@ -65,8 +65,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Color4b.cs" />
-    <Compile Include="Color4bUtils.cs" />
+    <Compile Include="ColorRGB.cs" />
+    <Compile Include="ColorRGB12.cs" />
+    <Compile Include="ColorRGB16.cs" />
+    <Compile Include="ColorRGBA.cs" />
+    <Compile Include="ColorRGBA12.cs" />
+    <Compile Include="ColorRGBA16.cs" />
+    <Compile Include="ColorRGBAUtils.cs" />
     <Compile Include="Geometry\Ply\IPlyData.cs" />
     <Compile Include="Geometry\Ply\IPlyParametersParser.cs" />
     <Compile Include="Geometry\Ply\PlyData.cs" />

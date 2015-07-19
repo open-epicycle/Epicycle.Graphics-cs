@@ -22,15 +22,15 @@ using NUnit.Framework;
 namespace Epicycle.Graphics
 {
     [TestFixture]
-    public class Color4bUtilsTest
+    public class ColorRGBAUtilsTest
     {
-        private Color4b _yamlColor;
+        private ColorRGBA _yamlColor;
         private string _yamlData;
 
         [SetUp]
         public void SetUp()
         {
-            _yamlColor = new Color4b(10, 20, 30, 40);
+            _yamlColor = new ColorRGBA(10, 20, 30, 40);
             _yamlData =
                 "R: 10\r\n" +
                 "G: 20\r\n" +
@@ -41,14 +41,14 @@ namespace Epicycle.Graphics
         [Test]
         public void YamlSerialization_serialization_produces_correct_yaml()
         {
-            var yaml = YamlUtils.Serialize(new Color4bUtils.YamlSerialization(_yamlColor));
+            var yaml = YamlUtils.Serialize(new ColorRGBAUtils.YamlSerialization(_yamlColor));
             Assert.That(yaml, Is.EqualTo(_yamlData));
         }
 
         [Test]
         public void YamlSerialization_deserialization_produces_correct_color()
         {
-            var color = YamlUtils.Deserialize<Color4bUtils.YamlSerialization>(_yamlData).Deserialize();
+            var color = YamlUtils.Deserialize<ColorRGBAUtils.YamlSerialization>(_yamlData).Deserialize();
             Assert.That(color, Is.EqualTo(_yamlColor));
         }
     }

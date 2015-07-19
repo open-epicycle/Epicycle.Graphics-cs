@@ -1,0 +1,389 @@
+[%#
+
+def init(_):
+    def generate_named_color_configs():
+        return [
+            {'name': "AliceBlue", 'value': "0xF0F8FF"},
+            {'name': "AntiqueWhite", 'value': "0xFAEBD7"},
+            {'name': "Aqua", 'value': "0x00FFFF"},
+            {'name': "Aquamarine", 'value': "0x7FFFD4"},
+            {'name': "Azure", 'value': "0xF0FFFF"},
+            {'name': "Beige", 'value': "0xF5F5DC"},
+            {'name': "Bisque", 'value': "0xFFE4C4"},
+            {'name': "Black", 'value': "0x000000"},
+            {'name': "BlanchedAlmond", 'value': "0xFFEBCD"},
+            {'name': "Blue", 'value': "0x0000FF"},
+            {'name': "BlueViolet", 'value': "0x8A2BE2"},
+            {'name': "Brown", 'value': "0xA52A2A"},
+            {'name': "BurlyWood", 'value': "0xDEB887"},
+            {'name': "CadetBlue", 'value': "0x5F9EA0"},
+            {'name': "Chartreuse", 'value': "0x7FFF00"},
+            {'name': "Chocolate", 'value': "0xD2691E"},
+            {'name': "Coral", 'value': "0xFF7F50"},
+            {'name': "CornflowerBlue", 'value': "0x6495ED"},
+            {'name': "Cornsilk", 'value': "0xFFF8DC"},
+            {'name': "Crimson", 'value': "0xDC143C"},
+            {'name': "Cyan", 'value': "0x00FFFF"},
+            {'name': "DarkBlue", 'value': "0x00008B"},
+            {'name': "DarkCyan", 'value': "0x008B8B"},
+            {'name': "DarkGoldenrod", 'value': "0xB8860B"},
+            {'name': "DarkGray", 'value': "0xA9A9A9"},
+            {'name': "DarkGreen", 'value': "0x006400"},
+            {'name': "DarkKhaki", 'value': "0xBDB76B"},
+            {'name': "DarkMagenta", 'value': "0x8B008B"},
+            {'name': "DarkOliveGreen", 'value': "0x556B2F"},
+            {'name': "DarkOrange", 'value': "0xFF8C00"},
+            {'name': "DarkOrchid", 'value': "0x9932CC"},
+            {'name': "DarkRed", 'value': "0x8B0000"},
+            {'name': "DarkSalmon", 'value': "0xE9967A"},
+            {'name': "DarkSeaGreen", 'value': "0x8FBC8F"},
+            {'name': "DarkSlateBlue", 'value': "0x483D8B"},
+            {'name': "DarkSlateGray", 'value': "0x2F4F4F"},
+            {'name': "DarkTurquoise", 'value': "0x00CED1"},
+            {'name': "DarkViolet", 'value': "0x9400D3"},
+            {'name': "DeepPink", 'value': "0xFF1493"},
+            {'name': "DeepSkyBlue", 'value': "0x00BFFF"},
+            {'name': "DimGray", 'value': "0x696969"},
+            {'name': "DodgerBlue", 'value': "0x1E90FF"},
+            {'name': "Firebrick", 'value': "0xB22222"},
+            {'name': "FloralWhite", 'value': "0xFFFAF0"},
+            {'name': "ForestGreen", 'value': "0x228B22"},
+            {'name': "Fuchsia", 'value': "0xFF00FF"},
+            {'name': "Gainsboro", 'value': "0xDCDCDC"},
+            {'name': "GhostWhite", 'value': "0xF8F8FF"},
+            {'name': "Gold", 'value': "0xFFD700"},
+            {'name': "Goldenrod", 'value': "0xDAA520"},
+            {'name': "Gray", 'value': "0x808080"},
+            {'name': "Green", 'value': "0x008000"},
+            {'name': "GreenYellow", 'value': "0xADFF2F"},
+            {'name': "Honeydew", 'value': "0xF0FFF0"},
+            {'name': "HotPink", 'value': "0xFF69B4"},
+            {'name': "IndianRed", 'value': "0xCD5C5C"},
+            {'name': "Indigo", 'value': "0x4B0082"},
+            {'name': "Ivory", 'value': "0xFFFFF0"},
+            {'name': "Khaki", 'value': "0xF0E68C"},
+            {'name': "Lavender", 'value': "0xE6E6FA"},
+            {'name': "LavenderBlush", 'value': "0xFFF0F5"},
+            {'name': "LawnGreen", 'value': "0x7CFC00"},
+            {'name': "LemonChiffon", 'value': "0xFFFACD"},
+            {'name': "LightBlue", 'value': "0xADD8E6"},
+            {'name': "LightCoral", 'value': "0xF08080"},
+            {'name': "LightCyan", 'value': "0xE0FFFF"},
+            {'name': "LightGoldenrodYellow", 'value': "0xFAFAD2"},
+            {'name': "LightGray", 'value': "0xD3D3D3"},
+            {'name': "LightGreen", 'value': "0x90EE90"},
+            {'name': "LightPink", 'value': "0xFFB6C1"},
+            {'name': "LightSalmon", 'value': "0xFFA07A"},
+            {'name': "LightSeaGreen", 'value': "0x20B2AA"},
+            {'name': "LightSkyBlue", 'value': "0x87CEFA"},
+            {'name': "LightSlateGray", 'value': "0x778899"},
+            {'name': "LightSteelBlue", 'value': "0xB0C4DE"},
+            {'name': "LightYellow", 'value': "0xFFFFE0"},
+            {'name': "Lime", 'value': "0x00FF00"},
+            {'name': "LimeGreen", 'value': "0x32CD32"},
+            {'name': "Linen", 'value': "0xFAF0E6"},
+            {'name': "Magenta", 'value': "0xFF00FF"},
+            {'name': "Maroon", 'value': "0x800000"},
+            {'name': "MediumAquamarine", 'value': "0x66CDAA"},
+            {'name': "MediumBlue", 'value': "0x0000CD"},
+            {'name': "MediumOrchid", 'value': "0xBA55D3"},
+            {'name': "MediumPurple", 'value': "0x9370DB"},
+            {'name': "MediumSeaGreen", 'value': "0x3CB371"},
+            {'name': "MediumSlateBlue", 'value': "0x7B68EE"},
+            {'name': "MediumSpringGreen", 'value': "0x00FA9A"},
+            {'name': "MediumTurquoise", 'value': "0x48D1CC"},
+            {'name': "MediumVioletRed", 'value': "0xC71585"},
+            {'name': "MidnightBlue", 'value': "0x191970"},
+            {'name': "MintCream", 'value': "0xF5FFFA"},
+            {'name': "MistyRose", 'value': "0xFFE4E1"},
+            {'name': "Moccasin", 'value': "0xFFE4B5"},
+            {'name': "NavajoWhite", 'value': "0xFFDEAD"},
+            {'name': "Navy", 'value': "0x000080"},
+            {'name': "OldLace", 'value': "0xFDF5E6"},
+            {'name': "Olive", 'value': "0x808000"},
+            {'name': "OliveDrab", 'value': "0x6B8E23"},
+            {'name': "Orange", 'value': "0xFFA500"},
+            {'name': "OrangeRed", 'value': "0xFF4500"},
+            {'name': "Orchid", 'value': "0xDA70D6"},
+            {'name': "PaleGoldenrod", 'value': "0xEEE8AA"},
+            {'name': "PaleGreen", 'value': "0x98FB98"},
+            {'name': "PaleTurquoise", 'value': "0xAFEEEE"},
+            {'name': "PaleVioletRed", 'value': "0xDB7093"},
+            {'name': "PapayaWhip", 'value': "0xFFEFD5"},
+            {'name': "PeachPuff", 'value': "0xFFDAB9"},
+            {'name': "Peru", 'value': "0xCD853F"},
+            {'name': "Pink", 'value': "0xFFC0CB"},
+            {'name': "Plum", 'value': "0xDDA0DD"},
+            {'name': "PowderBlue", 'value': "0xB0E0E6"},
+            {'name': "Purple", 'value': "0x800080"},
+            {'name': "Red", 'value': "0xFF0000"},
+            {'name': "RosyBrown", 'value': "0xBC8F8F"},
+            {'name': "RoyalBlue", 'value': "0x4169E1"},
+            {'name': "SaddleBrown", 'value': "0x8B4513"},
+            {'name': "Salmon", 'value': "0xFA8072"},
+            {'name': "SandyBrown", 'value': "0xF4A460"},
+            {'name': "SeaGreen", 'value': "0x2E8B57"},
+            {'name': "SeaShell", 'value': "0xFFF5EE"},
+            {'name': "Sienna", 'value': "0xA0522D"},
+            {'name': "Silver", 'value': "0xC0C0C0"},
+            {'name': "SkyBlue", 'value': "0x87CEEB"},
+            {'name': "SlateBlue", 'value': "0x6A5ACD"},
+            {'name': "SlateGray", 'value': "0x708090"},
+            {'name': "Snow", 'value': "0xFFFAFA"},
+            {'name': "SpringGreen", 'value': "0x00FF7F"},
+            {'name': "SteelBlue", 'value': "0x4682B4"},
+            {'name': "Tan", 'value': "0xD2B48C"},
+            {'name': "Teal", 'value': "0x008080"},
+            {'name': "Thistle", 'value': "0xD8BFD8"},
+            {'name': "Tomato", 'value': "0xFF6347"},
+            {'name': "Turquoise", 'value': "0x40E0D0"},
+            {'name': "Violet", 'value': "0xEE82EE"},
+            {'name': "Wheat", 'value': "0xF5DEB3"},
+            {'name': "White", 'value': "0xFFFFFF"},
+            {'name': "WhiteSmoke", 'value': "0xF5F5F5"},
+            {'name': "Yellow", 'value': "0xFFFF00"},
+            {'name': "YellowGreen", 'value': "0x9ACD32"}]
+
+    def generate_element_config():
+        names = ['r', 'g', 'b', 'a']
+        
+        elements = []
+        for i, name in enumerate(names):
+            config = {}
+            
+            config['index'] = i
+            config['name'] = name
+            config['prop_name'] = name.upper()
+            config['arg_name'] = name.lower()
+            config['member_name'] = "_%s" % name.lower()
+            
+            elements.append(config)
+            
+        return elements
+    
+    def generate_var_config(supported_channel_configs, supported_types, elements_config):
+        var_config = {}
+        for type in supported_types:
+            for channels in supported_channel_configs:
+                config = Params()
+                
+                num_channels = len(channels)
+                config.num_channels = num_channels
+                config.is_int = type.startswith("int")
+                
+                config.has_alpha = num_channels == 4
+                config.channels_with_alpha = channels + "a" if not config.has_alpha else channels
+                config.channels_without_alpha = channels[:-1] if config.has_alpha else channels
+                
+                config.elements = elements_config[:num_channels]
+                
+                config.min_channel_value = "0"
+                
+                if config.is_int:
+                    config.pint_channel_bits = int(type.replace("int", ""))
+                    config.pint_total_bits = config.pint_channel_bits * num_channels
+                    config.pint_config = {'rgb': [0, 1, 2], 'rgba': [3, 0, 1, 2]}[channels]
+                    config.pint_type = 'uint' if config.pint_total_bits <= 32 else 'ulong'
+                    config.elements_type = 'byte' if config.pint_channel_bits <= 8 else 'ushort'
+
+                    config.name = "Color%s%s" % (channels.upper(), str(config.pint_channel_bits if config.pint_channel_bits != 8 else ""))
+                    
+                    config.pint_mask = to_typed_hex_mask(config.pint_type, config.pint_total_bits)
+                    config.max_channel_value = to_typed_hex_mask(config.elements_type, config.pint_channel_bits)
+                    
+                    pint_name = "".join([config.elements[x]['name'] for x in config.pint_config])
+                    config.pint_member_name = "_%s" % pint_name.lower()
+                    config.pint_arg_name = pint_name.lower()
+                    config.pint_property_name = pint_name.upper()
+                
+                var_config[channels, type] = config
+
+        return var_config
+    
+    def to_typed_hex_mask(type, bits):
+        return "((%s) %s)" % (type, hex((2 ** bits) - 1).replace("L", ""))
+    
+    _.channels_configs = ['rgb', 'rgba']
+    _.types = ['int8', 'int12', 'int16']
+    
+    _.named_color_configs = generate_named_color_configs()    
+    elements_config = generate_element_config()
+    _.var_config = generate_var_config(_.channels_configs, _.types, elements_config)
+    
+    _.var_types_config = {}
+    for t in _.types:
+        _.var_types_config[t] = _.var_config[_.channels, t]
+    
+    _.var_channels = {}
+    for c in _.channels_configs:
+        _.var_channels[c] = _.var_config[c, _.type]
+    
+    _.config = _.var_types_config[_.type]
+    
+    if _.config.is_int:
+        if not _.config.has_alpha:
+            _.color_init = lambda named_color_config: "new %s(%s)" % (_.name, named_color_config['value'])
+        else:
+            _.color_init = lambda named_color_config: "(%s) %s.%s" % (_.name, _.var_channels[_.config.channels_without_alpha].name, named_color_config['name'])
+    
+    _.elements = _.config.elements
+    _.is_int = _.config.is_int
+    _.elements_type = _.config.elements_type
+    _.pint_type = _.config.pint_type
+    _.pint_member_name = _.config.pint_member_name
+    _.pint_arg_name = _.config.pint_arg_name
+    _.name = _.config.name
+    _.config.is_class = False
+    
+init(_)
+
+#%]
+
+public struct [#name#] : IEquatable<[#name#]>
+{
+    #region consts
+    
+    public const [#elements_type#] MinChannelValue = [=# _.config.min_channel_value #=];
+    public const [#elements_type#] MaxChannelValue = [=# _.config.max_channel_value #=];
+    
+    #endregion
+
+    #region Named colors
+    [?# _.type == 'int8' :? 
+    [*# _.named_color_configs ::
+    public static readonly [#name#] [=# _item_['name'] #=] = [=# _.color_init(_item_) #=];
+    #*]
+    #?][?# _.channels == 'rgba' :? 
+    public static readonly [#name#] Transparent = new [#name#](0, 0, 0, 0);
+    #?]
+    
+    #endregion
+    
+    #region Members
+    [?# _.is_int :? 
+    private readonly [#pint_type#] [#pint_member_name#];
+    #?]
+    #endregion
+    
+    #region Construction and conversion
+    
+    [?# _.is_int :? 
+    public [#name#]([#pint_type#] [#pint_arg_name#])
+    {
+        [#pint_member_name#] = [#pint_arg_name#] & [=# _.config.pint_mask #=];
+    }
+    
+    public [#name#]([*# _.elements ::[#elements_type#] [=# _item_['arg_name'] #=]|*|, #*])
+    {
+        [#pint_member_name#] = [*# enumerate(_.config.pint_config) ::(([#pint_type#]) [=# _.elements[_item_[1]]['arg_name'] #=] << [=# _.config.pint_channel_bits * (_.config.num_channels - _item_[0] - 1) #=])|*| | #*];
+    }
+    #?]
+    
+    [?# _.config.has_alpha :? [=# c = "".join([x['arg_name'] for x in _.elements[:-1]]) ||| #=]
+    public [#name#]([=# _.var_channels[_.config.channels_without_alpha].name #=] [=# c #=], [#elements_type#] [=# _.elements[-1]['arg_name'] #=] = MaxChannelValue)
+        : this([*# _.elements[:-1] ::[=# c #=].[=# _item_['prop_name'] #=]|*|, #*], [=# _.elements[-1]['arg_name'] #=]) { }
+    #?]
+    
+    [?# _.config.has_alpha :?
+    public static explicit operator [#name#]([=# _.var_channels[_.config.channels_without_alpha].name #=] c)
+    {
+        return new [#name#](c);
+    }
+    #?]
+    
+    #endregion
+    
+    #region Properties
+    
+    [*# enumerate(_.elements) ::
+    public [#elements_type#] [=# _item_[1]['prop_name'] #=]
+    {
+        get { return ([#elements_type#]) (([#pint_member_name#] >> [=# _.config.pint_channel_bits * (_.config.num_channels - _.config.pint_config.index(_item_[0]) - 1) #=]) & MaxChannelValue); }
+    }
+    #*][?# _.config.has_alpha :?
+    
+    public [=# _.var_channels[_.config.channels_without_alpha].name #=] [=# "".join([x['prop_name'] for x in _.elements[:-1]]) #=]
+    {
+        get { return new [=# _.var_channels[_.config.channels_without_alpha].name #=]([*# _.elements[:-1] ::[=# _item_['prop_name'] #=]|*|, #*]); }
+    }
+    
+    public bool IsTransparent
+    {
+        get { return A <= MinChannelValue; }
+    }
+     
+    public bool IsOpaque
+    {
+        get { return A >= MaxChannelValue; }
+    }
+    
+    public bool IsTranslucent
+    {
+        get { return !IsTransparent && !IsOpaque; }
+    }
+    #?]
+    #endregion
+    
+    #region Mutation
+    [?# _.config.has_alpha :?
+    public [#name#] ChangeAlpha([#elements_type#] [=# _.elements[-1]['arg_name'] #=])
+    {
+        return new [#name#]([*# _.elements[:-1] ::[=# _item_['prop_name'] #=]|*|, #*], [=# _.elements[-1]['arg_name'] #=]);
+    }
+    #?]
+    #endregion
+    
+    #region Equality & HashCode
+
+    public bool Equals([#name#] c)
+    {
+        return [#pint_member_name#] == c.[#pint_member_name#];
+    }
+
+    public override bool Equals(object obj)
+    {
+        [?# not _.config.is_class :?
+        var c = obj as [#name#]?;
+
+        if(!c.HasValue)
+        {
+            return false;
+        }
+
+        return Equals(c.Value);
+        #?][?# _.config.is_class :?
+        if(obj == null || !(obj is [#name#]))
+        {
+            return false;
+        }
+
+        return Equals(([#name#]) obj);
+        #?]
+    }
+
+    public override int GetHashCode()
+    {
+        return [#pint_member_name#].GetHashCode();
+    }
+
+    public static bool operator ==([#name#] v, [#name#] w)
+    {
+        return v.Equals(w);
+    }
+
+    public static bool operator !=([#name#] v, [#name#] w)
+    {
+        return !v.Equals(w);
+    }
+
+    #endregion
+    
+    #region ToString
+    
+    public override string ToString()
+    {
+        return string.Format("[#name#]([*# _.elements ::[=# _item_['prop_name'] #=]={[=# _item_['index'] #=]}|*|, #*])", [*# _.elements ::[=# _item_['prop_name'] #=]|*|, #*]);
+    }
+    
+    #endregion
+}

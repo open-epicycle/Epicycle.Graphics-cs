@@ -32,6 +32,6 @@ namespace Epicycle.Graphics.Geometry.Ply
         int[] GetIntArray(string name, bool required);
         Vector3 GetVector3(string namePrefix, bool required);
         Rotation3? GetRotation3(string namePrefix, bool required);
-        Color4b? GetColor4b(string namePrefix, bool required);
+        ColorRGBA? GetColorRGBA(string namePrefix, bool required);
     }
 }
