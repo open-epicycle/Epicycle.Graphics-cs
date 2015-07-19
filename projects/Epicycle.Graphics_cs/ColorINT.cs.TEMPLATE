@@ -204,7 +204,7 @@ def init(_):
         return "((%s) %s)" % (type, hex((2 ** bits) - 1).replace("L", ""))
     
     _.channels_configs = ['rgb', 'rgba']
-    _.types = ['int8']
+    _.types = ['int8', 'int12', 'int16']
     
     _.named_color_configs = generate_named_color_configs()    
     elements_config = generate_element_config()
@@ -249,11 +249,12 @@ public struct [#name#] : IEquatable<[#name#]>
     #endregion
 
     #region Named colors
+    [?# _.type == 'int8' :? 
     [*# _.named_color_configs ::
     public static readonly [#name#] [=# _item_['name'] #=] = [=# _.color_init(_item_) #=];
     #*]
-    [?# _.type == 'int8' and _.channels == 'rgba' :? 
-    public static readonly [#name#] Transparent = new [#name#](0x00000000);
+    #?][?# _.channels == 'rgba' :? 
+    public static readonly [#name#] Transparent = new [#name#](0, 0, 0, 0);
     #?]
     
     #endregion

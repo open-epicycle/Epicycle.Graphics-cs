@@ -34,6 +34,7 @@ namespace Epicycle.Graphics
         #endregion
 
         #region Named colors
+     
     
         public static readonly ColorRGB AliceBlue = new ColorRGB(0xF0F8FF);
     

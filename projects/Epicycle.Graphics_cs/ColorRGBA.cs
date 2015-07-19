@@ -33,6 +33,7 @@ namespace Epicycle.Graphics
         #endregion
 
         #region Named colors
+     
     
         public static readonly ColorRGBA AliceBlue = (ColorRGBA) ColorRGB.AliceBlue;
     
@@ -315,7 +316,7 @@ namespace Epicycle.Graphics
         public static readonly ColorRGBA YellowGreen = (ColorRGBA) ColorRGB.YellowGreen;
     
      
-        public static readonly ColorRGBA Transparent = new ColorRGBA(0x00000000);
+        public static readonly ColorRGBA Transparent = new ColorRGBA(0, 0, 0, 0);
     
     
         #endregion
