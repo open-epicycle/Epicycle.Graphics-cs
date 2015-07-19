@@ -1,0 +1,3 @@
+Epicycle.Graphics:
+ * ColorRGB[A]#: Constructors from different bit sizes
+ * ColorRGB[A]12: Chanel values validation or clipping (ushort is 16bit, but channel is 12bit)
