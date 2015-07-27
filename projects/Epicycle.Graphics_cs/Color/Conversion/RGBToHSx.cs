@@ -52,6 +52,26 @@ namespace Epicycle.Graphics.Color.Conversion
             }
         }
 
+        public static void HSLToRGB(float hue, float saturation, float lightness, out float red, out float green, out float blue)
+        {
+            var nh = NormalizeHue(hue);
+            var cs = ClipUnit(saturation);
+            var cl = ClipUnit(lightness);
+
+            var max = (cl <= 0.5f) ? (cl * (1 + cs)) : (cl + cs - cl * cs);
+            if (max > 0 && cs > 0)
+            {
+                var min = 2 * cl - max;
+                HueMinMaxToRGB(nh, min, max, out red, out green, out blue);
+            }
+            else
+            {
+                red = cl;
+                green = cl;
+                blue = cl;
+            }
+        }
+
         #endregion
 
         #region RGB <-> HSV
@@ -82,6 +102,25 @@ namespace Epicycle.Graphics.Color.Conversion
             }
         }
 
+        public static void HSVToRGB(float hue, float saturation, float value, out float red, out float green, out float blue)
+        {
+            var nh = NormalizeHue(hue);
+            var cs = ClipUnit(saturation);
+            var cv = ClipUnit(value);
+
+            if (cv > 0 && cs > 0)
+            {
+                var min = cv * (1 - cs);
+                HueMinMaxToRGB(nh, min, cv, out red, out green, out blue);
+            }
+            else
+            {
+                red = cv;
+                green = cv;
+                blue = cv;
+            }
+        }
+
         #endregion
 
         #region RGB <-> HSI
@@ -101,11 +140,11 @@ namespace Epicycle.Graphics.Color.Conversion
                 var ng = cg / max;
                 var nb = cb / max;
 
-                var pi2 = 2 * (float)Math.PI;
-                var hueNormAcos = (float)Math.Acos(
+                var hueNormAcos = SafeAcos(
                     (0.5f * (2 * nr - ng - nb)) /
-                    Math.Sqrt((nr - ng) * (nr - ng) + (nr - nb) * (ng - nb)))
-                    / pi2;
+                    (float) Math.Sqrt((nr - ng) * (nr - ng) + (nr - nb) * (ng - nb)))
+                    / PI2;
+                
                 hue = (nb <= ng) ? hueNormAcos : 1 - hueNormAcos;
 
                 intensity = (cr + cg + cb) / 3;
@@ -119,9 +158,49 @@ namespace Epicycle.Graphics.Color.Conversion
             }
         }
 
+        public static void HSIToRGB(float hue, float saturation, float intensity, out float red, out float green, out float blue)
+        {
+            var nh = NormalizeHue(hue);
+            var cs = ClipUnit(saturation);
+            var ci = ClipUnit(intensity);
+
+            // Based on a post by Brian Neltner: http://blog.saikoled.com/post/43693602826/why-every-led-light-should-be-using-hsi
+
+            const float Third = 1.0f / 3.0f;
+            const float TwoThirds = 2.0f / 3.0f;
+            const float PIdiv3 = Third * (float) Math.PI;
+
+            if (nh < Third)
+            {
+                var rad = PI2 * nh;
+                var r = (float)(Math.Cos(rad) / Math.Cos(PIdiv3 - rad));
+                red = ci * (1 + cs * r);
+                green = ci * (1 + cs * (1 - r));
+                blue = ci * (1 - cs);
+            }
+            else if (nh < TwoThirds)
+            {
+                var rad = PI2 * (nh - Third);
+                var r = (float)(Math.Cos(rad) / Math.Cos(PIdiv3 - rad));
+                green = ci * (1 + cs * r);
+                blue = ci * (1 + cs * (1 - r));
+                red = ci * (1 - cs);
+            }
+            else
+            {
+                var rad = PI2 * (nh - TwoThirds);
+                var r = (float)(Math.Cos(rad) / Math.Cos(PIdiv3 - rad));
+                blue = ci * (1 + cs * r);
+                red = ci * (1 + cs * (1 - r));
+                green = ci * (1 - cs);
+            }
+        }
+
         #endregion
 
         #region Helper functions
+
+        private const float PI2 = 2 * (float)Math.PI;
 
         private enum RGBMaxComponents
         {
@@ -174,11 +253,64 @@ namespace Epicycle.Graphics.Color.Conversion
             }
         }
 
-        // TODO: Use BasicMath when ready for float
+        private static void HueMinMaxToRGB(float hue, float min, float max, out float red, out float green, out float blue)
+        {
+            var hue6 = hue * 6.0f;
+            var sextant = (int)Math.Floor(hue6);
+
+            var f = hue6 - sextant;
+            var x = f * (max - min);
+            var mid1 = min + x;
+            var mid2 = max - x;
+
+            switch (sextant % 6)
+            {
+                case 0:
+                    red = max;
+                    green = mid1;
+                    blue = min;
+                    break;
+                case 1:
+                    red = mid2;
+                    green = max;
+                    blue = min;
+                    break;
+                case 2:
+                    red = min;
+                    green = max;
+                    blue = mid1;
+                    break;
+                case 3:
+                    red = min;
+                    green = mid2;
+                    blue = max;
+                    break;
+                case 4:
+                    red = mid1;
+                    green = min;
+                    blue = max;
+                    break;
+                case 5:
+                    red = max;
+                    green = min;
+                    blue = mid2;
+                    break;
+                default:
+                    throw new InternalException("This can never happen!");
+            }
+        }
+
         private static float ClipUnit(float x)
         {
             return BasicMath.Clip(x, 0, 1);
         }
+
+        private static float NormalizeHue(float h)
+        {
+            return (h < 0 || h > 1) ? h - (float) Math.Floor(h) : h;
+        }
+
+        // TODO: Use BasicMath when ready
 
         private static float Min(float a, float b, float c)
         {
@@ -188,6 +320,11 @@ namespace Epicycle.Graphics.Color.Conversion
         private static float Max(float a, float b, float c)
         {
             return Math.Max(a, Math.Max(b, c));
+        }
+
+        private static float SafeAcos(float x)
+        {
+            return (float) Math.Acos(BasicMath.Clip(x, -1, 1));
         }
 
         #endregion
