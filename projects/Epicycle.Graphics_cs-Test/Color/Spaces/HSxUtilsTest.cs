@@ -18,10 +18,10 @@
 
 using NUnit.Framework;
 
-namespace Epicycle.Graphics.Color.Conversion
+namespace Epicycle.Graphics.Color.Spaces
 {
     [TestFixture]
-    public class RGBToHSxTest
+    public class HSxUtilsTest
     {
         private const float Epsilon = 1e-2f;
         private const float RGBStep = 1.0f / 96;
@@ -105,7 +105,7 @@ namespace Epicycle.Graphics.Color.Conversion
                     for (float b = 0; b <= 1; b += RGBStep)
                     {
                         float hue, saturation, lightness;
-                        RGBToHSx.RGBToHSL(r, g, b, out hue, out saturation, out lightness);
+                        HSxUtils.RGBToHSL(r, g, b, out hue, out saturation, out lightness);
 
                         TestHSLToRGB(hue, saturation, lightness, r, g, b);
                     }
@@ -121,7 +121,7 @@ namespace Epicycle.Graphics.Color.Conversion
             float saturation;
             float lightness;
 
-            RGBToHSx.RGBToHSL(red, green, blue, out hue, out saturation, out lightness);
+            HSxUtils.RGBToHSL(red, green, blue, out hue, out saturation, out lightness);
 
             Assert.That(hue, Is.EqualTo(expectedHue).Within(Epsilon));
             Assert.That(saturation, Is.EqualTo(expectedSaturation).Within(Epsilon));
@@ -136,7 +136,7 @@ namespace Epicycle.Graphics.Color.Conversion
             float green;
             float blue;
 
-            RGBToHSx.HSLToRGB(hue, saturation, lightness, out red, out green, out blue);
+            HSxUtils.HSLToRGB(hue, saturation, lightness, out red, out green, out blue);
 
             Assert.That(red, Is.EqualTo(expectedRed).Within(Epsilon));
             Assert.That(green, Is.EqualTo(expectedGreen).Within(Epsilon));
@@ -224,7 +224,7 @@ namespace Epicycle.Graphics.Color.Conversion
                     for (float b = 0; b <= 1; b += RGBStep)
                     {
                         float hue, saturation, value;
-                        RGBToHSx.RGBToHSV(r, g, b, out hue, out saturation, out value);
+                        HSxUtils.RGBToHSV(r, g, b, out hue, out saturation, out value);
 
                         TestHSVToRGB(hue, saturation, value, r, g, b);
                     }
@@ -240,7 +240,7 @@ namespace Epicycle.Graphics.Color.Conversion
             float saturation;
             float value;
 
-            RGBToHSx.RGBToHSV(red, green, blue, out hue, out saturation, out value);
+            HSxUtils.RGBToHSV(red, green, blue, out hue, out saturation, out value);
 
             Assert.That(hue, Is.EqualTo(expectedHue).Within(Epsilon));
             Assert.That(saturation, Is.EqualTo(expectedSaturation).Within(Epsilon));
@@ -255,7 +255,7 @@ namespace Epicycle.Graphics.Color.Conversion
             float green;
             float blue;
 
-            RGBToHSx.HSVToRGB(hue, saturation, value, out red, out green, out blue);
+            HSxUtils.HSVToRGB(hue, saturation, value, out red, out green, out blue);
 
             Assert.That(red, Is.EqualTo(expectedRed).Within(Epsilon));
             Assert.That(green, Is.EqualTo(expectedGreen).Within(Epsilon));
@@ -349,7 +349,7 @@ namespace Epicycle.Graphics.Color.Conversion
                     for (float b = 0; b <= 1; b += RGBStep)
                     {
                         float hue, saturation, intensity;
-                        RGBToHSx.RGBToHSI(r, g, b, out hue, out saturation, out intensity);
+                        HSxUtils.RGBToHSI(r, g, b, out hue, out saturation, out intensity);
 
                         TestHSIToRGB(hue, saturation, intensity, r, g, b);
                     }
@@ -365,7 +365,7 @@ namespace Epicycle.Graphics.Color.Conversion
             float saturation;
             float intensity;
 
-            RGBToHSx.RGBToHSI(red, green, blue, out hue, out saturation, out intensity);
+            HSxUtils.RGBToHSI(red, green, blue, out hue, out saturation, out intensity);
 
             Assert.That(hue, Is.EqualTo(expectedHue).Within(Epsilon));
             Assert.That(saturation, Is.EqualTo(expectedSaturation).Within(Epsilon));
@@ -380,7 +380,7 @@ namespace Epicycle.Graphics.Color.Conversion
             float green;
             float blue;
 
-            RGBToHSx.HSIToRGB(hue, saturation, intensity, out red, out green, out blue);
+            HSxUtils.HSIToRGB(hue, saturation, intensity, out red, out green, out blue);
             
             Assert.That(red, Is.EqualTo(expectedRed).Within(Epsilon));
             Assert.That(green, Is.EqualTo(expectedGreen).Within(Epsilon));

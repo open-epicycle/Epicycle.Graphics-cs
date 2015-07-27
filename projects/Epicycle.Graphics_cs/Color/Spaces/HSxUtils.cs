@@ -18,11 +18,11 @@
 
 using Epicycle.Commons;
 
-namespace Epicycle.Graphics.Color.Conversion
+namespace Epicycle.Graphics.Color.Spaces
 {
     using System;
 
-    public static class RGBToHSx
+    public static class HSxUtils
     {
         #region RGB <-> HSL
 
