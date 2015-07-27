@@ -28,9 +28,9 @@ namespace Epicycle.Graphics.Color.Conversion
 
         public static void RGBToHSL(float red, float green, float blue, out float hue, out float saturation, out float lightness)
         {
-            var cr = ClipUnit(red);
-            var cg = ClipUnit(green);
-            var cb = ClipUnit(blue);
+            var cr = MathUtils.ClipUnit(red);
+            var cg = MathUtils.ClipUnit(green);
+            var cb = MathUtils.ClipUnit(blue);
 
             float min;
             float max;
@@ -54,9 +54,9 @@ namespace Epicycle.Graphics.Color.Conversion
 
         public static void HSLToRGB(float hue, float saturation, float lightness, out float red, out float green, out float blue)
         {
-            var nh = NormalizeHue(hue);
-            var cs = ClipUnit(saturation);
-            var cl = ClipUnit(lightness);
+            var nh = MathUtils.WrapUnit(hue);
+            var cs = MathUtils.ClipUnit(saturation);
+            var cl = MathUtils.ClipUnit(lightness);
 
             var max = (cl <= 0.5f) ? (cl * (1 + cs)) : (cl + cs - cl * cs);
             if (max > 0 && cs > 0)
@@ -78,9 +78,9 @@ namespace Epicycle.Graphics.Color.Conversion
 
         public static void RGBToHSV(float red, float green, float blue, out float hue, out float saturation, out float value)
         {
-            var cr = ClipUnit(red);
-            var cg = ClipUnit(green);
-            var cb = ClipUnit(blue);
+            var cr = MathUtils.ClipUnit(red);
+            var cg = MathUtils.ClipUnit(green);
+            var cb = MathUtils.ClipUnit(blue);
 
             float min;
             float max;
@@ -104,9 +104,9 @@ namespace Epicycle.Graphics.Color.Conversion
 
         public static void HSVToRGB(float hue, float saturation, float value, out float red, out float green, out float blue)
         {
-            var nh = NormalizeHue(hue);
-            var cs = ClipUnit(saturation);
-            var cv = ClipUnit(value);
+            var nh = MathUtils.WrapUnit(hue);
+            var cs = MathUtils.ClipUnit(saturation);
+            var cv = MathUtils.ClipUnit(value);
 
             if (cv > 0 && cs > 0)
             {
@@ -127,12 +127,12 @@ namespace Epicycle.Graphics.Color.Conversion
 
         public static void RGBToHSI(float red, float green, float blue, out float hue, out float saturation, out float intensity)
         {
-            var cr = ClipUnit(red);
-            var cg = ClipUnit(green);
-            var cb = ClipUnit(blue);
+            var cr = MathUtils.ClipUnit(red);
+            var cg = MathUtils.ClipUnit(green);
+            var cb = MathUtils.ClipUnit(blue);
 
-            var min = Min(cr, cg, cb);
-            var max = Max(cr, cg, cb);
+            var min = MathUtils.Min(cr, cg, cb);
+            var max = MathUtils.Max(cr, cg, cb);
 
             if(min != max)
             {
@@ -140,7 +140,7 @@ namespace Epicycle.Graphics.Color.Conversion
                 var ng = cg / max;
                 var nb = cb / max;
 
-                var hueNormAcos = SafeAcos(
+                var hueNormAcos = MathUtils.SafeAcos(
                     (0.5f * (2 * nr - ng - nb)) /
                     (float) Math.Sqrt((nr - ng) * (nr - ng) + (nr - nb) * (ng - nb)))
                     / PI2;
@@ -160,9 +160,9 @@ namespace Epicycle.Graphics.Color.Conversion
 
         public static void HSIToRGB(float hue, float saturation, float intensity, out float red, out float green, out float blue)
         {
-            var nh = NormalizeHue(hue);
-            var cs = ClipUnit(saturation);
-            var ci = ClipUnit(intensity);
+            var nh = MathUtils.WrapUnit(hue);
+            var cs = MathUtils.ClipUnit(saturation);
+            var ci = MathUtils.ClipUnit(intensity);
 
             // Based on a post by Brian Neltner: http://blog.saikoled.com/post/43693602826/why-every-led-light-should-be-using-hsi
 
@@ -214,8 +214,8 @@ namespace Epicycle.Graphics.Color.Conversion
             float red, float green, float blue, 
             out float min, out float max, out float chroma, out RGBMaxComponents maxComponent)
         {
-            min = Min(red, green, blue);
-            max = Max(red, green, blue);
+            min = MathUtils.Min(red, green, blue);
+            max = MathUtils.Max(red, green, blue);
             chroma = max - min;
 
             if(chroma == 0)
@@ -298,33 +298,6 @@ namespace Epicycle.Graphics.Color.Conversion
                 default:
                     throw new InternalException("This can never happen!");
             }
-        }
-
-        private static float ClipUnit(float x)
-        {
-            return BasicMath.Clip(x, 0, 1);
-        }
-
-        private static float NormalizeHue(float h)
-        {
-            return (h < 0 || h > 1) ? h - (float) Math.Floor(h) : h;
-        }
-
-        // TODO: Use BasicMath when ready
-
-        private static float Min(float a, float b, float c)
-        {
-            return Math.Min(a, Math.Min(b, c));
-        }
-        
-        private static float Max(float a, float b, float c)
-        {
-            return Math.Max(a, Math.Max(b, c));
-        }
-
-        private static float SafeAcos(float x)
-        {
-            return (float) Math.Acos(BasicMath.Clip(x, -1, 1));
         }
 
         #endregion

@@ -99,6 +99,7 @@
     <Compile Include="Images\ReadOnlyImageFloatView.cs" />
     <Compile Include="Images\ReadOnlyImageView.cs" />
     <Compile Include="Images\RgbImageType.cs" />
+    <Compile Include="MathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
