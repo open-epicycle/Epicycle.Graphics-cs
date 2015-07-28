@@ -16,11 +16,6 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Epicycle.Commons;
 
 namespace Epicycle.Graphics
@@ -54,6 +49,13 @@ namespace Epicycle.Graphics
         public static float SafeAcos(float x)
         {
             return (float)Math.Acos(BasicMath.Clip(x, -1, 1));
+        }
+
+        public static void TransformVector3(float[,] matrix, float v0, float v1, float v2, out float out0, out float out1, out float out2)
+        {
+            out0 = matrix[0, 0] * v0 + matrix[0, 1] * v1 + matrix[0, 2] * v2;
+            out1 = matrix[1, 0] * v0 + matrix[1, 1] * v1 + matrix[1, 2] * v2;
+            out2 = matrix[2, 0] * v0 + matrix[2, 1] * v1 + matrix[2, 2] * v2;
         }
     }
 }
