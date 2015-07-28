@@ -24,367 +24,367 @@ namespace Epicycle.Graphics.Color.Spaces
     public class HSxUtilsTest
     {
         private const float Epsilon = 1e-2f;
-        private const float RGBStep = 1.0f / 96;
+        private const float Color3Step = 1.0f / 96;
 
-        #region RGB <-> HSL
+        #region Color3 <-> HSL
 
         [Test]
-        public void RGBToHSL_converts_properly()
+        public void Color3ToHSL_converts_properly()
         {
-            TestRGBToHSL(0.00f, 0.00f, 0.00f, 0.000f, 0.000f, 0.000f);
-            TestRGBToHSL(1.00f, 1.00f, 1.00f, 0.000f, 0.000f, 1.000f);
-            TestRGBToHSL(0.25f, 0.25f, 0.25f, 0.000f, 0.000f, 0.250f);
-            TestRGBToHSL(1.00f, 0.00f, 0.00f, 0.000f, 1.000f, 0.500f);
-            TestRGBToHSL(0.00f, 1.00f, 0.00f, 0.333f, 1.000f, 0.500f);
-            TestRGBToHSL(0.00f, 0.00f, 1.00f, 0.667f, 1.000f, 0.500f);
-            TestRGBToHSL(0.75f, 0.25f, 0.50f, 0.917f, 0.500f, 0.500f);
-            TestRGBToHSL(0.75f, 0.50f, 0.25f, 0.083f, 0.500f, 0.500f);
-            TestRGBToHSL(0.25f, 0.75f, 0.50f, 0.417f, 0.500f, 0.500f);
-            TestRGBToHSL(0.50f, 0.75f, 0.25f, 0.250f, 0.500f, 0.500f);
-            TestRGBToHSL(0.25f, 0.50f, 0.75f, 0.583f, 0.500f, 0.500f);
-            TestRGBToHSL(0.50f, 0.25f, 0.75f, 0.750f, 0.500f, 0.500f);
-            TestRGBToHSL(0.36f, 0.51f, 0.70f, 0.592f, 0.361f, 0.533f);
+            TestColor3ToHSL(0.00f, 0.00f, 0.00f, 0.000f, 0.000f, 0.000f);
+            TestColor3ToHSL(1.00f, 1.00f, 1.00f, 0.000f, 0.000f, 1.000f);
+            TestColor3ToHSL(0.25f, 0.25f, 0.25f, 0.000f, 0.000f, 0.250f);
+            TestColor3ToHSL(1.00f, 0.00f, 0.00f, 0.000f, 1.000f, 0.500f);
+            TestColor3ToHSL(0.00f, 1.00f, 0.00f, 0.333f, 1.000f, 0.500f);
+            TestColor3ToHSL(0.00f, 0.00f, 1.00f, 0.667f, 1.000f, 0.500f);
+            TestColor3ToHSL(0.75f, 0.25f, 0.50f, 0.917f, 0.500f, 0.500f);
+            TestColor3ToHSL(0.75f, 0.50f, 0.25f, 0.083f, 0.500f, 0.500f);
+            TestColor3ToHSL(0.25f, 0.75f, 0.50f, 0.417f, 0.500f, 0.500f);
+            TestColor3ToHSL(0.50f, 0.75f, 0.25f, 0.250f, 0.500f, 0.500f);
+            TestColor3ToHSL(0.25f, 0.50f, 0.75f, 0.583f, 0.500f, 0.500f);
+            TestColor3ToHSL(0.50f, 0.25f, 0.75f, 0.750f, 0.500f, 0.500f);
+            TestColor3ToHSL(0.36f, 0.51f, 0.70f, 0.592f, 0.361f, 0.533f);
         }
 
         [Test]
-        public void RGBToHSL_input_is_clipped()
+        public void Color3ToHSL_input_is_clipped()
         {
-            TestRGBToHSL(10.00f, -10.00f, 0.00f, 0.000f, 1.000f, 0.500f);
-            TestRGBToHSL(0.00f, 10.00f, -10.00f, 0.333f, 1.000f, 0.500f);
-            TestRGBToHSL(-10.00f, 0.00f, 10.00f, 0.667f, 1.000f, 0.500f);
+            TestColor3ToHSL(10.00f, -10.00f, 0.00f, 0.000f, 1.000f, 0.500f);
+            TestColor3ToHSL(0.00f, 10.00f, -10.00f, 0.333f, 1.000f, 0.500f);
+            TestColor3ToHSL(-10.00f, 0.00f, 10.00f, 0.667f, 1.000f, 0.500f);
         }
 
         [Test]
-        public void HSLToRGB_converts_properly()
+        public void HSLToColor3_converts_properly()
         {
-            TestHSLToRGB(0.000f, 0.000f, 0.000f, 0.00f, 0.00f, 0.00f);
-            TestHSLToRGB(0.000f, 0.000f, 1.000f, 1.00f, 1.00f, 1.00f);
-            TestHSLToRGB(0.000f, 0.000f, 0.250f, 0.25f, 0.25f, 0.25f);
-            TestHSLToRGB(0.000f, 1.000f, 0.500f, 1.00f, 0.00f, 0.00f);
-            TestHSLToRGB(0.333f, 1.000f, 0.500f, 0.00f, 1.00f, 0.00f);
-            TestHSLToRGB(0.667f, 1.000f, 0.500f, 0.00f, 0.00f, 1.00f);
-            TestHSLToRGB(0.917f, 0.500f, 0.500f, 0.75f, 0.25f, 0.50f);
-            TestHSLToRGB(0.083f, 0.500f, 0.500f, 0.75f, 0.50f, 0.25f);
-            TestHSLToRGB(0.417f, 0.500f, 0.500f, 0.25f, 0.75f, 0.50f);
-            TestHSLToRGB(0.250f, 0.500f, 0.500f, 0.50f, 0.75f, 0.25f);
-            TestHSLToRGB(0.583f, 0.500f, 0.500f, 0.25f, 0.50f, 0.75f);
-            TestHSLToRGB(0.750f, 0.500f, 0.500f, 0.50f, 0.25f, 0.75f);
-            TestHSLToRGB(0.592f, 0.361f, 0.533f, 0.36f, 0.51f, 0.70f);
+            TestHSLToColor3(0.000f, 0.000f, 0.000f, 0.00f, 0.00f, 0.00f);
+            TestHSLToColor3(0.000f, 0.000f, 1.000f, 1.00f, 1.00f, 1.00f);
+            TestHSLToColor3(0.000f, 0.000f, 0.250f, 0.25f, 0.25f, 0.25f);
+            TestHSLToColor3(0.000f, 1.000f, 0.500f, 1.00f, 0.00f, 0.00f);
+            TestHSLToColor3(0.333f, 1.000f, 0.500f, 0.00f, 1.00f, 0.00f);
+            TestHSLToColor3(0.667f, 1.000f, 0.500f, 0.00f, 0.00f, 1.00f);
+            TestHSLToColor3(0.917f, 0.500f, 0.500f, 0.75f, 0.25f, 0.50f);
+            TestHSLToColor3(0.083f, 0.500f, 0.500f, 0.75f, 0.50f, 0.25f);
+            TestHSLToColor3(0.417f, 0.500f, 0.500f, 0.25f, 0.75f, 0.50f);
+            TestHSLToColor3(0.250f, 0.500f, 0.500f, 0.50f, 0.75f, 0.25f);
+            TestHSLToColor3(0.583f, 0.500f, 0.500f, 0.25f, 0.50f, 0.75f);
+            TestHSLToColor3(0.750f, 0.500f, 0.500f, 0.50f, 0.25f, 0.75f);
+            TestHSLToColor3(0.592f, 0.361f, 0.533f, 0.36f, 0.51f, 0.70f);
         }
 
         [Test]
-        public void HSLToRGB_hue_wraps_around()
+        public void HSLToColor3_hue_wraps_around()
         {
             for(float x = -10; x <= 10; x += 1)
             {
-                TestHSLToRGB(x + 0.592f, 0.361f, 0.533f, 0.36f, 0.51f, 0.70f);
+                TestHSLToColor3(x + 0.592f, 0.361f, 0.533f, 0.36f, 0.51f, 0.70f);
             }
         }
 
         [Test]
-        public void HSLToRGB_saturation_is_clipped()
+        public void HSLToColor3_saturation_is_clipped()
         {
-            TestHSLToRGB(0.000f, -10.000f, 0.250f, 0.25f, 0.25f, 0.25f);
-            TestHSLToRGB(0.000f, 10.000f, 0.500f, 1.00f, 0.00f, 0.00f);
+            TestHSLToColor3(0.000f, -10.000f, 0.250f, 0.25f, 0.25f, 0.25f);
+            TestHSLToColor3(0.000f, 10.000f, 0.500f, 1.00f, 0.00f, 0.00f);
         }
 
         [Test]
-        public void HSLToRGB_lightness_is_clipped()
+        public void HSLToColor3_lightness_is_clipped()
         {
-            TestHSLToRGB(0.000f, 0.000f, -10.000f, 0.00f, 0.00f, 0.00f);
-            TestHSLToRGB(0.000f, 0.000f, 10.000f, 1.00f, 1.00f, 1.00f);
+            TestHSLToColor3(0.000f, 0.000f, -10.000f, 0.00f, 0.00f, 0.00f);
+            TestHSLToColor3(0.000f, 0.000f, 10.000f, 1.00f, 1.00f, 1.00f);
         }
 
         [Test]
-        public void HSLToRGB_is_inverse_of_RGBToHSL()
+        public void HSLToColor3_is_inverse_of_Color3ToHSL()
         {
-            for (float r = 0; r <= 1; r += RGBStep)
+            for (float r = 0; r <= 1; r += Color3Step)
             {
-                for (float g = 0; g <= 1; g += RGBStep)
+                for (float g = 0; g <= 1; g += Color3Step)
                 {
-                    for (float b = 0; b <= 1; b += RGBStep)
+                    for (float b = 0; b <= 1; b += Color3Step)
                     {
                         float hue, saturation, lightness;
-                        HSxUtils.RGBToHSL(r, g, b, out hue, out saturation, out lightness);
+                        HSxUtils.Color3ToHSL(r, g, b, out hue, out saturation, out lightness);
 
-                        TestHSLToRGB(hue, saturation, lightness, r, g, b);
+                        TestHSLToColor3(hue, saturation, lightness, r, g, b);
                     }
                 }
             }
         }
 
-        private static void TestRGBToHSL(
-            float red, float green, float blue, 
+        private static void TestColor3ToHSL(
+            float c1, float c2, float c3, 
             float expectedHue, float expectedSaturation, float expectedLightness)
         {
             float hue;
             float saturation;
             float lightness;
 
-            HSxUtils.RGBToHSL(red, green, blue, out hue, out saturation, out lightness);
+            HSxUtils.Color3ToHSL(c1, c2, c3, out hue, out saturation, out lightness);
 
             Assert.That(hue, Is.EqualTo(expectedHue).Within(Epsilon));
             Assert.That(saturation, Is.EqualTo(expectedSaturation).Within(Epsilon));
             Assert.That(lightness, Is.EqualTo(expectedLightness).Within(Epsilon));
         }
 
-        private static void TestHSLToRGB(
+        private static void TestHSLToColor3(
             float hue, float saturation, float lightness,
-            float expectedRed, float expectedGreen, float expectedBlue)
+            float expectedC1, float expectedC2, float expectedC3)
         {
-            float red;
-            float green;
-            float blue;
+            float c1;
+            float c2;
+            float c3;
 
-            HSxUtils.HSLToRGB(hue, saturation, lightness, out red, out green, out blue);
+            HSxUtils.HSLToColor3(hue, saturation, lightness, out c1, out c2, out c3);
 
-            Assert.That(red, Is.EqualTo(expectedRed).Within(Epsilon));
-            Assert.That(green, Is.EqualTo(expectedGreen).Within(Epsilon));
-            Assert.That(blue, Is.EqualTo(expectedBlue).Within(Epsilon));
+            Assert.That(c1, Is.EqualTo(expectedC1).Within(Epsilon));
+            Assert.That(c2, Is.EqualTo(expectedC2).Within(Epsilon));
+            Assert.That(c3, Is.EqualTo(expectedC3).Within(Epsilon));
         }
 
         #endregion
 
-        #region RGB <-> HSV
+        #region Color3 <-> HSV
 
         [Test]
-        public void RGBToHSV_converts_properly()
+        public void Color3ToHSV_converts_properly()
         {
-            TestRGBToHSV(0.00f, 0.00f, 0.00f, 0.000f, 0.000f, 0.000f);
-            TestRGBToHSV(1.00f, 1.00f, 1.00f, 0.000f, 0.000f, 1.000f);
-            TestRGBToHSV(0.25f, 0.25f, 0.25f, 0.000f, 0.000f, 0.250f);
-            TestRGBToHSV(1.00f, 0.00f, 0.00f, 0.000f, 1.000f, 1.000f);
-            TestRGBToHSV(0.00f, 1.00f, 0.00f, 0.333f, 1.000f, 1.000f);
-            TestRGBToHSV(0.00f, 0.00f, 1.00f, 0.667f, 1.000f, 1.000f);
-            TestRGBToHSV(0.75f, 0.25f, 0.50f, 0.917f, 0.670f, 0.750f);
-            TestRGBToHSV(0.75f, 0.50f, 0.25f, 0.083f, 0.670f, 0.750f);
-            TestRGBToHSV(0.25f, 0.75f, 0.50f, 0.417f, 0.670f, 0.750f);
-            TestRGBToHSV(0.50f, 0.75f, 0.25f, 0.250f, 0.670f, 0.750f);
-            TestRGBToHSV(0.25f, 0.50f, 0.75f, 0.583f, 0.670f, 0.750f);
-            TestRGBToHSV(0.50f, 0.25f, 0.75f, 0.750f, 0.670f, 0.750f);
-            TestRGBToHSV(0.36f, 0.51f, 0.70f, 0.592f, 0.480f, 0.702f);
+            TestColor3ToHSV(0.00f, 0.00f, 0.00f, 0.000f, 0.000f, 0.000f);
+            TestColor3ToHSV(1.00f, 1.00f, 1.00f, 0.000f, 0.000f, 1.000f);
+            TestColor3ToHSV(0.25f, 0.25f, 0.25f, 0.000f, 0.000f, 0.250f);
+            TestColor3ToHSV(1.00f, 0.00f, 0.00f, 0.000f, 1.000f, 1.000f);
+            TestColor3ToHSV(0.00f, 1.00f, 0.00f, 0.333f, 1.000f, 1.000f);
+            TestColor3ToHSV(0.00f, 0.00f, 1.00f, 0.667f, 1.000f, 1.000f);
+            TestColor3ToHSV(0.75f, 0.25f, 0.50f, 0.917f, 0.670f, 0.750f);
+            TestColor3ToHSV(0.75f, 0.50f, 0.25f, 0.083f, 0.670f, 0.750f);
+            TestColor3ToHSV(0.25f, 0.75f, 0.50f, 0.417f, 0.670f, 0.750f);
+            TestColor3ToHSV(0.50f, 0.75f, 0.25f, 0.250f, 0.670f, 0.750f);
+            TestColor3ToHSV(0.25f, 0.50f, 0.75f, 0.583f, 0.670f, 0.750f);
+            TestColor3ToHSV(0.50f, 0.25f, 0.75f, 0.750f, 0.670f, 0.750f);
+            TestColor3ToHSV(0.36f, 0.51f, 0.70f, 0.592f, 0.480f, 0.702f);
         }
 
         [Test]
-        public void RGBToHSV_input_is_clipped()
+        public void Color3ToHSV_input_is_clipped()
         {
-            TestRGBToHSV(10.00f, -10.00f, 0.00f, 0.000f, 1.000f, 1.000f);
-            TestRGBToHSV(0.00f, 10.00f, -10.00f, 0.333f, 1.000f, 1.000f);
-            TestRGBToHSV(-10.00f, 0.00f, 10.00f, 0.667f, 1.000f, 1.000f);
+            TestColor3ToHSV(10.00f, -10.00f, 0.00f, 0.000f, 1.000f, 1.000f);
+            TestColor3ToHSV(0.00f, 10.00f, -10.00f, 0.333f, 1.000f, 1.000f);
+            TestColor3ToHSV(-10.00f, 0.00f, 10.00f, 0.667f, 1.000f, 1.000f);
         }
         
         [Test]
-        public void HSVToRGB_converts_properly()
+        public void HSVToColor3_converts_properly()
         {
-            TestHSVToRGB(0.000f, 0.000f, 0.000f, 0.00f, 0.00f, 0.00f);
-            TestHSVToRGB(0.000f, 0.000f, 1.000f, 1.00f, 1.00f, 1.00f);
-            TestHSVToRGB(0.000f, 0.000f, 0.250f, 0.25f, 0.25f, 0.25f);
-            TestHSVToRGB(0.000f, 1.000f, 1.000f, 1.00f, 0.00f, 0.00f);
-            TestHSVToRGB(0.333f, 1.000f, 1.000f, 0.00f, 1.00f, 0.00f);
-            TestHSVToRGB(0.667f, 1.000f, 1.000f, 0.00f, 0.00f, 1.00f);
-            TestHSVToRGB(0.917f, 0.670f, 0.750f, 0.75f, 0.25f, 0.50f);
-            TestHSVToRGB(0.083f, 0.670f, 0.750f, 0.75f, 0.50f, 0.25f);
-            TestHSVToRGB(0.417f, 0.670f, 0.750f, 0.25f, 0.75f, 0.50f);
-            TestHSVToRGB(0.250f, 0.670f, 0.750f, 0.50f, 0.75f, 0.25f);
-            TestHSVToRGB(0.583f, 0.670f, 0.750f, 0.25f, 0.50f, 0.75f);
-            TestHSVToRGB(0.750f, 0.670f, 0.750f, 0.50f, 0.25f, 0.75f);
-            TestHSVToRGB(0.592f, 0.480f, 0.702f, 0.36f, 0.51f, 0.70f);
+            TestHSVToColor3(0.000f, 0.000f, 0.000f, 0.00f, 0.00f, 0.00f);
+            TestHSVToColor3(0.000f, 0.000f, 1.000f, 1.00f, 1.00f, 1.00f);
+            TestHSVToColor3(0.000f, 0.000f, 0.250f, 0.25f, 0.25f, 0.25f);
+            TestHSVToColor3(0.000f, 1.000f, 1.000f, 1.00f, 0.00f, 0.00f);
+            TestHSVToColor3(0.333f, 1.000f, 1.000f, 0.00f, 1.00f, 0.00f);
+            TestHSVToColor3(0.667f, 1.000f, 1.000f, 0.00f, 0.00f, 1.00f);
+            TestHSVToColor3(0.917f, 0.670f, 0.750f, 0.75f, 0.25f, 0.50f);
+            TestHSVToColor3(0.083f, 0.670f, 0.750f, 0.75f, 0.50f, 0.25f);
+            TestHSVToColor3(0.417f, 0.670f, 0.750f, 0.25f, 0.75f, 0.50f);
+            TestHSVToColor3(0.250f, 0.670f, 0.750f, 0.50f, 0.75f, 0.25f);
+            TestHSVToColor3(0.583f, 0.670f, 0.750f, 0.25f, 0.50f, 0.75f);
+            TestHSVToColor3(0.750f, 0.670f, 0.750f, 0.50f, 0.25f, 0.75f);
+            TestHSVToColor3(0.592f, 0.480f, 0.702f, 0.36f, 0.51f, 0.70f);
         }
 
         [Test]
-        public void HSVToRGB_hue_wraps_around()
+        public void HSVToColor3_hue_wraps_around()
         {
             for (float x = -10; x <= 10; x += 1)
             {
-                TestHSVToRGB(x + 0.592f, 0.480f, 0.702f, 0.36f, 0.51f, 0.70f);
+                TestHSVToColor3(x + 0.592f, 0.480f, 0.702f, 0.36f, 0.51f, 0.70f);
             }
         }
 
         [Test]
-        public void HSVToRGB_saturation_is_clipped()
+        public void HSVToColor3_saturation_is_clipped()
         {
-            TestHSVToRGB(0.000f, -10.000f, 0.250f, 0.25f, 0.25f, 0.25f);
-            TestHSVToRGB(0.000f, 10.000f, 1.000f, 1.00f, 0.00f, 0.00f);
+            TestHSVToColor3(0.000f, -10.000f, 0.250f, 0.25f, 0.25f, 0.25f);
+            TestHSVToColor3(0.000f, 10.000f, 1.000f, 1.00f, 0.00f, 0.00f);
         }
 
         [Test]
-        public void HSVToRGB_value_is_clipped()
+        public void HSVToColor3_value_is_clipped()
         {
-            TestHSVToRGB(0.000f, 0.000f, -10.000f, 0.00f, 0.00f, 0.00f);
-            TestHSVToRGB(0.000f, 0.000f, 10.000f, 1.00f, 1.00f, 1.00f);
+            TestHSVToColor3(0.000f, 0.000f, -10.000f, 0.00f, 0.00f, 0.00f);
+            TestHSVToColor3(0.000f, 0.000f, 10.000f, 1.00f, 1.00f, 1.00f);
         }
 
         [Test]
-        public void HSVToRGB_is_inverse_of_RGBToHSV()
+        public void HSVToColor3_is_inverse_of_Color3ToHSV()
         {
-            for (float r = 0; r <= 1; r += RGBStep)
+            for (float r = 0; r <= 1; r += Color3Step)
             {
-                for (float g = 0; g <= 1; g += RGBStep)
+                for (float g = 0; g <= 1; g += Color3Step)
                 {
-                    for (float b = 0; b <= 1; b += RGBStep)
+                    for (float b = 0; b <= 1; b += Color3Step)
                     {
                         float hue, saturation, value;
-                        HSxUtils.RGBToHSV(r, g, b, out hue, out saturation, out value);
+                        HSxUtils.Color3ToHSV(r, g, b, out hue, out saturation, out value);
 
-                        TestHSVToRGB(hue, saturation, value, r, g, b);
+                        TestHSVToColor3(hue, saturation, value, r, g, b);
                     }
                 }
             }
         }
 
-        private static void TestRGBToHSV(
-            float red, float green, float blue,
+        private static void TestColor3ToHSV(
+            float c1, float c2, float c3,
             float expectedHue, float expectedSaturation, float expectedValue)
         {
             float hue;
             float saturation;
             float value;
 
-            HSxUtils.RGBToHSV(red, green, blue, out hue, out saturation, out value);
+            HSxUtils.Color3ToHSV(c1, c2, c3, out hue, out saturation, out value);
 
             Assert.That(hue, Is.EqualTo(expectedHue).Within(Epsilon));
             Assert.That(saturation, Is.EqualTo(expectedSaturation).Within(Epsilon));
             Assert.That(value, Is.EqualTo(expectedValue).Within(Epsilon));
         }
 
-        private static void TestHSVToRGB(
+        private static void TestHSVToColor3(
             float hue, float saturation, float value,
-            float expectedRed, float expectedGreen, float expectedBlue)
+            float expectedC1, float expectedC2, float expectedC3)
         {
-            float red;
-            float green;
-            float blue;
+            float c1;
+            float c2;
+            float c3;
 
-            HSxUtils.HSVToRGB(hue, saturation, value, out red, out green, out blue);
+            HSxUtils.HSVToColor3(hue, saturation, value, out c1, out c2, out c3);
 
-            Assert.That(red, Is.EqualTo(expectedRed).Within(Epsilon));
-            Assert.That(green, Is.EqualTo(expectedGreen).Within(Epsilon));
-            Assert.That(blue, Is.EqualTo(expectedBlue).Within(Epsilon));
+            Assert.That(c1, Is.EqualTo(expectedC1).Within(Epsilon));
+            Assert.That(c2, Is.EqualTo(expectedC2).Within(Epsilon));
+            Assert.That(c3, Is.EqualTo(expectedC3).Within(Epsilon));
         }
 
         #endregion
 
-        #region RGB <-> HSI
+        #region Color3 <-> HSI
 
         [Test]
-        public void RGBToHSI_converts_properly()
+        public void Color3ToHSI_converts_properly()
         {
-            TestRGBToHSI(0.00f, 0.00f, 0.00f, 0.000f, 0.000f, 0.000f);
-            TestRGBToHSI(1.00f, 1.00f, 1.00f, 0.000f, 0.000f, 1.000f);
-            TestRGBToHSI(0.25f, 0.25f, 0.25f, 0.000f, 0.000f, 0.250f);
-            TestRGBToHSI(1.00f, 0.00f, 0.00f, 0.000f, 1.000f, 0.332f);
-            TestRGBToHSI(0.00f, 1.00f, 0.00f, 0.333f, 1.000f, 0.332f);
-            TestRGBToHSI(0.00f, 0.00f, 1.00f, 0.667f, 1.000f, 0.332f);
-            TestRGBToHSI(0.75f, 0.25f, 0.50f, 0.917f, 0.500f, 0.500f);
-            TestRGBToHSI(0.75f, 0.50f, 0.25f, 0.083f, 0.500f, 0.500f);
-            TestRGBToHSI(0.25f, 0.75f, 0.50f, 0.417f, 0.500f, 0.500f);
-            TestRGBToHSI(0.50f, 0.75f, 0.25f, 0.250f, 0.500f, 0.500f);
-            TestRGBToHSI(0.25f, 0.50f, 0.75f, 0.583f, 0.500f, 0.500f);
-            TestRGBToHSI(0.50f, 0.25f, 0.75f, 0.750f, 0.500f, 0.500f);
-            TestRGBToHSI(0.36f, 0.51f, 0.70f, 0.594f, 0.308f, 0.527f);
+            TestColor3ToHSI(0.00f, 0.00f, 0.00f, 0.000f, 0.000f, 0.000f);
+            TestColor3ToHSI(1.00f, 1.00f, 1.00f, 0.000f, 0.000f, 1.000f);
+            TestColor3ToHSI(0.25f, 0.25f, 0.25f, 0.000f, 0.000f, 0.250f);
+            TestColor3ToHSI(1.00f, 0.00f, 0.00f, 0.000f, 1.000f, 0.332f);
+            TestColor3ToHSI(0.00f, 1.00f, 0.00f, 0.333f, 1.000f, 0.332f);
+            TestColor3ToHSI(0.00f, 0.00f, 1.00f, 0.667f, 1.000f, 0.332f);
+            TestColor3ToHSI(0.75f, 0.25f, 0.50f, 0.917f, 0.500f, 0.500f);
+            TestColor3ToHSI(0.75f, 0.50f, 0.25f, 0.083f, 0.500f, 0.500f);
+            TestColor3ToHSI(0.25f, 0.75f, 0.50f, 0.417f, 0.500f, 0.500f);
+            TestColor3ToHSI(0.50f, 0.75f, 0.25f, 0.250f, 0.500f, 0.500f);
+            TestColor3ToHSI(0.25f, 0.50f, 0.75f, 0.583f, 0.500f, 0.500f);
+            TestColor3ToHSI(0.50f, 0.25f, 0.75f, 0.750f, 0.500f, 0.500f);
+            TestColor3ToHSI(0.36f, 0.51f, 0.70f, 0.594f, 0.308f, 0.527f);
         }
 
         [Test]
-        public void RGBToHSI_input_is_clipped()
+        public void Color3ToHSI_input_is_clipped()
         {
-            TestRGBToHSI(10.00f, -10.00f, 0.00f, 0.000f, 1.000f, 0.332f);
-            TestRGBToHSI(0.00f, 10.00f, -10.00f, 0.333f, 1.000f, 0.332f);
-            TestRGBToHSI(-10.00f, 0.00f, 10.00f, 0.667f, 1.000f, 0.332f);
+            TestColor3ToHSI(10.00f, -10.00f, 0.00f, 0.000f, 1.000f, 0.332f);
+            TestColor3ToHSI(0.00f, 10.00f, -10.00f, 0.333f, 1.000f, 0.332f);
+            TestColor3ToHSI(-10.00f, 0.00f, 10.00f, 0.667f, 1.000f, 0.332f);
         }
 
         [Test]
-        public void HSIToRGB_converts_properly()
+        public void HSIToColor3_converts_properly()
         {
-            TestHSIToRGB(0.000f, 0.000f, 0.000f, 0.00f, 0.00f, 0.00f);
-            TestHSIToRGB(0.000f, 0.000f, 1.000f, 1.00f, 1.00f, 1.00f);
-            TestHSIToRGB(0.000f, 0.000f, 0.250f, 0.25f, 0.25f, 0.25f);
-            TestHSIToRGB(0.000f, 1.000f, 0.332f, 1.00f, 0.00f, 0.00f);
-            TestHSIToRGB(0.333f, 1.000f, 0.332f, 0.00f, 1.00f, 0.00f);
-            TestHSIToRGB(0.667f, 1.000f, 0.332f, 0.00f, 0.00f, 1.00f);
-            TestHSIToRGB(0.917f, 0.500f, 0.500f, 0.75f, 0.25f, 0.50f);
-            TestHSIToRGB(0.083f, 0.500f, 0.500f, 0.75f, 0.50f, 0.25f);
-            TestHSIToRGB(0.417f, 0.500f, 0.500f, 0.25f, 0.75f, 0.50f);
-            TestHSIToRGB(0.250f, 0.500f, 0.500f, 0.50f, 0.75f, 0.25f);
-            TestHSIToRGB(0.583f, 0.500f, 0.500f, 0.25f, 0.50f, 0.75f);
-            TestHSIToRGB(0.750f, 0.500f, 0.500f, 0.50f, 0.25f, 0.75f);
-            TestHSIToRGB(0.594f, 0.308f, 0.527f, 0.36f, 0.51f, 0.70f);
+            TestHSIToColor3(0.000f, 0.000f, 0.000f, 0.00f, 0.00f, 0.00f);
+            TestHSIToColor3(0.000f, 0.000f, 1.000f, 1.00f, 1.00f, 1.00f);
+            TestHSIToColor3(0.000f, 0.000f, 0.250f, 0.25f, 0.25f, 0.25f);
+            TestHSIToColor3(0.000f, 1.000f, 0.332f, 1.00f, 0.00f, 0.00f);
+            TestHSIToColor3(0.333f, 1.000f, 0.332f, 0.00f, 1.00f, 0.00f);
+            TestHSIToColor3(0.667f, 1.000f, 0.332f, 0.00f, 0.00f, 1.00f);
+            TestHSIToColor3(0.917f, 0.500f, 0.500f, 0.75f, 0.25f, 0.50f);
+            TestHSIToColor3(0.083f, 0.500f, 0.500f, 0.75f, 0.50f, 0.25f);
+            TestHSIToColor3(0.417f, 0.500f, 0.500f, 0.25f, 0.75f, 0.50f);
+            TestHSIToColor3(0.250f, 0.500f, 0.500f, 0.50f, 0.75f, 0.25f);
+            TestHSIToColor3(0.583f, 0.500f, 0.500f, 0.25f, 0.50f, 0.75f);
+            TestHSIToColor3(0.750f, 0.500f, 0.500f, 0.50f, 0.25f, 0.75f);
+            TestHSIToColor3(0.594f, 0.308f, 0.527f, 0.36f, 0.51f, 0.70f);
         }
 
         [Test]
-        public void RGBToHSI_output_is_correct_when_hue_is_180_deg()
+        public void Color3ToHSI_output_is_correct_when_hue_is_180_deg()
         {
-            TestRGBToHSI(0.15625f, 0.46875f, 0.46875f, 0.5f, 0.5714f, 0.3647f);
+            TestColor3ToHSI(0.15625f, 0.46875f, 0.46875f, 0.5f, 0.5714f, 0.3647f);
         }
 
         [Test]
-        public void HSIToRGB_hue_wraps_around()
+        public void HSIToColor3_hue_wraps_around()
         {
             for (float x = -10; x <= 10; x += 1)
             {
-                TestHSIToRGB(x + 0.594f, 0.308f, 0.527f, 0.36f, 0.51f, 0.70f);
+                TestHSIToColor3(x + 0.594f, 0.308f, 0.527f, 0.36f, 0.51f, 0.70f);
             }
         }
 
         [Test]
-        public void HSIToRGB_saturation_is_clipped()
+        public void HSIToColor3_saturation_is_clipped()
         {
-            TestHSIToRGB(0.000f, -10.000f, 0.250f, 0.25f, 0.25f, 0.25f);
-            TestHSIToRGB(0.000f, 10.000f, 0.332f, 1.00f, 0.00f, 0.00f);
+            TestHSIToColor3(0.000f, -10.000f, 0.250f, 0.25f, 0.25f, 0.25f);
+            TestHSIToColor3(0.000f, 10.000f, 0.332f, 1.00f, 0.00f, 0.00f);
         }
 
         [Test]
-        public void HSIToRGB_intensity_is_clipped()
+        public void HSIToColor3_intensity_is_clipped()
         {
-            TestHSIToRGB(0.000f, 0.000f, -10.000f, 0.00f, 0.00f, 0.00f);
-            TestHSIToRGB(0.000f, 0.000f, 10.000f, 1.00f, 1.00f, 1.00f);
+            TestHSIToColor3(0.000f, 0.000f, -10.000f, 0.00f, 0.00f, 0.00f);
+            TestHSIToColor3(0.000f, 0.000f, 10.000f, 1.00f, 1.00f, 1.00f);
         }
 
         [Test]
-        public void HSIToRGB_is_inverse_of_RGBToHSI()
+        public void HSIToColor3_is_inverse_of_Color3ToHSI()
         {
-            for (float r = 0; r <= 1; r += RGBStep)
+            for (float r = 0; r <= 1; r += Color3Step)
             {
-                for (float g = 0; g <= 1; g += RGBStep)
+                for (float g = 0; g <= 1; g += Color3Step)
                 {
-                    for (float b = 0; b <= 1; b += RGBStep)
+                    for (float b = 0; b <= 1; b += Color3Step)
                     {
                         float hue, saturation, intensity;
-                        HSxUtils.RGBToHSI(r, g, b, out hue, out saturation, out intensity);
+                        HSxUtils.Color3ToHSI(r, g, b, out hue, out saturation, out intensity);
 
-                        TestHSIToRGB(hue, saturation, intensity, r, g, b);
+                        TestHSIToColor3(hue, saturation, intensity, r, g, b);
                     }
                 }
             }
         }
 
-        private static void TestRGBToHSI(
-            float red, float green, float blue,
+        private static void TestColor3ToHSI(
+            float c1, float c2, float c3,
             float expectedHue, float expectedSaturation, float expectedIntensity)
         {
             float hue;
             float saturation;
             float intensity;
 
-            HSxUtils.RGBToHSI(red, green, blue, out hue, out saturation, out intensity);
+            HSxUtils.Color3ToHSI(c1, c2, c3, out hue, out saturation, out intensity);
 
             Assert.That(hue, Is.EqualTo(expectedHue).Within(Epsilon));
             Assert.That(saturation, Is.EqualTo(expectedSaturation).Within(Epsilon));
             Assert.That(intensity, Is.EqualTo(expectedIntensity).Within(Epsilon));
         }
 
-        private static void TestHSIToRGB(
+        private static void TestHSIToColor3(
             float hue, float saturation, float intensity,
-            float expectedRed, float expectedGreen, float expectedBlue)
+            float expectedC1, float expectedC2, float expectedC3)
         {
-            float red;
-            float green;
-            float blue;
+            float c1;
+            float c2;
+            float c3;
 
-            HSxUtils.HSIToRGB(hue, saturation, intensity, out red, out green, out blue);
+            HSxUtils.HSIToColor3(hue, saturation, intensity, out c1, out c2, out c3);
             
-            Assert.That(red, Is.EqualTo(expectedRed).Within(Epsilon));
-            Assert.That(green, Is.EqualTo(expectedGreen).Within(Epsilon));
-            Assert.That(blue, Is.EqualTo(expectedBlue).Within(Epsilon));
+            Assert.That(c1, Is.EqualTo(expectedC1).Within(Epsilon));
+            Assert.That(c2, Is.EqualTo(expectedC2).Within(Epsilon));
+            Assert.That(c3, Is.EqualTo(expectedC3).Within(Epsilon));
         }
 
         #endregion

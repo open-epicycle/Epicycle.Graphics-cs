@@ -24,26 +24,26 @@ namespace Epicycle.Graphics.Color.Spaces
 
     public static class HSxUtils
     {
-        #region RGB <-> HSL
+        #region Color3 <-> HSL
 
-        public static void RGBToHSL(float red, float green, float blue, out float hue, out float saturation, out float lightness)
+        public static void Color3ToHSL(float c1, float c2, float c3, out float hue, out float saturation, out float lightness)
         {
-            var cr = MathUtils.ClipUnit(red);
-            var cg = MathUtils.ClipUnit(green);
-            var cb = MathUtils.ClipUnit(blue);
+            var cc1 = MathUtils.ClipUnit(c1);
+            var cc2 = MathUtils.ClipUnit(c2);
+            var cc3 = MathUtils.ClipUnit(c3);
 
             float min;
             float max;
             float chroma;
-            RGBMaxComponents maxComponent;
-            GetMinMaxChroma(cr, cg, cb, out min, out max, out chroma, out maxComponent);
+            Color3MaxComponents maxComponent;
+            GetMinMaxChroma(cc1, cc2, cc3, out min, out max, out chroma, out maxComponent);
 
             lightness = (min + max) / 2.0f;
 
-            if (maxComponent != RGBMaxComponents.Achromatic)
+            if (maxComponent != Color3MaxComponents.Achromatic)
             {
                 saturation = chroma / (1 - Math.Abs(min + max - 1));
-                hue = CalculateHue(cr, cg, cb, chroma, maxComponent);
+                hue = CalculateHue(cc1, cc2, cc3, chroma, maxComponent);
             }
             else
             {
@@ -52,7 +52,7 @@ namespace Epicycle.Graphics.Color.Spaces
             }
         }
 
-        public static void HSLToRGB(float hue, float saturation, float lightness, out float red, out float green, out float blue)
+        public static void HSLToColor3(float hue, float saturation, float lightness, out float c1, out float c2, out float c3)
         {
             var nh = MathUtils.WrapUnit(hue);
             var cs = MathUtils.ClipUnit(saturation);
@@ -62,38 +62,38 @@ namespace Epicycle.Graphics.Color.Spaces
             if (max > 0 && cs > 0)
             {
                 var min = 2 * cl - max;
-                HueMinMaxToRGB(nh, min, max, out red, out green, out blue);
+                HueMinMaxToColor3(nh, min, max, out c1, out c2, out c3);
             }
             else
             {
-                red = cl;
-                green = cl;
-                blue = cl;
+                c1 = cl;
+                c2 = cl;
+                c3 = cl;
             }
         }
 
         #endregion
 
-        #region RGB <-> HSV
+        #region Color3 <-> HSV
 
-        public static void RGBToHSV(float red, float green, float blue, out float hue, out float saturation, out float value)
+        public static void Color3ToHSV(float c1, float c2, float c3, out float hue, out float saturation, out float value)
         {
-            var cr = MathUtils.ClipUnit(red);
-            var cg = MathUtils.ClipUnit(green);
-            var cb = MathUtils.ClipUnit(blue);
+            var cc1 = MathUtils.ClipUnit(c1);
+            var cc2 = MathUtils.ClipUnit(c2);
+            var cc3 = MathUtils.ClipUnit(c3);
 
             float min;
             float max;
             float chroma;
-            RGBMaxComponents maxComponent;
-            GetMinMaxChroma(cr, cg, cb, out min, out max, out chroma, out maxComponent);
+            Color3MaxComponents maxComponent;
+            GetMinMaxChroma(cc1, cc2, cc3, out min, out max, out chroma, out maxComponent);
 
             value = max;
 
-            if (maxComponent != RGBMaxComponents.Achromatic)
+            if (maxComponent != Color3MaxComponents.Achromatic)
             {
                 saturation = chroma / value;
-                hue = CalculateHue(cr, cg, cb, chroma, maxComponent);
+                hue = CalculateHue(cc1, cc2, cc3, chroma, maxComponent);
             }
             else
             {
@@ -102,7 +102,7 @@ namespace Epicycle.Graphics.Color.Spaces
             }
         }
 
-        public static void HSVToRGB(float hue, float saturation, float value, out float red, out float green, out float blue)
+        public static void HSVToColor3(float hue, float saturation, float value, out float c1, out float c2, out float c3)
         {
             var nh = MathUtils.WrapUnit(hue);
             var cs = MathUtils.ClipUnit(saturation);
@@ -111,34 +111,34 @@ namespace Epicycle.Graphics.Color.Spaces
             if (cv > 0 && cs > 0)
             {
                 var min = cv * (1 - cs);
-                HueMinMaxToRGB(nh, min, cv, out red, out green, out blue);
+                HueMinMaxToColor3(nh, min, cv, out c1, out c2, out c3);
             }
             else
             {
-                red = cv;
-                green = cv;
-                blue = cv;
+                c1 = cv;
+                c2 = cv;
+                c3 = cv;
             }
         }
 
         #endregion
 
-        #region RGB <-> HSI
+        #region Color3 <-> HSI
 
-        public static void RGBToHSI(float red, float green, float blue, out float hue, out float saturation, out float intensity)
+        public static void Color3ToHSI(float c1, float c2, float c3, out float hue, out float saturation, out float intensity)
         {
-            var cr = MathUtils.ClipUnit(red);
-            var cg = MathUtils.ClipUnit(green);
-            var cb = MathUtils.ClipUnit(blue);
+            var cc1 = MathUtils.ClipUnit(c1);
+            var cc2 = MathUtils.ClipUnit(c2);
+            var cc3 = MathUtils.ClipUnit(c3);
 
-            var min = MathUtils.Min(cr, cg, cb);
-            var max = MathUtils.Max(cr, cg, cb);
+            var min = MathUtils.Min(cc1, cc2, cc3);
+            var max = MathUtils.Max(cc1, cc2, cc3);
 
             if(min != max)
             {
-                var nr = cr / max;
-                var ng = cg / max;
-                var nb = cb / max;
+                var nr = cc1 / max;
+                var ng = cc2 / max;
+                var nb = cc3 / max;
 
                 var hueNormAcos = MathUtils.SafeAcos(
                     (0.5f * (2 * nr - ng - nb)) /
@@ -147,7 +147,7 @@ namespace Epicycle.Graphics.Color.Spaces
                 
                 hue = (nb <= ng) ? hueNormAcos : 1 - hueNormAcos;
 
-                intensity = (cr + cg + cb) / 3;
+                intensity = (cc1 + cc2 + cc3) / 3;
                 saturation = 1 - min / intensity;
             }
             else
@@ -158,7 +158,7 @@ namespace Epicycle.Graphics.Color.Spaces
             }
         }
 
-        public static void HSIToRGB(float hue, float saturation, float intensity, out float red, out float green, out float blue)
+        public static void HSIToColor3(float hue, float saturation, float intensity, out float c1, out float c2, out float c3)
         {
             var nh = MathUtils.WrapUnit(hue);
             var cs = MathUtils.ClipUnit(saturation);
@@ -174,25 +174,25 @@ namespace Epicycle.Graphics.Color.Spaces
             {
                 var rad = PI2 * nh;
                 var r = (float)(Math.Cos(rad) / Math.Cos(PIdiv3 - rad));
-                red = ci * (1 + cs * r);
-                green = ci * (1 + cs * (1 - r));
-                blue = ci * (1 - cs);
+                c1 = ci * (1 + cs * r);
+                c2 = ci * (1 + cs * (1 - r));
+                c3 = ci * (1 - cs);
             }
             else if (nh < TwoThirds)
             {
                 var rad = PI2 * (nh - Third);
                 var r = (float)(Math.Cos(rad) / Math.Cos(PIdiv3 - rad));
-                green = ci * (1 + cs * r);
-                blue = ci * (1 + cs * (1 - r));
-                red = ci * (1 - cs);
+                c2 = ci * (1 + cs * r);
+                c3 = ci * (1 + cs * (1 - r));
+                c1 = ci * (1 - cs);
             }
             else
             {
                 var rad = PI2 * (nh - TwoThirds);
                 var r = (float)(Math.Cos(rad) / Math.Cos(PIdiv3 - rad));
-                blue = ci * (1 + cs * r);
-                red = ci * (1 + cs * (1 - r));
-                green = ci * (1 - cs);
+                c3 = ci * (1 + cs * r);
+                c1 = ci * (1 + cs * (1 - r));
+                c2 = ci * (1 - cs);
             }
         }
 
@@ -202,58 +202,58 @@ namespace Epicycle.Graphics.Color.Spaces
 
         private const float PI2 = 2 * (float)Math.PI;
 
-        private enum RGBMaxComponents
+        private enum Color3MaxComponents
         {
             Achromatic,
-            Red,
-            Green,
-            Blue
+            c1,
+            c2,
+            c3
         }
 
         private static void GetMinMaxChroma(
-            float red, float green, float blue, 
-            out float min, out float max, out float chroma, out RGBMaxComponents maxComponent)
+            float c1, float c2, float c3, 
+            out float min, out float max, out float chroma, out Color3MaxComponents maxComponent)
         {
-            min = MathUtils.Min(red, green, blue);
-            max = MathUtils.Max(red, green, blue);
+            min = MathUtils.Min(c1, c2, c3);
+            max = MathUtils.Max(c1, c2, c3);
             chroma = max - min;
 
             if(chroma == 0)
             {
-                maxComponent = RGBMaxComponents.Achromatic;
+                maxComponent = Color3MaxComponents.Achromatic;
             }
-            else if (max == red)
+            else if (max == c1)
             {
-                maxComponent = RGBMaxComponents.Red;
+                maxComponent = Color3MaxComponents.c1;
             }
-            else if (max == green)
+            else if (max == c2)
             {
-                maxComponent = RGBMaxComponents.Green;
+                maxComponent = Color3MaxComponents.c2;
             }
             else
             {
-                maxComponent = RGBMaxComponents.Blue;
+                maxComponent = Color3MaxComponents.c3;
             }
         }
 
-        private static float CalculateHue(float red, float green, float blue, float chroma, RGBMaxComponents maxComponent)
+        private static float CalculateHue(float c1, float c2, float c3, float chroma, Color3MaxComponents maxComponent)
         {
             var chroma6 = chroma * 6.0f;
 
             switch (maxComponent)
             {
-                case RGBMaxComponents.Red:
-                    return (green - blue) / chroma6 + (green < blue ? 1 : 0);
-                case RGBMaxComponents.Green:
-                    return (blue - red) / chroma6 + (1.0f / 3.0f);
-                case RGBMaxComponents.Blue:
-                    return (red - green) / chroma6 + (2.0f / 3.0f);
+                case Color3MaxComponents.c1:
+                    return (c2 - c3) / chroma6 + (c2 < c3 ? 1 : 0);
+                case Color3MaxComponents.c2:
+                    return (c3 - c1) / chroma6 + (1.0f / 3.0f);
+                case Color3MaxComponents.c3:
+                    return (c1 - c2) / chroma6 + (2.0f / 3.0f);
                 default:
                     throw new InternalException("Invalid color component");
             }
         }
 
-        private static void HueMinMaxToRGB(float hue, float min, float max, out float red, out float green, out float blue)
+        private static void HueMinMaxToColor3(float hue, float min, float max, out float c1, out float c2, out float c3)
         {
             var hue6 = hue * 6.0f;
             var sextant = (int)Math.Floor(hue6);
@@ -266,34 +266,34 @@ namespace Epicycle.Graphics.Color.Spaces
             switch (sextant % 6)
             {
                 case 0:
-                    red = max;
-                    green = mid1;
-                    blue = min;
+                    c1 = max;
+                    c2 = mid1;
+                    c3 = min;
                     break;
                 case 1:
-                    red = mid2;
-                    green = max;
-                    blue = min;
+                    c1 = mid2;
+                    c2 = max;
+                    c3 = min;
                     break;
                 case 2:
-                    red = min;
-                    green = max;
-                    blue = mid1;
+                    c1 = min;
+                    c2 = max;
+                    c3 = mid1;
                     break;
                 case 3:
-                    red = min;
-                    green = mid2;
-                    blue = max;
+                    c1 = min;
+                    c2 = mid2;
+                    c3 = max;
                     break;
                 case 4:
-                    red = mid1;
-                    green = min;
-                    blue = max;
+                    c1 = mid1;
+                    c2 = min;
+                    c3 = max;
                     break;
                 case 5:
-                    red = max;
-                    green = min;
-                    blue = mid2;
+                    c1 = max;
+                    c2 = min;
+                    c3 = mid2;
                     break;
                 default:
                     throw new InternalException("This can never happen!");
