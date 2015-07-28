@@ -20,8 +20,30 @@ namespace Epicycle.Graphics.Color.Spaces
 {
     public static class CieXYZUtils
     {
+        #region XYZ <-> CiexyY
+
+        public static void XYZToxyY(float x, float y, float z, out float xyY_x, out float xyY_y, out float xyY_Y)
+        {
+            var s = x + y + z;
+
+            xyY_x = x / s;
+            xyY_y = y / s;
+            xyY_Y = y;
+        }
+
+        public static void xyYToXYZ(float xyY_x, float xyY_y, float xyY_Y, out float x, out float y, out float z)
+        {
+            var f = xyY_Y / xyY_y;
+
+            x = f * xyY_x;
+            y = xyY_Y;
+            z = f * (1 - xyY_x - xyY_y);
+        }
+
+        #endregion
+
         #region CieRGB <-> XYZ
-        
+
         private static float[,] RGBToXYZMatrix = new float[,]
             {{ 0.49f / 0.17697f,    0.31f    / 0.17697f, 0.20f    / 0.17697f },
              { 1,                   0.81240f / 0.17697f, 0.01063f / 0.17697f },

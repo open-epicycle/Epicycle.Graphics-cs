@@ -26,6 +26,71 @@ namespace Epicycle.Graphics.Color.Spaces
         private const float Epsilon = 1e-3f;
         private const float Step = 1.0f / 48;
 
+        #region XYZ <-> CiexyY
+
+        [Test]
+        public void XYZToxyY_converts_correctly()
+        {
+            TestXYZToxyY(1, 1, 1, 1 / 3f, 1 / 3f, 1);
+
+            TestXYZToxyY(1, 0, 0, 1, 0, 0);
+            TestXYZToxyY(0, 1, 0, 0, 1, 1);
+            TestXYZToxyY(0, 0, 1, 0, 0, 0);
+
+            TestXYZToxyY(0.1f, 0.2f, 0.3f, 1f / 6f, 1f / 3f, 0.2f);
+        }
+
+        [Test]
+        public void xyYToXYZ_converts_correctly()
+        {
+            TestxyYToXYZ(0.1f, 0.2f, 0.15f, 0.075f, 0.15f, 0.525f);
+        }
+
+        [Test]
+        public void xyYToXYZ_is_inverse_of_XYZToxyY()
+        {
+            for (float x = 0; x <= 1; x += Step)
+            {
+                for (float y = Step; y <= 1; y += Step)
+                {
+                    for (float z = 0; z <= 1; z += Step)
+                    {
+                        if(x == 0 && y == 0 && z == 0)
+                        {
+                            continue;
+                        }
+
+                        float xyY_x, xyY_y, xyY_Y;
+                        CieXYZUtils.XYZToxyY(x, y, z, out xyY_x, out xyY_y, out xyY_Y);
+
+                        TestxyYToXYZ(xyY_x, xyY_y, xyY_Y, x, y, z);
+                    }
+                }
+            }
+        }
+
+        private static void TestXYZToxyY(float x, float y, float z, float expected_xyY_x, float expected_xyY_y, float expected_xyY_Y)
+        {
+            float xyY_x, xyY_y, xyY_Y;
+            CieXYZUtils.XYZToxyY(x, y, z, out xyY_x, out xyY_y, out xyY_Y);
+
+            Assert.That(xyY_x, Is.EqualTo(expected_xyY_x).Within(Epsilon));
+            Assert.That(xyY_y, Is.EqualTo(expected_xyY_y).Within(Epsilon));
+            Assert.That(xyY_Y, Is.EqualTo(expected_xyY_Y).Within(Epsilon));
+        }
+
+        private static void TestxyYToXYZ(float xyY_x, float xyY_y, float xyY_Y, float expectedX, float expectedY, float expectedZ)
+        {
+            float x, y, z;
+            CieXYZUtils.xyYToXYZ(xyY_x, xyY_y, xyY_Y, out x, out y, out z);
+
+            Assert.That(x, Is.EqualTo(expectedX).Within(Epsilon));
+            Assert.That(y, Is.EqualTo(expectedY).Within(Epsilon));
+            Assert.That(z, Is.EqualTo(expectedZ).Within(Epsilon));
+        }
+
+        #endregion
+
         #region CieRGB <-> XYZ
 
         [Test]
