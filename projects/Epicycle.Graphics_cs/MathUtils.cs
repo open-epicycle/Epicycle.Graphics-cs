@@ -57,5 +57,33 @@ namespace Epicycle.Graphics
             out1 = matrix[1, 0] * v0 + matrix[1, 1] * v1 + matrix[1, 2] * v2;
             out2 = matrix[2, 0] * v0 + matrix[2, 1] * v1 + matrix[2, 2] * v2;
         }
+
+        public static float[,] InvertMatrix3(float[,] matrix)
+        {
+            var determinant = 
+                matrix[0, 0] * (matrix[1, 1] * matrix[2, 2] - matrix[2, 1] * matrix[1, 2]) -
+                matrix[0, 1] * (matrix[1, 0] * matrix[2, 2] - matrix[1, 2] * matrix[2, 0]) +
+                matrix[0, 2] * (matrix[1, 0] * matrix[2, 1] - matrix[1, 1] * matrix[2, 0]);
+
+            if(determinant == 0)
+            {
+                throw new ArgumentException("The matrix is not invertable!");
+            }
+
+            var invDeterminant = 1 / determinant;
+
+            var result = new float[3, 3];
+            result[0, 0] = (matrix[1, 1] * matrix[2, 2] - matrix[2, 1] * matrix[1, 2]) * invDeterminant;
+            result[0, 1] = (matrix[0, 2] * matrix[2, 1] - matrix[0, 1] * matrix[2, 2]) * invDeterminant;
+            result[0, 2] = (matrix[0, 1] * matrix[1, 2] - matrix[0, 2] * matrix[1, 1]) * invDeterminant;
+            result[1, 0] = (matrix[1, 2] * matrix[2, 0] - matrix[1, 0] * matrix[2, 2]) * invDeterminant;
+            result[1, 1] = (matrix[0, 0] * matrix[2, 2] - matrix[0, 2] * matrix[2, 0]) * invDeterminant;
+            result[1, 2] = (matrix[1, 0] * matrix[0, 2] - matrix[0, 0] * matrix[1, 2]) * invDeterminant;
+            result[2, 0] = (matrix[1, 0] * matrix[2, 1] - matrix[2, 0] * matrix[1, 1]) * invDeterminant;
+            result[2, 1] = (matrix[2, 0] * matrix[0, 1] - matrix[0, 0] * matrix[2, 1]) * invDeterminant;
+            result[2, 2] = (matrix[0, 0] * matrix[1, 1] - matrix[1, 0] * matrix[0, 1]) * invDeterminant;
+
+            return result;
+        }
     }
 }
