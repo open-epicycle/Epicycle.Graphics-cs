@@ -16,6 +16,8 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
+using Epicycle.Math.LinearAlgebra;
+
 namespace Epicycle.Graphics.Color.Spaces
 {
     public static class CieXYZUtils
@@ -49,10 +51,7 @@ namespace Epicycle.Graphics.Color.Spaces
              { 1,                   0.81240f / 0.17697f, 0.01063f / 0.17697f },
              { 0f,                  0.01f    / 0.17697f, 0.99f    / 0.17697f }};
 
-        private static float[,] XYZToRGBMatrix = new float[,]
-            {{  0.41847f,    -0.15866f,   -0.082835f },
-             { -0.091169f,    0.25243f,    0.015708f },
-             {  0.00092090f, -0.0025498f,  0.17860f  }};
+        private static float[,] XYZToRGBMatrix = MathUtils.InvertMatrix3(RGBToXYZMatrix);
 
         public static void CieRGBToXYZ(float r, float g, float b, out float x, out float y, out float z)
         {
@@ -63,6 +62,12 @@ namespace Epicycle.Graphics.Color.Spaces
         {
             MathUtils.TransformVector3(XYZToRGBMatrix, x, y, z, out r, out g, out b);
         }
+
+        #endregion
+
+        #region XYZ <-> LMS
+
+
 
         #endregion
     }
