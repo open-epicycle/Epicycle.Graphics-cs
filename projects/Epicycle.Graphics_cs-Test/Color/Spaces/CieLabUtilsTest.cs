@@ -23,7 +23,8 @@ namespace Epicycle.Graphics.Color.Spaces
     [TestFixture]
     public class CieLabUtilsTest
     {
-        private const float Epsilon = 1e-1f;
+        private const float PI = (float) System.Math.PI;
+        private const float Epsilon = 1e-3f;
         private const float Step = 100.0f / 70;
         
         #region CIE XYZ <-> CIE Lab
@@ -81,9 +82,9 @@ namespace Epicycle.Graphics.Color.Spaces
             float l, a, b;
             CieLabUtils.CieXYZToLab(x, y, z, out l, out a, out b);
 
-            Assert.That(l, Is.EqualTo(expectedL).Within(Epsilon));
-            Assert.That(a, Is.EqualTo(expectedA).Within(Epsilon));
-            Assert.That(b, Is.EqualTo(expectedB).Within(Epsilon));
+            Assert.That(l, Is.EqualTo(expectedL).Within(Epsilon * 100));
+            Assert.That(a, Is.EqualTo(expectedA).Within(Epsilon * 100));
+            Assert.That(b, Is.EqualTo(expectedB).Within(Epsilon * 100));
         }
 
         private static void TestLabToCieXYZ(float l, float a, float b, float expectedX, float expectedY, float expectedZ)
@@ -91,9 +92,77 @@ namespace Epicycle.Graphics.Color.Spaces
             float x, y, z;
             CieLabUtils.LabToCieXYZ(l, a, b, out x, out y, out z);
 
-            Assert.That(x, Is.EqualTo(expectedX).Within(Epsilon));
-            Assert.That(y, Is.EqualTo(expectedY).Within(Epsilon));
-            Assert.That(z, Is.EqualTo(expectedZ).Within(Epsilon));
+            Assert.That(x, Is.EqualTo(expectedX).Within(Epsilon * 100));
+            Assert.That(y, Is.EqualTo(expectedY).Within(Epsilon * 100));
+            Assert.That(z, Is.EqualTo(expectedZ).Within(Epsilon * 100));
+        }
+
+        #endregion
+
+        #region CIE Lab <-> CIE LCh
+
+        [Test]
+        public void LabToLCh_converts_correctly()
+        {
+            TestLabToLCh(0, 0, 0, 0, 0);
+
+            TestLabToLCh(50, 50, 0, 50, 0);
+            TestLabToLCh(50, 0, 50, 50, 90);
+            TestLabToLCh(50, -50, 0, 50, 180);
+            TestLabToLCh(50, 0, -50, 50, 270);
+
+            TestLabToLCh(50, 20, -30, 36.056f, 303.690f);
+        }
+
+        [Test]
+        public void LChToLab_converts_correctly()
+        {
+            TestLChToLab(0, 0, 0, 0, 0);
+
+            TestLChToLab(50, 50, 0, 50, 0);
+            TestLChToLab(50, 50, 90, 0, 50);
+            TestLChToLab(50, 50, 180, -50, 0);
+            TestLChToLab(50, 50, 270, 0, -50);
+
+            TestLChToLab(50, 36.056f, 303.690f, 20, -30);
+        }
+
+        [Test]
+        public void LChToLab_is_inverse_LabToLCh()
+        {
+            for (float l = 0; l <= 100f; l += Step)
+            {
+                for (float a = Step; a <= 100f; a += Step)
+                {
+                    for (float b = 0; b <= 100f; b += Step)
+                    {
+                        float lch_l, lch_c, lch_h;
+                        CieLabUtils.LabToLCh(l, a, b, out lch_l, out lch_c, out lch_h);
+
+                        TestLChToLab(lch_l, lch_c, lch_h, a, b);
+                    }
+                }
+            }
+        }
+
+        private static void TestLabToLCh(float l, float a, float b, float expectedC, float expectedH)
+        {
+            float lch_l, lch_c, lch_h;
+            CieLabUtils.LabToLCh(l, a, b, out lch_l, out lch_c, out lch_h);
+
+            Assert.That(lch_l, Is.EqualTo(l).Within(Epsilon * 100));
+            Assert.That(lch_c, Is.EqualTo(expectedC).Within(Epsilon * 100));
+            Assert.That(lch_h, Is.EqualTo(expectedH).Within(Epsilon));
+        }
+
+        private static void TestLChToLab(float l, float c, float h, float expectedA, float expectedB)
+        {
+            float lab_l, lab_a, lab_b;
+            CieLabUtils.LChToLab(l, c, h, out lab_l, out lab_a, out lab_b);
+
+            Assert.That(lab_l, Is.EqualTo(l).Within(Epsilon * 100));
+            Assert.That(lab_a, Is.EqualTo(expectedA).Within(Epsilon * 100));
+            Assert.That(lab_b, Is.EqualTo(expectedB).Within(Epsilon));
         }
 
         #endregion
