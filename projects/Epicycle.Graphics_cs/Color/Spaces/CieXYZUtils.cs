@@ -16,8 +16,6 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using Epicycle.Math.LinearAlgebra;
-
 namespace Epicycle.Graphics.Color.Spaces
 {
     public static class CieXYZUtils
