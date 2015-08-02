@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Color\ColorRGBATest.cs" />
     <Compile Include="Color\ColorRGBAUtilsTest.cs" />
+    <Compile Include="Color\Spaces\CieLabUtilsTest.cs" />
     <Compile Include="Color\Spaces\CieXYZUtilsTest.cs" />
     <Compile Include="Color\Spaces\HSxUtilsTest.cs" />
     <Compile Include="Color\Spaces\RYBUtilsTest.cs" />

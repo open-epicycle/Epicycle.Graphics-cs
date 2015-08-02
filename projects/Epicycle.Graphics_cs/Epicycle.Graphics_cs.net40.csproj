@@ -72,6 +72,7 @@
     <Compile Include="Color\ColorRGBA12.cs" />
     <Compile Include="Color\ColorRGBA16.cs" />
     <Compile Include="Color\ColorRGBAUtils.cs" />
+    <Compile Include="Color\Spaces\CieLabUtils.cs" />
     <Compile Include="Color\Spaces\CieXYZUtils.cs" />
     <Compile Include="Color\Spaces\HSxUtils.cs" />
     <Compile Include="Color\Spaces\RYBUtils.cs" />
