@@ -121,5 +121,15 @@ namespace Epicycle.Graphics
             x = r * (float)Math.Cos(phi);
             y = r * (float)Math.Sin(phi);
         }
+
+        public static float RadToUnit(float angle)
+        {
+            return angle / fTau;
+        }
+
+        public static float UnitToRad(float angle)
+        {
+            return angle * fTau;
+        }
     }
 }
