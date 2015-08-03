@@ -88,29 +88,17 @@ namespace Epicycle.Graphics.Color.Spaces
 
         public static void LabToLCh(float l, float a, float b, out float lch_l, out float lch_c, out float lch_h)
         {
+            float h_rad;
+            MathUtils.CartesianToPolarCoordinatesPositive(a, b, out lch_c, out h_rad);
+            
             lch_l = l;
-
-            if(a != 0 || b != 0)
-            {
-                lch_c = (float)Math.Sqrt(a * a + b * b);
-                
-                var atan = Math.Atan2(b, a);
-                lch_h = (float)BasicMath.RadToDeg(atan >= 0 ? atan : (atan + (Math.PI * 2)));
-            }
-            else
-            {
-                lch_c = 0;
-                lch_h = 0;
-            }
+            lch_h = (float)BasicMath.RadToDeg(MathUtils.Atan2Positive(b, a));
         }
 
         public static void LChToLab(float l, float c, float h, out float lab_l, out float lab_a, out float lab_b)
         {
-            var h_rad = BasicMath.DegToRad(h);
-
             lab_l = l;
-            lab_a = c * (float)Math.Cos(h_rad);
-            lab_b = c * (float)Math.Sin(h_rad);
+            MathUtils.PolarToCartesianCoordinates(c, (float) BasicMath.DegToRad(h), out lab_a, out lab_b);
         }
 
         #endregion
