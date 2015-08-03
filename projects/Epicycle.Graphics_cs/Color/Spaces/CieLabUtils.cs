@@ -24,25 +24,20 @@ namespace Epicycle.Graphics.Color.Spaces
 
     public static class CieLabUtils
     {
-        private static float[] ReferenceWhite_XYZ_D50 = new float[] { 0.964212f, 1.0f, 0.825188f };
-        private static float[] ReferenceWhite_XYZ_D55 = new float[] { 0.956797f, 1.0f, 0.921481f };
-        private static float[] ReferenceWhite_XYZ_D65 = new float[] { 0.950429f, 1.0f, 1.088900f };
-        private static float[] ReferenceWhite_XYZ_D75 = new float[] { 0.949722f, 1.0f, 1.226394f };
-
-        private static float[] ReferenceWhite_XYZ_Default = ReferenceWhite_XYZ_D65;
+        public static float[] DefaultReferenceWhite = CieXYZUtils.ReferenceWhite_XYZ_D65;
 
         #region CIE XYZ <-> CIE Lab
 
         private const float Epsilon = 216.0f / 24389.0f;
         private const float Kappa = 24389.0f / 27.0f;
 
-        public static void CieXYZToLab(float x, float y, float z, out float l, out float a, out float b, float[] referenceWhite = null)
+        public static void CieXYZToLab(float x, float y, float z, out float l, out float a, out float b, float[] referenceWhiteXyz = null)
         {
-            referenceWhite = referenceWhite ?? ReferenceWhite_XYZ_Default;
+            referenceWhiteXyz = referenceWhiteXyz ?? DefaultReferenceWhite;
 
-            var xr = x / referenceWhite[0];
-            var yr = y / referenceWhite[1];
-            var zr = z / referenceWhite[2];
+            var xr = x / referenceWhiteXyz[0];
+            var yr = y / referenceWhiteXyz[1];
+            var zr = z / referenceWhiteXyz[2];
 
             var fx = RelativeLuminanceToLightness(xr);
             var fy = RelativeLuminanceToLightness(yr);
@@ -53,9 +48,9 @@ namespace Epicycle.Graphics.Color.Spaces
             b = 2 * (fy - fz);
         }
 
-        public static void LabToCieXYZ(float l, float a, float b, out float x, out float y, out float z, float[] referenceWhite = null)
+        public static void LabToCieXYZ(float l, float a, float b, out float x, out float y, out float z, float[] referenceWhiteXyz = null)
         {
-            referenceWhite = referenceWhite ?? ReferenceWhite_XYZ_Default;
+            referenceWhiteXyz = referenceWhiteXyz ?? DefaultReferenceWhite;
 
             var fy = (l + 0.16f) / 1.16f;
             var fx = (a / 5) + fy;
@@ -65,9 +60,9 @@ namespace Epicycle.Graphics.Color.Spaces
             var yr = LightnessToRelativeLuminance(fy);
             var zr = LightnessToRelativeLuminance(fz);
 
-            x = xr * referenceWhite[0];
-            y = yr * referenceWhite[1];
-            z = zr * referenceWhite[2];
+            x = xr * referenceWhiteXyz[0];
+            y = yr * referenceWhiteXyz[1];
+            z = zr * referenceWhiteXyz[2];
         }
 
         private static float RelativeLuminanceToLightness(float x)
