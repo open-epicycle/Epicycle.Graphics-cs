@@ -107,11 +107,11 @@ namespace Epicycle.Graphics.Color.Spaces
             TestLabToLCh(0, 0, 0, 0, 0);
 
             TestLabToLCh(0.5f, 0.5f, 0, 0.5f, 0);
-            TestLabToLCh(0.5f, 0, 0.5f, 0.5f, 90);
-            TestLabToLCh(0.5f, -0.5f, 0, 0.5f, 180);
-            TestLabToLCh(0.5f, 0, -0.5f, 0.5f, 270);
+            TestLabToLCh(0.5f, 0, 0.5f, 0.5f, 0.25f);
+            TestLabToLCh(0.5f, -0.5f, 0, 0.5f, 0.5f);
+            TestLabToLCh(0.5f, 0, -0.5f, 0.5f, 0.75f);
 
-            TestLabToLCh(0.5f, 0.2f, -0.3f, 0.36056f, 303.690f);
+            TestLabToLCh(0.5f, 0.2f, -0.3f, 0.36056f, 303.690f / 360);
         }
 
         [Test]
@@ -120,11 +120,11 @@ namespace Epicycle.Graphics.Color.Spaces
             TestLChToLab(0, 0, 0, 0, 0);
 
             TestLChToLab(0.5f, 0.5f, 0, 0.5f, 0);
-            TestLChToLab(0.5f, 0.5f, 90, 0, 0.5f);
-            TestLChToLab(0.5f, 0.5f, 180, -0.5f, 0);
-            TestLChToLab(0.5f, 0.5f, 270, 0, -0.5f);
+            TestLChToLab(0.5f, 0.5f, 0.25f, 0, 0.5f);
+            TestLChToLab(0.5f, 0.5f, 0.5f, -0.5f, 0);
+            TestLChToLab(0.5f, 0.5f, 0.75f, 0, -0.5f);
 
-            TestLChToLab(0.5f, 0.36056f, 303.690f, 0.2f, -0.3f);
+            TestLChToLab(0.5f, 0.36056f, 303.690f / 360, 0.2f, -0.3f);
         }
 
         [Test]

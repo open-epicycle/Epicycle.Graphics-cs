@@ -92,13 +92,13 @@ namespace Epicycle.Graphics.Color.Spaces
             MathUtils.CartesianToPolarCoordinatesPositive(a, b, out lch_c, out h_rad);
             
             lch_l = l;
-            lch_h = (float)BasicMath.RadToDeg(MathUtils.Atan2Positive(b, a));
+            lch_h = MathUtils.RadToUnit(MathUtils.Atan2Positive(b, a));
         }
 
         public static void LChToLab(float l, float c, float h, out float lab_l, out float lab_a, out float lab_b)
         {
             lab_l = l;
-            MathUtils.PolarToCartesianCoordinates(c, (float) BasicMath.DegToRad(h), out lab_a, out lab_b);
+            MathUtils.PolarToCartesianCoordinates(c, MathUtils.UnitToRad(h), out lab_a, out lab_b);
         }
 
         #endregion
