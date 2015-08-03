@@ -31,27 +31,27 @@ namespace Epicycle.Graphics.Color.Spaces
         [Test]
         public void CieXYZToLuv_converts_correctly()
         {
-            TestCieXYZToLuv(0.4124f, 0.2126f, 0.0193f, 53.233f, 175.053f, 37.751f); // RGB (1, 0, 0)
-            TestCieXYZToLuv(0.3576f, 0.7152f, 0.1192f, 87.737f, -83.080f, 107.401f); // RGB (0, 1, 0)
-            TestCieXYZToLuv(0.1805f, 0.0722f, 0.9505f, 32.303f, -9.400f, -130.358f); // RGB (0, 0, 1)
-            TestCieXYZToLuv(0.9505f, 1, 1.0890f, 100.000f, 0.001f, -0.017f); // RGB (1, 1, 1)
-
-            TestCieXYZToLuv(0.005f, 0.300f, 0.200f, 61.654f, -155.430f, 48.537f);
-            TestCieXYZToLuv(0.300f, 0.005f, 0.200f, 4.516f, 60.647f, -24.788f);
-            TestCieXYZToLuv(0.300f, 0.200f, 0.005f, 51.837f, 110.619f, 50.306f);
+            TestCieXYZToLuv(0.4124f, 0.2126f, 0.0193f, 0.53233f,  1.75053f, 0.37751f); // RGB (1, 0, 0)
+            TestCieXYZToLuv(0.3576f, 0.7152f, 0.1192f, 0.87737f, -0.8308f,    1.07401f); // RGB (0, 1, 0)
+            TestCieXYZToLuv(0.1805f, 0.0722f, 0.9505f, 0.32303f, -0.0940f,   -1.30358f); // RGB (0, 0, 1)
+            TestCieXYZToLuv(0.9505f, 1,       1.0890f, 1,         0.00001f,  -0.00017f); // RGB (1, 1, 1)
+            
+            TestCieXYZToLuv(0.005f, 0.300f, 0.200f, 0.61654f, -1.55430f,  0.48537f);
+            TestCieXYZToLuv(0.300f, 0.005f, 0.200f, 0.04516f,  0.60647f, -0.24788f);
+            TestCieXYZToLuv(0.300f, 0.200f, 0.005f, 0.51837f,  1.10619f,  0.50306f);
         }
 
         [Test]
         public void LuvToCieXYZ_converts_correctly()
         {
-            TestLuvToCieXYZ(53.233f, 175.053f, 37.751f, 0.4124f, 0.2126f, 0.0193f); // RGB (1, 0, 0)
-            TestLuvToCieXYZ(87.737f, -83.080f, 107.401f, 0.3576f, 0.7152f, 0.1192f); // RGB (0, 1, 0)
-            TestLuvToCieXYZ(32.303f, -9.400f, -130.358f, 0.1805f, 0.0722f, 0.9505f); // RGB (0, 0, 1)
-            TestLuvToCieXYZ(100.000f, 0.001f, -0.017f, 0.9505f, 1, 1.0890f); // RGB (1, 1, 1)
-
-            TestLuvToCieXYZ(61.654f, -155.430f, 48.537f, 0.005f, 0.300f, 0.200f);
-            TestLuvToCieXYZ(4.516f, 60.647f, -24.788f, 0.300f, 0.005f, 0.200f);
-            TestLuvToCieXYZ(51.837f, 110.619f, 50.306f, 0.300f, 0.200f, 0.005f);
+            TestLuvToCieXYZ(0.53233f,  1.75053f,  0.37751f, 0.4124f, 0.2126f, 0.0193f); // RGB (1, 0, 0)
+            TestLuvToCieXYZ(0.87737f, -0.83080f,  1.07401f, 0.3576f, 0.7152f, 0.1192f); // RGB (0, 1, 0)
+            TestLuvToCieXYZ(0.32303f, -0.09400f, -1.30358f, 0.1805f, 0.0722f, 0.9505f); // RGB (0, 0, 1)
+            TestLuvToCieXYZ(1,         0.00001f, -0.00017f, 0.9505f, 1, 1.0890f); // RGB (1, 1, 1)
+            
+            TestLuvToCieXYZ(0.61654f, -1.55430f,  0.48537f, 0.005f, 0.300f, 0.200f);
+            TestLuvToCieXYZ(0.04516f,  0.60647f, -0.24788f, 0.300f, 0.005f, 0.200f);
+            TestLuvToCieXYZ(0.51837f,  1.10619f,  0.50306f, 0.300f, 0.200f, 0.005f);
         }
 
         [Test]
@@ -82,9 +82,9 @@ namespace Epicycle.Graphics.Color.Spaces
             float l, u, v;
             CieLuvUtils.CieXYZToLuv(x, y, z, out l, out u, out v);
 
-            Assert.That(l, Is.EqualTo(expectedL).Within(Epsilon * 100));
-            Assert.That(u, Is.EqualTo(expectedU).Within(Epsilon * 100));
-            Assert.That(v, Is.EqualTo(expectedV).Within(Epsilon * 100));
+            Assert.That(l, Is.EqualTo(expectedL).Within(Epsilon));
+            Assert.That(u, Is.EqualTo(expectedU).Within(Epsilon));
+            Assert.That(v, Is.EqualTo(expectedV).Within(Epsilon));
         }
 
         private static void TestLuvToCieXYZ(float l, float u, float v, float expectedX, float expectedY, float expectedZ)

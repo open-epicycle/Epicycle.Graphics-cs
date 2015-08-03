@@ -27,8 +27,8 @@ namespace Epicycle.Graphics.Color.Spaces
         #region CIE XYZ <-> CIE Luv
 
         private const float Epsilon = 216.0f / 24389.0f;
-        private const float Kappa = 24389.0f / 27.0f;
-        private const float KappaEpsilon = Kappa * Epsilon;
+        private const float KappaDiv100 = 24389.0f / 2700.0f;
+        private const float KappaEpsilonDiv100 = KappaDiv100 * Epsilon;
 
         public static void CieXYZToLuv(float x, float y, float z, out float l, out float u, out float v, float[] referenceWhiteXyz = null)
         {
@@ -71,19 +71,19 @@ namespace Epicycle.Graphics.Color.Spaces
 
         private static float YToL(float x)
         {
-            return x > Epsilon ? 116 * (float)Math.Pow(x, 1.0 / 3.0) - 16 : (Kappa * x);
+            return x > Epsilon ? 1.16f * (float)Math.Pow(x, 1.0 / 3.0) - 0.16f : (KappaDiv100 * x);
         }
 
         private static float LToY(float l)
         {
-            if (l > KappaEpsilon)
+            if (l > KappaEpsilonDiv100)
             {
-                var r = (l + 16) / 116;
+                var r = (l + 0.16f) / 1.16f;
                 return r * r * r;
             }
             else
             {
-                return l / Kappa;
+                return l / KappaDiv100;
             }
         }
 
