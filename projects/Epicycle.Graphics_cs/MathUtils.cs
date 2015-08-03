@@ -26,6 +26,11 @@ namespace Epicycle.Graphics
     {
         // TODO: Use BasicMath when ready
 
+        private const float fPI = (float)Math.PI;
+
+        private const double Tau = Math.PI * 2;
+        private const float fTau = (float)Tau;
+
         public static float ClipUnit(float x)
         {
             return BasicMath.Clip(x, 0, 1);
@@ -84,6 +89,37 @@ namespace Epicycle.Graphics
             result[2, 2] = (matrix[0, 0] * matrix[1, 1] - matrix[1, 0] * matrix[0, 1]) * invDeterminant;
 
             return result;
+        }
+
+        public static float Atan2Positive(float y, float x)
+        {
+            var atan2 = (float) Math.Atan2(y, x);
+            return atan2 >= 0 ? atan2 : (atan2 + fTau);
+        }
+
+        public static float Norm2(float x, float y)
+        {
+            return (float) Math.Sqrt(x * x + y * y);
+        }
+
+        public static void CartesianToPolarCoordinatesPositive(float x, float y, out float r, out float phi, float defaultPhi = 0)
+        {
+            if (x != 0 || y != 0)
+            {
+                r = Norm2(x, y);
+                phi = MathUtils.Atan2Positive(y, x);
+            }
+            else
+            {
+                r = 0;
+                phi = defaultPhi;
+            }
+        }
+
+        public static void PolarToCartesianCoordinates(float r, float phi, out float x, out float y)
+        {
+            x = r * (float)Math.Cos(phi);
+            y = r * (float)Math.Sin(phi);
         }
     }
 }
