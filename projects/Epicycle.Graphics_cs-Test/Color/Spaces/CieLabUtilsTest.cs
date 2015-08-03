@@ -25,7 +25,7 @@ namespace Epicycle.Graphics.Color.Spaces
     {
         private const float PI = (float) System.Math.PI;
         private const float Epsilon = 1e-3f;
-        private const float Step = 100.0f / 70;
+        private const float Step = 1.0f / 70;
         
         #region CIE XYZ <-> CIE Lab
 
@@ -34,14 +34,14 @@ namespace Epicycle.Graphics.Color.Spaces
         {
             TestCieXYZToLab(0, 0, 0, 0, 0, 0);
 
-            TestCieXYZToLab(0.41240f, 0.21260f, 0.01930f, 53.233f, 80.109f, 67.220f); // RGB (1, 0, 0)
-            TestCieXYZToLab(0.35760f, 0.71520f, 0.11920f, 87.737f, -86.185f, 83.181f); // RGB (0, 1, 0)
-            TestCieXYZToLab(0.18050f, 0.07220f,  0.95050f, 32.303f, 79.197f, -107.864f); // RGB (0, 0, 1)
-            TestCieXYZToLab(0.95050f, 1.000f,   1.08900f, 100.000f, 0.005f, -0.010f); // RGB (1, 1, 1)
+            TestCieXYZToLab(0.4124f, 0.2126f, 0.0193f, 0.53233f,  0.80109f,  0.67220f); // RGB (1, 0, 0)
+            TestCieXYZToLab(0.3576f, 0.7152f, 0.1192f, 0.87737f, -0.86185f,  0.83181f); // RGB (0, 1, 0)
+            TestCieXYZToLab(0.1805f, 0.0722f, 0.9505f, 0.32303f,  0.79197f, -1.07864f); // RGB (0, 0, 1)
+            TestCieXYZToLab(0.9505f, 1,       1.0890f, 1,         0.00005f,  -0.00010f); // RGB (1, 1, 1)
 
-            TestCieXYZToLab(0.005f, 0.300f, 0.200f, 61.654f, -245.269f, 20.197f);
-            TestCieXYZToLab(0.300f, 0.005f, 0.200f, 4.516f, 251.999f, -78.316f);
-            TestCieXYZToLab(0.300f, 0.200f, 0.005f, 51.837f, 48.031f, 82.223f);
+            TestCieXYZToLab(0.005f, 0.300f, 0.200f, 0.61654f, -2.45269f, 0.20197f);
+            TestCieXYZToLab(0.300f, 0.005f, 0.200f, 0.04516f, 2.51999f, -0.78316f);
+            TestCieXYZToLab(0.300f, 0.200f, 0.005f, 0.51837f, 0.48031f, 0.82223f);
         }
 
         [Test]
@@ -49,14 +49,14 @@ namespace Epicycle.Graphics.Color.Spaces
         {
             TestLabToCieXYZ(0, 0, 0, 0, 0, 0);
 
-            TestLabToCieXYZ(53.233f,  80.109f,  67.220f,  0.41240f, 0.21260f, 0.01930f); // RGB (1, 0, 0)
-            TestLabToCieXYZ(87.737f, -86.185f,  83.181f,  0.35760f, 0.71520f, 0.11920f); // RGB (0, 1, 0)
-            TestLabToCieXYZ(32.303f,  79.197f, -107.864f, 0.18050f, 0.07220f, 0.95050f); // RGB (0, 0, 1)
-            TestLabToCieXYZ(100.000f, 0.005f,  -0.010f,   0.95050f, 1.00000f, 1.08900f); // RGB (1, 1, 1)
+            TestLabToCieXYZ(0.53233f,  0.80109f,  0.67220f, 0.41240f, 0.21260f, 0.01930f); // RGB (1, 0, 0)
+            TestLabToCieXYZ(0.87737f, -0.86185f,  0.83181f, 0.35760f, 0.71520f, 0.11920f); // RGB (0, 1, 0)
+            TestLabToCieXYZ(0.32303f,  0.79197f, -1.07864f, 0.18050f, 0.07220f, 0.95050f); // RGB (0, 0, 1)
+            TestLabToCieXYZ(1,         0.00005f, -0.0001f,  0.95050f, 1.00000f, 1.08900f); // RGB (1, 1, 1)
 
-            TestLabToCieXYZ(61.654f, -245.269f,  20.197f, 0.005f, 0.300f, 0.200f);
-            TestLabToCieXYZ(4.516f, 251.999f, -78.316f, 0.300f, 0.005f, 0.200f);
-            TestLabToCieXYZ(51.837f, 48.031f, 82.223f, 0.300f, 0.200f, 0.005f);
+            TestLabToCieXYZ(0.61654f, -2.45269f,  0.20197f, 0.005f, 0.300f, 0.200f);
+            TestLabToCieXYZ(0.04516f,  2.51999f, -0.78316f, 0.300f, 0.005f, 0.200f);
+            TestLabToCieXYZ(0.51837f,  0.48031f,  0.82223f, 0.300f, 0.200f, 0.005f);
         }
 
         [Test]
@@ -82,9 +82,9 @@ namespace Epicycle.Graphics.Color.Spaces
             float l, a, b;
             CieLabUtils.CieXYZToLab(x, y, z, out l, out a, out b);
 
-            Assert.That(l, Is.EqualTo(expectedL).Within(Epsilon * 100));
-            Assert.That(a, Is.EqualTo(expectedA).Within(Epsilon * 100));
-            Assert.That(b, Is.EqualTo(expectedB).Within(Epsilon * 100));
+            Assert.That(l, Is.EqualTo(expectedL).Within(Epsilon));
+            Assert.That(a, Is.EqualTo(expectedA).Within(Epsilon));
+            Assert.That(b, Is.EqualTo(expectedB).Within(Epsilon));
         }
 
         private static void TestLabToCieXYZ(float l, float a, float b, float expectedX, float expectedY, float expectedZ)
@@ -106,12 +106,12 @@ namespace Epicycle.Graphics.Color.Spaces
         {
             TestLabToLCh(0, 0, 0, 0, 0);
 
-            TestLabToLCh(50, 50, 0, 50, 0);
-            TestLabToLCh(50, 0, 50, 50, 90);
-            TestLabToLCh(50, -50, 0, 50, 180);
-            TestLabToLCh(50, 0, -50, 50, 270);
+            TestLabToLCh(0.5f, 0.5f, 0, 0.5f, 0);
+            TestLabToLCh(0.5f, 0, 0.5f, 0.5f, 90);
+            TestLabToLCh(0.5f, -0.5f, 0, 0.5f, 180);
+            TestLabToLCh(0.5f, 0, -0.5f, 0.5f, 270);
 
-            TestLabToLCh(50, 20, -30, 36.056f, 303.690f);
+            TestLabToLCh(0.5f, 0.2f, -0.3f, 0.36056f, 303.690f);
         }
 
         [Test]
@@ -119,22 +119,22 @@ namespace Epicycle.Graphics.Color.Spaces
         {
             TestLChToLab(0, 0, 0, 0, 0);
 
-            TestLChToLab(50, 50, 0, 50, 0);
-            TestLChToLab(50, 50, 90, 0, 50);
-            TestLChToLab(50, 50, 180, -50, 0);
-            TestLChToLab(50, 50, 270, 0, -50);
+            TestLChToLab(0.5f, 0.5f, 0, 0.5f, 0);
+            TestLChToLab(0.5f, 0.5f, 90, 0, 0.5f);
+            TestLChToLab(0.5f, 0.5f, 180, -0.5f, 0);
+            TestLChToLab(0.5f, 0.5f, 270, 0, -0.5f);
 
-            TestLChToLab(50, 36.056f, 303.690f, 20, -30);
+            TestLChToLab(0.5f, 0.36056f, 303.690f, 0.2f, -0.3f);
         }
 
         [Test]
         public void LChToLab_is_inverse_LabToLCh()
         {
-            for (float l = 0; l <= 100f; l += Step)
+            for (float l = 0; l <= 1; l += Step)
             {
-                for (float a = Step; a <= 100f; a += Step)
+                for (float a = Step; a <= 1; a += Step)
                 {
-                    for (float b = 0; b <= 100f; b += Step)
+                    for (float b = 0; b <= 1; b += Step)
                     {
                         float lch_l, lch_c, lch_h;
                         CieLabUtils.LabToLCh(l, a, b, out lch_l, out lch_c, out lch_h);
@@ -150,8 +150,8 @@ namespace Epicycle.Graphics.Color.Spaces
             float lch_l, lch_c, lch_h;
             CieLabUtils.LabToLCh(l, a, b, out lch_l, out lch_c, out lch_h);
 
-            Assert.That(lch_l, Is.EqualTo(l).Within(Epsilon * 100));
-            Assert.That(lch_c, Is.EqualTo(expectedC).Within(Epsilon * 100));
+            Assert.That(lch_l, Is.EqualTo(l).Within(Epsilon));
+            Assert.That(lch_c, Is.EqualTo(expectedC).Within(Epsilon));
             Assert.That(lch_h, Is.EqualTo(expectedH).Within(Epsilon));
         }
 
@@ -160,8 +160,8 @@ namespace Epicycle.Graphics.Color.Spaces
             float lab_l, lab_a, lab_b;
             CieLabUtils.LChToLab(l, c, h, out lab_l, out lab_a, out lab_b);
 
-            Assert.That(lab_l, Is.EqualTo(l).Within(Epsilon * 100));
-            Assert.That(lab_a, Is.EqualTo(expectedA).Within(Epsilon * 100));
+            Assert.That(lab_l, Is.EqualTo(l).Within(Epsilon));
+            Assert.That(lab_a, Is.EqualTo(expectedA).Within(Epsilon));
             Assert.That(lab_b, Is.EqualTo(expectedB).Within(Epsilon));
         }
 

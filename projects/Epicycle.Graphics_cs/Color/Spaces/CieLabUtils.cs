@@ -48,18 +48,18 @@ namespace Epicycle.Graphics.Color.Spaces
             var fy = RelativeLuminanceToLightness(yr);
             var fz = RelativeLuminanceToLightness(zr);
 
-            l = 116 * fy - 16;
-            a = 500 * (fx - fy);
-            b = 200 * (fy - fz);
+            l = 1.16f * fy - 0.16f;
+            a = 5 * (fx - fy);
+            b = 2 * (fy - fz);
         }
 
         public static void LabToCieXYZ(float l, float a, float b, out float x, out float y, out float z, float[] referenceWhite = null)
         {
             referenceWhite = referenceWhite ?? ReferenceWhite_XYZ_Default;
 
-            var fy = (l + 16) / 116;
-            var fx = (a / 500) + fy;
-            var fz = fy - (b / 200);
+            var fy = (l + 0.16f) / 1.16f;
+            var fx = (a / 5) + fy;
+            var fz = fy - (b / 2);
 
             var xr = LightnessToRelativeLuminance(fx);
             var yr = LightnessToRelativeLuminance(fy);
