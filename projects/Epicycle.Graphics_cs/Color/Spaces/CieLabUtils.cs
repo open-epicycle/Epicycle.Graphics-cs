@@ -24,10 +24,10 @@ namespace Epicycle.Graphics.Color.Spaces
 
     public static class CieLabUtils
     {
-        private static float[] ReferenceWhite_XYZ_D50 = new float[] { 96.4212f, 100.0f, 82.5188f };
-        private static float[] ReferenceWhite_XYZ_D55 = new float[] { 95.6797f, 100.0f, 92.1481f };
-        private static float[] ReferenceWhite_XYZ_D65 = new float[] { 95.0429f, 100.0f, 108.8900f };
-        private static float[] ReferenceWhite_XYZ_D75 = new float[] { 94.9722f, 100.0f, 122.6394f };
+        private static float[] ReferenceWhite_XYZ_D50 = new float[] { 0.964212f, 1.0f, 0.825188f };
+        private static float[] ReferenceWhite_XYZ_D55 = new float[] { 0.956797f, 1.0f, 0.921481f };
+        private static float[] ReferenceWhite_XYZ_D65 = new float[] { 0.950429f, 1.0f, 1.088900f };
+        private static float[] ReferenceWhite_XYZ_D75 = new float[] { 0.949722f, 1.0f, 1.226394f };
 
         private static float[] ReferenceWhite_XYZ_Default = ReferenceWhite_XYZ_D65;
 
@@ -84,7 +84,7 @@ namespace Epicycle.Graphics.Color.Spaces
 
         #endregion
 
-        #region CIE Lab <-> CIE LCh
+        #region CIE Lab <-> CIE LCh(ab)
 
         public static void LabToLCh(float l, float a, float b, out float lch_l, out float lch_c, out float lch_h)
         {
