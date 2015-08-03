@@ -23,7 +23,6 @@ namespace Epicycle.Graphics.Color.Spaces
     [TestFixture]
     public class CieLabUtilsTest
     {
-        private const float PI = (float) System.Math.PI;
         private const float Epsilon = 1e-3f;
         private const float Step = 1.0f / 70;
         
