@@ -78,24 +78,5 @@ namespace Epicycle.Graphics.Color.Spaces
         }
 
         #endregion
-
-        #region CIE Lab <-> CIE LCh(ab)
-
-        public static void LabToLCh(float l, float a, float b, out float lch_l, out float lch_c, out float lch_h)
-        {
-            float h_rad;
-            MathUtils.CartesianToPolarCoordinatesPositive(a, b, out lch_c, out h_rad);
-            
-            lch_l = l;
-            lch_h = MathUtils.RadToUnit(MathUtils.Atan2Positive(b, a));
-        }
-
-        public static void LChToLab(float l, float c, float h, out float lab_l, out float lab_a, out float lab_b)
-        {
-            lab_l = l;
-            MathUtils.PolarToCartesianCoordinates(c, MathUtils.UnitToRad(h), out lab_a, out lab_b);
-        }
-
-        #endregion
     }
 }
