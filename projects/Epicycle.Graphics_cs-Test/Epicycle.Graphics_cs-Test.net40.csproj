@@ -76,6 +76,7 @@
     <Compile Include="Color\Spaces\CieLabUtilsTest.cs" />
     <Compile Include="Color\Spaces\CieLuvUtilsTest.cs" />
     <Compile Include="Color\Spaces\CieXYZUtilsTest.cs" />
+    <Compile Include="Color\Spaces\ColorCompandingUtilsTest.cs" />
     <Compile Include="Color\Spaces\HSxUtilsTest.cs" />
     <Compile Include="Color\Spaces\LChUtilsTest.cs" />
     <Compile Include="Color\Spaces\RYBUtilsTest.cs" />
