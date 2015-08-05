@@ -28,7 +28,7 @@ namespace Epicycle.Graphics.Color.Spaces
 
         private const float Epsilon = 216.0f / 24389.0f;
         private const float KappaDiv100 = 24389.0f / 2700.0f;
-        private const float KappaEpsilonDiv100 = KappaDiv100 * Epsilon;
+        private const float KappaEpsilonDiv100 = 2.0f / 25.0f;
 
         public static void CieXYZToLuv(float x, float y, float z, out float l, out float u, out float v, float[] referenceWhiteXyz = null)
         {
