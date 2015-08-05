@@ -59,9 +59,9 @@ namespace Epicycle.Graphics.Color.Spaces
         {
             for (float l = 0; l <= 1; l += Step)
             {
-                for (float x = Step; x <= 1; x += Step)
+                for (float x = -1; x <= 1; x += Step)
                 {
-                    for (float y = 0; y <= 1; y += Step)
+                    for (float y = -1; y <= 1; y += Step)
                     {
                         float lch_l, lch_c, lch_h;
                         LChUtils.LxyToLCh(l, x, y, out lch_l, out lch_c, out lch_h);
@@ -90,6 +90,77 @@ namespace Epicycle.Graphics.Color.Spaces
             Assert.That(lxy_l, Is.EqualTo(l).Within(Epsilon));
             Assert.That(lxy_x, Is.EqualTo(expectedX).Within(Epsilon));
             Assert.That(lxy_y, Is.EqualTo(expectedY).Within(Epsilon));
+        }
+
+        #endregion
+
+        #region CIE XYZ <-> LCh
+
+        [Test]
+        public void CieXYZToLCh_converts_correctly_using_Lab()
+        {
+            TestCieXYZToLCh(LxyModel.Lab, 0.1f, 0.2f, 0.3f, 0.51837f, 0.5788f, 0.5366f);
+        }
+
+        [Test]
+        public void CieXYZToLCh_converts_correctly_using_Luv()
+        {
+            TestCieXYZToLCh(LxyModel.Luv, 0.1f, 0.2f, 0.3f, 0.51837f, 0.67081f, 0.529486f);
+        }
+
+        [Test]
+        public void LChToCieXYZ_converts_correctly_using_Lab()
+        {
+            TestLChToCieXYZ(LxyModel.Lab, 0.51837f, 0.5788f, 0.5366f, 0.1f, 0.2f, 0.3f);
+        }
+
+        [Test]
+        public void LChToCieXYZ_converts_correctly_using_Luv()
+        {
+            TestLChToCieXYZ(LxyModel.Luv, 0.51837f, 0.67081f, 0.529486f, 0.1f, 0.2f, 0.3f);
+        }
+
+        [Test]
+        public void LChToCieXYZ_is_inverse_LChToCieXYZ()
+        {
+            for (int m = 0; m < 2; m++)
+            {
+                for (float x = Step; x <= 1; x += Step)
+                {
+                    for (float y = Step; y <= 1; y += Step)
+                    {
+                        for (float z = Step; z <= 1; z += Step)
+                        {
+                            var model = m == 0 ? LxyModel.Lab : LxyModel.Luv;
+
+                            float l, c, h;
+                            LChUtils.CieXYZToLCh(x, y, z, out l, out c, out h, model);
+
+                            TestLChToCieXYZ(model, l, c, h, x, y, z);
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void TestCieXYZToLCh(LxyModel model, float x, float y, float z, float expectedL, float expectedC, float expectedH)
+        {
+            float l, c, h;
+            LChUtils.CieXYZToLCh(x, y, z, out l, out c, out h, model);
+
+            Assert.That(l, Is.EqualTo(expectedL).Within(Epsilon));
+            Assert.That(c, Is.EqualTo(expectedC).Within(Epsilon));
+            Assert.That(h, Is.EqualTo(expectedH).Within(Epsilon));
+        }
+
+        private static void TestLChToCieXYZ(LxyModel model, float l, float c, float h, float expectedX, float expectedY, float expectedZ)
+        {
+            float x, y, z;
+            LChUtils.LChToCieXYZ(l, c, h, out x, out y, out z, model);
+
+            Assert.That(x, Is.EqualTo(expectedX).Within(Epsilon));
+            Assert.That(y, Is.EqualTo(expectedY).Within(Epsilon));
+            Assert.That(z, Is.EqualTo(expectedZ).Within(Epsilon));
         }
 
         #endregion

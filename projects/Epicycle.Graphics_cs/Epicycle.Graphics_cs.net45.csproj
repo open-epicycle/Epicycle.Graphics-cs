@@ -77,6 +77,7 @@
     <Compile Include="Color\Spaces\CieXYZUtils.cs" />
     <Compile Include="Color\Spaces\HSxUtils.cs" />
     <Compile Include="Color\Spaces\LChUtils.cs" />
+    <Compile Include="Color\Spaces\LxyModel.cs" />
     <Compile Include="Color\Spaces\RYBUtils.cs" />
     <Compile Include="Geometry\Ply\IPlyData.cs" />
     <Compile Include="Geometry\Ply\IPlyParametersParser.cs" />
