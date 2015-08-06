@@ -83,6 +83,7 @@
     <Compile Include="Color\Spaces\RGBColorSystem.cs" />
     <Compile Include="Color\Spaces\RYBUtils.cs" />
     <Compile Include="Color\Spaces\ReferenceWhiteUtils.cs" />
+    <Compile Include="Color\Spaces\StandardReferenceWhite.cs" />
     <Compile Include="Geometry\Ply\IPlyData.cs" />
     <Compile Include="Geometry\Ply\IPlyParametersParser.cs" />
     <Compile Include="Geometry\Ply\PlyData.cs" />
