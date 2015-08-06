@@ -20,11 +20,6 @@ namespace Epicycle.Graphics.Color.Spaces
 {
     public static class CieXYZUtils
     {
-        public static float[] ReferenceWhite_XYZ_D50 = new float[] { 0.964212f, 1.0f, 0.825188f };
-        public static float[] ReferenceWhite_XYZ_D55 = new float[] { 0.956797f, 1.0f, 0.921481f };
-        public static float[] ReferenceWhite_XYZ_D65 = new float[] { 0.950429f, 1.0f, 1.088900f };
-        public static float[] ReferenceWhite_XYZ_D75 = new float[] { 0.949722f, 1.0f, 1.226394f };
-
         #region XYZ <-> CiexyY
 
         public static void XYZToxyY(float x, float y, float z, out float xyY_x, out float xyY_y, out float xyY_Y)

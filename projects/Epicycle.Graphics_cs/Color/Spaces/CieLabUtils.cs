@@ -24,7 +24,7 @@ namespace Epicycle.Graphics.Color.Spaces
 
     public static class CieLabUtils
     {
-        public static float[] DefaultReferenceWhite = CieXYZUtils.ReferenceWhite_XYZ_D65;
+        public static float[] DefaultReferenceWhite = ReferenceWhiteUtils.ReferenceWhite_XYZ_D65;
 
         #region CIE XYZ <-> CIE Lab
 
