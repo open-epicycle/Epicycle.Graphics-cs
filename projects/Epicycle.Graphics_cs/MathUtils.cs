@@ -91,6 +91,24 @@ namespace Epicycle.Graphics
             return result;
         }
 
+        public static void EnsureMatrix3AndInvese(float[,] matrix, float[,] inverse, out float[,] outMatrix, out float[,] outInverse)
+        {
+            if (matrix != null)
+            {
+                outMatrix = matrix;
+                outInverse = inverse ?? InvertMatrix3(matrix);
+            }
+            else if (inverse != null)
+            {
+                outMatrix = InvertMatrix3(inverse);
+                outInverse = inverse;
+            }
+            else
+            {
+                throw new ArgumentException("At least one of the matrices must not be null!");
+            }
+        }
+
         public static float Atan2Positive(float y, float x)
         {
             var atan2 = (float) Math.Atan2(y, x);
