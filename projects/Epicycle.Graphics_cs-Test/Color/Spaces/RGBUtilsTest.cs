@@ -95,6 +95,61 @@ namespace Epicycle.Graphics.Color.Spaces
             Assert.That(y, Is.EqualTo(expectedY).Within(Epsilon));
             Assert.That(z, Is.EqualTo(expectedZ).Within(Epsilon));
         }
+
+        #endregion
+
+        #region RGB <-> CIE Lab
+
+        [Test]
+        public void CieLabToRGB_converts_correctly()
+        {
+            TestCieLabToRGB(0.42390f, 0.05070f, -0.47378f, 0.01f, 0.4f, 0.7f);
+        }
+
+        [Test]
+        public void RGBToCieLab_converts_correctly()
+        {
+            TestRGBToCieLab(0.01f, 0.4f, 0.7f, 0.42390f, 0.05070f, -0.47378f);
+        }
+
+        [Test]
+        public void CieLabToRGB_is_inverse_of_RGBToCieLab()
+        {
+            for (float r = 0; r <= 1; r += Step)
+            {
+                for (float g = Step; g <= 1; g += Step)
+                {
+                    for (float b = 0; b <= 1; b += Step)
+                    {
+                        float labL, labA, labB;
+                        RGBUtils.SRGB.RGBToCieLab(r, g, b, out labL, out labA, out labB);
+
+                        TestCieLabToRGB(labL, labA, labB, r, g, b);
+                    }
+                }
+            }
+        }
+
+        private static void TestCieLabToRGB(float l, float a, float b, float expectedR, float expectedG, float expectedB)
+        {
+            float rgbR, rgbG, rgbB;
+            RGBUtils.SRGB.CieLabToRGB(l, a, b, out rgbR, out rgbG, out rgbB);
+
+            Assert.That(rgbR, Is.EqualTo(expectedR).Within(Epsilon));
+            Assert.That(rgbG, Is.EqualTo(expectedG).Within(Epsilon));
+            Assert.That(rgbB, Is.EqualTo(expectedB).Within(Epsilon));
+        }
+
+        private static void TestRGBToCieLab(float r, float g, float b, float expectedL, float expectedA, float expectedB)
+        {
+            float labL, labA, labB;
+            RGBUtils.SRGB.RGBToCieLab(r, g, b, out labL, out labA, out labB);
+
+            Assert.That(labL, Is.EqualTo(expectedL).Within(Epsilon));
+            Assert.That(labA, Is.EqualTo(expectedA).Within(Epsilon));
+            Assert.That(labB, Is.EqualTo(expectedB).Within(Epsilon));
+        }
+
         #endregion
     }
 }

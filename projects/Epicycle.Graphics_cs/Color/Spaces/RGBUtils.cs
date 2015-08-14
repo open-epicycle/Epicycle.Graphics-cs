@@ -332,5 +332,25 @@ namespace Epicycle.Graphics.Color.Spaces
         }
 
         #endregion
+
+        #region RGB <-> CIE Lab
+
+        public static void CieLabToRGB(this RGBColorSystem @this, float l, float a, float b, out float rgbR, out float rgbG, out float rgbB, float[] referenceWhite = null)
+        {
+            float x, y, z;
+
+            CieLabUtils.LabToCieXYZ(l, a, b, out x, out y, out z, referenceWhite);
+            @this.CieXYZToRGB(x, y, z, out rgbR, out rgbG, out rgbB);
+        }
+
+        public static void RGBToCieLab(this RGBColorSystem @this, float r, float g, float b, out float labL, out float labA, out float labB, float[] referenceWhite = null)
+        {
+            float x, y, z;
+
+            @this.RGBToCieXYZ(r, g, b, out x, out y, out z);
+            CieLabUtils.CieXYZToLab(x, y, z, out labL, out labA, out labB, referenceWhite);
+        }
+
+        #endregion
     }
 }
