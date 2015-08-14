@@ -372,5 +372,33 @@ namespace Epicycle.Graphics.Color.Spaces
         }
 
         #endregion
+
+        #region RGB <-> LCh
+
+        public static void LChToRGB(
+            this RGBColorSystem @this, 
+            float l, float c, float h, 
+            out float r, out float g, out float b, 
+            LxyModel model = LxyModel.Lab, float[] referenceWhite = null)
+        {
+            float x, y, z;
+
+            LChUtils.LChToCieXYZ(l, c, h, out x, out y, out z, model, referenceWhite);
+            @this.CieXYZToRGB(x, y, z, out r, out g, out b);
+        }
+
+        public static void RGBToLCh(
+            this RGBColorSystem @this, 
+            float r, float g, float b, 
+            out float l, out float c, out float h,
+            LxyModel model = LxyModel.Lab, float[] referenceWhite = null)
+        {
+            float x, y, z;
+
+            @this.RGBToCieXYZ(r, g, b, out x, out y, out z);
+            LChUtils.CieXYZToLCh(x, y, z, out l, out c, out h, model, referenceWhite);
+        }
+
+        #endregion
     }
 }

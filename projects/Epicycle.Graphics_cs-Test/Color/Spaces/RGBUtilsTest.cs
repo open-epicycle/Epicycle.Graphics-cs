@@ -149,5 +149,31 @@ namespace Epicycle.Graphics.Color.Spaces
         }
 
         #endregion
+
+        #region RGB <-> LCh
+
+        [Test]
+        public void LChToRGB_converts_correctly()
+        {
+            float r, g, b;
+            RGBUtils.SRGB.LChToRGB(0.42390f, 0.47648f, 276.109f / 360.0f, out r, out g, out b);
+
+            Assert.That(r, Is.EqualTo(0.01f).Within(Epsilon));
+            Assert.That(g, Is.EqualTo(0.4f).Within(Epsilon));
+            Assert.That(b, Is.EqualTo(0.7f).Within(Epsilon));
+        }
+
+        [Test]
+        public void RGBToLCh_converts_correctly()
+        {
+            float l, c, h;
+            RGBUtils.SRGB.RGBToLCh(0.01f, 0.4f, 0.7f, out l, out c, out h);
+
+            Assert.That(l, Is.EqualTo(0.42390f).Within(Epsilon));
+            Assert.That(c, Is.EqualTo(0.47648f).Within(Epsilon));
+            Assert.That(h, Is.EqualTo(276.109f / 360.0).Within(Epsilon));
+        }
+
+        #endregion
     }
 }
