@@ -80,6 +80,7 @@
     <Compile Include="Color\Spaces\HSxUtilsTest.cs" />
     <Compile Include="Color\Spaces\LChUtilsTest.cs" />
     <Compile Include="Color\Spaces\RGBColorSystemTest.cs" />
+    <Compile Include="Color\Spaces\RGBUtilsTest.cs" />
     <Compile Include="Color\Spaces\RYBUtilsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

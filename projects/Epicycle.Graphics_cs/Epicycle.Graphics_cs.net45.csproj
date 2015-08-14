@@ -81,6 +81,7 @@
     <Compile Include="Color\Spaces\LChUtils.cs" />
     <Compile Include="Color\Spaces\LxyModel.cs" />
     <Compile Include="Color\Spaces\RGBColorSystem.cs" />
+    <Compile Include="Color\Spaces\RGBUtils.cs" />
     <Compile Include="Color\Spaces\RYBUtils.cs" />
     <Compile Include="Color\Spaces\ReferenceWhiteUtils.cs" />
     <Compile Include="Color\Spaces\StandardReferenceWhite.cs" />
