@@ -26,10 +26,10 @@ namespace Epicycle.Graphics
     {
         // TODO: Use BasicMath when ready
 
-        private const float fPI = (float)Math.PI;
+        public const float fPI = (float)Math.PI;
 
-        private const double Tau = Math.PI * 2;
-        private const float fTau = (float)Tau;
+        public const double Tau = Math.PI * 2;
+        public const float fTau = (float)Tau;
 
         public static float ClipUnit(float x)
         {
