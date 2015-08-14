@@ -352,5 +352,25 @@ namespace Epicycle.Graphics.Color.Spaces
         }
 
         #endregion
+
+        #region RGB <-> CIE Luv
+
+        public static void CieLuvToRGB(this RGBColorSystem @this, float l, float u, float v, out float r, out float g, out float b, float[] referenceWhite = null)
+        {
+            float x, y, z;
+
+            CieLuvUtils.LuvToCieXYZ(l, u, v, out x, out y, out z, referenceWhite);
+            @this.CieXYZToRGB(x, y, z, out r, out g, out b);
+        }
+
+        public static void RGBToCieLuv(this RGBColorSystem @this, float r, float g, float b, out float l, out float u, out float v, float[] referenceWhite = null)
+        {
+            float x, y, z;
+
+            @this.RGBToCieXYZ(r, g, b, out x, out y, out z);
+            CieLuvUtils.CieXYZToLuv(x, y, z, out l, out u, out v, referenceWhite);
+        }
+
+        #endregion
     }
 }

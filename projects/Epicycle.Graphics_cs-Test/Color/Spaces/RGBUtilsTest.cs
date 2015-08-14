@@ -103,51 +103,49 @@ namespace Epicycle.Graphics.Color.Spaces
         [Test]
         public void CieLabToRGB_converts_correctly()
         {
-            TestCieLabToRGB(0.42390f, 0.05070f, -0.47378f, 0.01f, 0.4f, 0.7f);
+            float rgbR, rgbG, rgbB;
+            RGBUtils.SRGB.CieLabToRGB(0.42390f, 0.05070f, -0.47378f, out rgbR, out rgbG, out rgbB);
+
+            Assert.That(rgbR, Is.EqualTo(0.01f).Within(Epsilon));
+            Assert.That(rgbG, Is.EqualTo(0.4f).Within(Epsilon));
+            Assert.That(rgbB, Is.EqualTo(0.7f).Within(Epsilon));
         }
 
         [Test]
         public void RGBToCieLab_converts_correctly()
         {
-            TestRGBToCieLab(0.01f, 0.4f, 0.7f, 0.42390f, 0.05070f, -0.47378f);
+            float l, a, b;
+            RGBUtils.SRGB.RGBToCieLab(0.01f, 0.4f, 0.7f, out l, out a, out b);
+
+            Assert.That(l, Is.EqualTo(0.42390f).Within(Epsilon));
+            Assert.That(a, Is.EqualTo(0.05070f).Within(Epsilon));
+            Assert.That(b, Is.EqualTo(-0.47378f).Within(Epsilon));
+        }
+
+        #endregion
+
+        #region RGB <-> CIE Luv
+
+        [Test]
+        public void CieLuvToRGB_converts_correctly()
+        {
+            float r, g, b;
+            RGBUtils.SRGB.CieLuvToRGB(0.42390f, -0.24764f, -0.70208f, out r, out g, out b);
+
+            Assert.That(r, Is.EqualTo(0.01f).Within(Epsilon));
+            Assert.That(g, Is.EqualTo(0.4f).Within(Epsilon));
+            Assert.That(b, Is.EqualTo(0.7f).Within(Epsilon));
         }
 
         [Test]
-        public void CieLabToRGB_is_inverse_of_RGBToCieLab()
+        public void RGBToCieLuv_converts_correctly()
         {
-            for (float r = 0; r <= 1; r += Step)
-            {
-                for (float g = Step; g <= 1; g += Step)
-                {
-                    for (float b = 0; b <= 1; b += Step)
-                    {
-                        float labL, labA, labB;
-                        RGBUtils.SRGB.RGBToCieLab(r, g, b, out labL, out labA, out labB);
+            float l, u, v;
+            RGBUtils.SRGB.RGBToCieLuv(0.01f, 0.4f, 0.7f, out l, out u, out v);
 
-                        TestCieLabToRGB(labL, labA, labB, r, g, b);
-                    }
-                }
-            }
-        }
-
-        private static void TestCieLabToRGB(float l, float a, float b, float expectedR, float expectedG, float expectedB)
-        {
-            float rgbR, rgbG, rgbB;
-            RGBUtils.SRGB.CieLabToRGB(l, a, b, out rgbR, out rgbG, out rgbB);
-
-            Assert.That(rgbR, Is.EqualTo(expectedR).Within(Epsilon));
-            Assert.That(rgbG, Is.EqualTo(expectedG).Within(Epsilon));
-            Assert.That(rgbB, Is.EqualTo(expectedB).Within(Epsilon));
-        }
-
-        private static void TestRGBToCieLab(float r, float g, float b, float expectedL, float expectedA, float expectedB)
-        {
-            float labL, labA, labB;
-            RGBUtils.SRGB.RGBToCieLab(r, g, b, out labL, out labA, out labB);
-
-            Assert.That(labL, Is.EqualTo(expectedL).Within(Epsilon));
-            Assert.That(labA, Is.EqualTo(expectedA).Within(Epsilon));
-            Assert.That(labB, Is.EqualTo(expectedB).Within(Epsilon));
+            Assert.That(l, Is.EqualTo(0.42390f).Within(Epsilon));
+            Assert.That(u, Is.EqualTo(-0.24764f).Within(Epsilon));
+            Assert.That(v, Is.EqualTo(-0.70208f).Within(Epsilon));
         }
 
         #endregion
