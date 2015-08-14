@@ -16,8 +16,6 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using Epicycle.Commons;
-
 namespace Epicycle.Graphics.Color.Spaces
 {
     using System;
