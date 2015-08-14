@@ -24,15 +24,25 @@ namespace Epicycle.Graphics.Color.Spaces
     {
         private readonly float[,] _rgbToXyzMatrix;
         private readonly float[,] _xyzToRgbMatrix;
+        private readonly StandardReferenceWhite _referenceWhite; 
         private readonly ColorCompandingFunction _compandingFunction;
         private readonly float _gamma;
 
-        public RGBColorSystem(float[,] rgbToXyzMatrix, float[,] xyzToRgbMatrix, ColorCompandingFunction compandingFunction, float gamma = 0)
+        public RGBColorSystem(
+            float[,] rgbToXyzMatrix, float[,] xyzToRgbMatrix, 
+            StandardReferenceWhite referenceWhite, 
+            ColorCompandingFunction compandingFunction, float gamma = 0)
         {
             MathUtils.EnsureMatrix3AndInvese(rgbToXyzMatrix, xyzToRgbMatrix, out _rgbToXyzMatrix, out _xyzToRgbMatrix);
 
+            _referenceWhite = referenceWhite;
             _compandingFunction = compandingFunction;
             _gamma = gamma;
+        }
+
+        public StandardReferenceWhite ReferenceWhite
+        {
+            get { return _referenceWhite; }
         }
 
         #region CIE XYZ <-> Linear RGB

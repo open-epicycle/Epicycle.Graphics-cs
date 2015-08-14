@@ -37,7 +37,7 @@ namespace Epicycle.Graphics.Color.Spaces
                 { 0.5f, 0f,     1 },
             };
 
-            _rgbSystem = new RGBColorSystem(transform, null, ColorCompandingFunction.Gamma, 2);
+            _rgbSystem = new RGBColorSystem(transform, null, StandardReferenceWhite.D65, ColorCompandingFunction.Gamma, 2);
         }
 
         #region CIE XYZ <-> Linear RGB
