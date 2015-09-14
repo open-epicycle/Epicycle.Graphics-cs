@@ -18,12 +18,12 @@
 
 using System;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Color
 {
-    // [### ColorINT.cs.TEMPLATE> type = int16, channels = rgb
+    // [### ColorINT.cs.TEMPLATE> type = int16, channels = rgba
 
 
-    public struct ColorRGB16 : IEquatable<ColorRGB16>
+    public struct ColorRGBA16 : IEquatable<ColorRGBA16>
     {
         #region consts
     
@@ -33,32 +33,42 @@ namespace Epicycle.Graphics
         #endregion
 
         #region Named colors
+     
+        public static readonly ColorRGBA16 Transparent = new ColorRGBA16(0, 0, 0, 0);
     
     
         #endregion
     
         #region Members
      
-        private readonly ulong _rgb;
+        private readonly ulong _argb;
     
         #endregion
     
         #region Construction and conversion
     
      
-        public ColorRGB16(ulong rgb)
+        public ColorRGBA16(ulong argb)
         {
-            _rgb = rgb & ((ulong) 0xffffffffffff);
+            _argb = argb & ((ulong) 0xffffffffffffffff);
         }
     
-        public ColorRGB16(ushort r, ushort g, ushort b)
+        public ColorRGBA16(ushort r, ushort g, ushort b, ushort a)
         {
-            _rgb = ((ulong) r << 32) | ((ulong) g << 16) | ((ulong) b << 0);
+            _argb = ((ulong) a << 48) | ((ulong) r << 32) | ((ulong) g << 16) | ((ulong) b << 0);
         }
     
     
+     
+        public ColorRGBA16(ColorRGB16 rgb, ushort a = MaxChannelValue)
+            : this(rgb.R, rgb.G, rgb.B, a) { }
     
     
+    
+        public static explicit operator ColorRGBA16(ColorRGB16 c)
+        {
+            return new ColorRGBA16(c);
+        }
     
     
         #endregion
@@ -68,36 +78,67 @@ namespace Epicycle.Graphics
     
         public ushort R
         {
-            get { return (ushort) ((_rgb >> 32) & MaxChannelValue); }
+            get { return (ushort) ((_argb >> 32) & MaxChannelValue); }
         }
     
         public ushort G
         {
-            get { return (ushort) ((_rgb >> 16) & MaxChannelValue); }
+            get { return (ushort) ((_argb >> 16) & MaxChannelValue); }
         }
     
         public ushort B
         {
-            get { return (ushort) ((_rgb >> 0) & MaxChannelValue); }
+            get { return (ushort) ((_argb >> 0) & MaxChannelValue); }
+        }
+    
+        public ushort A
+        {
+            get { return (ushort) ((_argb >> 48) & MaxChannelValue); }
+        }
+    
+    
+        public ColorRGB16 RGB
+        {
+            get { return new ColorRGB16(R, G, B); }
+        }
+    
+        public bool IsTransparent
+        {
+            get { return A <= MinChannelValue; }
+        }
+     
+        public bool IsOpaque
+        {
+            get { return A >= MaxChannelValue; }
+        }
+    
+        public bool IsTranslucent
+        {
+            get { return !IsTransparent && !IsOpaque; }
         }
     
         #endregion
     
         #region Mutation
     
+        public ColorRGBA16 ChangeAlpha(ushort a)
+        {
+            return new ColorRGBA16(R, G, B, a);
+        }
+    
         #endregion
     
         #region Equality & HashCode
 
-        public bool Equals(ColorRGB16 c)
+        public bool Equals(ColorRGBA16 c)
         {
-            return _rgb == c._rgb;
+            return _argb == c._argb;
         }
 
         public override bool Equals(object obj)
         {
         
-            var c = obj as ColorRGB16?;
+            var c = obj as ColorRGBA16?;
 
             if(!c.HasValue)
             {
@@ -110,15 +151,15 @@ namespace Epicycle.Graphics
 
         public override int GetHashCode()
         {
-            return _rgb.GetHashCode();
+            return _argb.GetHashCode();
         }
 
-        public static bool operator ==(ColorRGB16 v, ColorRGB16 w)
+        public static bool operator ==(ColorRGBA16 v, ColorRGBA16 w)
         {
             return v.Equals(w);
         }
 
-        public static bool operator !=(ColorRGB16 v, ColorRGB16 w)
+        public static bool operator !=(ColorRGBA16 v, ColorRGBA16 w)
         {
             return !v.Equals(w);
         }
@@ -129,7 +170,7 @@ namespace Epicycle.Graphics
     
         public override string ToString()
         {
-            return string.Format("ColorRGB16(R={0}, G={1}, B={2})", R, G, B);
+            return string.Format("ColorRGBA16(R={0}, G={1}, B={2}, A={3})", R, G, B, A);
         }
     
         #endregion

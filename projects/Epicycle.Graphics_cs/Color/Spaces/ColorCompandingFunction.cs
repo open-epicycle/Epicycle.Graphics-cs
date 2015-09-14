@@ -16,31 +16,12 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Color.Spaces
 {
-    public static class ColorRGBAUtils
+    public enum ColorCompandingFunction
     {
-        public sealed class YamlSerialization
-        {
-            public int R { get; set; }
-            public int G { get; set; }
-            public int B { get; set; }
-            public int A { get; set; }
-
-            public YamlSerialization() { }
-
-            public YamlSerialization(ColorRGBA color)
-            {
-                R = color.R;
-                G = color.G;
-                B = color.B;
-                A = color.A;
-            }
-
-            public ColorRGBA Deserialize()
-            {
-                return new ColorRGBA((byte)R, (byte)G, (byte)B, (byte)A);
-            }
-        }
+        Gamma,
+        SRGB,
+        LStar,
     }
 }

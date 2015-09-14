@@ -65,13 +65,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorRGB.cs" />
-    <Compile Include="ColorRGB12.cs" />
-    <Compile Include="ColorRGB16.cs" />
-    <Compile Include="ColorRGBA.cs" />
-    <Compile Include="ColorRGBA12.cs" />
-    <Compile Include="ColorRGBA16.cs" />
-    <Compile Include="ColorRGBAUtils.cs" />
+    <Compile Include="Color\ColorRGB.cs" />
+    <Compile Include="Color\ColorRGB12.cs" />
+    <Compile Include="Color\ColorRGB16.cs" />
+    <Compile Include="Color\ColorRGBA.cs" />
+    <Compile Include="Color\ColorRGBA12.cs" />
+    <Compile Include="Color\ColorRGBA16.cs" />
+    <Compile Include="Color\ColorRGBAUtils.cs" />
+    <Compile Include="Color\Spaces\CieLabUtils.cs" />
+    <Compile Include="Color\Spaces\CieLuvUtils.cs" />
+    <Compile Include="Color\Spaces\CieXYZUtils.cs" />
+    <Compile Include="Color\Spaces\ColorCompandingFunction.cs" />
+    <Compile Include="Color\Spaces\ColorCompandingUtils.cs" />
+    <Compile Include="Color\Spaces\HSxUtils.cs" />
+    <Compile Include="Color\Spaces\LChUtils.cs" />
+    <Compile Include="Color\Spaces\LxyModel.cs" />
+    <Compile Include="Color\Spaces\RGBColorSystem.cs" />
+    <Compile Include="Color\Spaces\RGBUtils.cs" />
+    <Compile Include="Color\Spaces\RYBUtils.cs" />
+    <Compile Include="Color\Spaces\ReferenceWhiteUtils.cs" />
+    <Compile Include="Color\Spaces\StandardReferenceWhite.cs" />
     <Compile Include="Geometry\Ply\IPlyData.cs" />
     <Compile Include="Geometry\Ply\IPlyParametersParser.cs" />
     <Compile Include="Geometry\Ply\PlyData.cs" />
@@ -98,6 +111,7 @@
     <Compile Include="Images\ReadOnlyImageFloatView.cs" />
     <Compile Include="Images\ReadOnlyImageView.cs" />
     <Compile Include="Images\RgbImageType.cs" />
+    <Compile Include="MathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

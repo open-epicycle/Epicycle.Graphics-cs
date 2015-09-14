@@ -17,6 +17,7 @@
 // ]]]]
 
 using Epicycle.Commons.Collections;
+using Epicycle.Graphics.Color;
 using Epicycle.Math.Geometry;
 using System;
 using System.Collections.Generic;

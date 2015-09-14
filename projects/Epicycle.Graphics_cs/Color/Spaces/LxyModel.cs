@@ -16,23 +16,11 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using Epicycle.Graphics.Color;
-using Epicycle.Math.Geometry;
-
-namespace Epicycle.Graphics.Geometry.Ply
+namespace Epicycle.Graphics.Color.Spaces
 {
-    public interface IPlyParametersParser
+    public enum LxyModel
     {
-        bool HasParameter(string name);
-        object GetParameter(string name);
-
-        byte? GetByte(string name, bool required);
-        int? GetInt(string name, bool required);
-        float GetFloat(string name, bool required);
-        double GetDouble(string name, bool required);
-        int[] GetIntArray(string name, bool required);
-        Vector3 GetVector3(string namePrefix, bool required);
-        Rotation3? GetRotation3(string namePrefix, bool required);
-        ColorRGBA? GetColorRGBA(string namePrefix, bool required);
+        Lab,
+        Luv,
     }
 }

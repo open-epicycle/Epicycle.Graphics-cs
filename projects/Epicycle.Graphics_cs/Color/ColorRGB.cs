@@ -19,7 +19,7 @@
 using System;
 using Epicycle.Commons;
 
-namespace Epicycle.Graphics
+namespace Epicycle.Graphics.Color
 {
     // [### ColorINT.cs.TEMPLATE> type = int8, channels = rgb
 

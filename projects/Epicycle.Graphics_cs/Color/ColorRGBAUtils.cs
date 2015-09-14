@@ -16,23 +16,31 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Graphics-cs
 // ]]]]
 
-using Epicycle.Graphics.Color;
-using Epicycle.Math.Geometry;
-
-namespace Epicycle.Graphics.Geometry.Ply
+namespace Epicycle.Graphics.Color
 {
-    public interface IPlyParametersParser
+    public static class ColorRGBAUtils
     {
-        bool HasParameter(string name);
-        object GetParameter(string name);
+        public sealed class YamlSerialization
+        {
+            public int R { get; set; }
+            public int G { get; set; }
+            public int B { get; set; }
+            public int A { get; set; }
 
-        byte? GetByte(string name, bool required);
-        int? GetInt(string name, bool required);
-        float GetFloat(string name, bool required);
-        double GetDouble(string name, bool required);
-        int[] GetIntArray(string name, bool required);
-        Vector3 GetVector3(string namePrefix, bool required);
-        Rotation3? GetRotation3(string namePrefix, bool required);
-        ColorRGBA? GetColorRGBA(string namePrefix, bool required);
+            public YamlSerialization() { }
+
+            public YamlSerialization(ColorRGBA color)
+            {
+                R = color.R;
+                G = color.G;
+                B = color.B;
+                A = color.A;
+            }
+
+            public ColorRGBA Deserialize()
+            {
+                return new ColorRGBA((byte)R, (byte)G, (byte)B, (byte)A);
+            }
+        }
     }
 }
