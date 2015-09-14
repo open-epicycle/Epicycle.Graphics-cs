@@ -18,6 +18,8 @@ Epicycle .NET graphics library. Includes: Platform-independent image library and
 ## Namespaces
 * **Epicycle.Graphics**:
   * Platform-independent color classes
+* **Epicycle.Graphics.Color.Spaces**:
+  * Conversion between various color spaces such as RGB, HSL/HSV/HSI, XYZ, Lab, LCh, etc.
 * **Epicycle.Graphics.Images**:
   * Platform-independent image infrastructure
 * **Epicycle.Graphics.Geometry.Ply**:
@@ -41,6 +43,11 @@ Copyright 2015 Epicycle (http://epicycle.org)
     * Integer RGB/RGBA
       * Renaming Color3b and Color4b into ColorRGB and ColorRGBA
       * Generating 12 bit-per-channel and 16 bit-per-channel versions (ColorRGB12, ColorRGBA12, ColorRGB16, ColorRGBA16)
+    * Conversion between various color spaces:
+      * RGB (including different RGB models)
+      * HSx: HSL, HSV/HSB, HSI
+      * CIE XYZ, xyY, Lab, Luv, LCh
+      * Subtractive RYB
   
 * **Version 0.1.5** [2015-01-28]
   * Upgrading Epicycle.Math-cs: 0.1.4.0 => 0.1.5.0
